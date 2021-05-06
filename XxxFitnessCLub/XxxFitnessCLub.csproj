@@ -58,6 +58,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFood.Designer.cs">
+      <DependentUpon>FrmFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFresh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFresh.Designer.cs">
+      <DependentUpon>FrmFresh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMainPageold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainPageold.Designer.cs">
+      <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgress.Designer.cs">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShoppingCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShoppingCart.Designer.cs">
+      <DependentUpon>FrmShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmToGo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmToGo.Designer.cs">
+      <DependentUpon>FrmToGo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUploadMealPic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUploadMealPic.Designer.cs">
+      <DependentUpon>FrmUploadMealPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkoutLogChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkoutLogChart.Designer.cs">
+      <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\BLL\ActivityLevelBLL.cs" />
     <Compile Include="Model\BLL\MealBLL.cs" />
     <Compile Include="Model\BLL\MemberBLL.cs" />
@@ -161,16 +221,16 @@
     <Compile Include="ToDoFrms\FrmEntry.Designer.cs">
       <DependentUpon>FrmEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDoFrms\FrmAddWorkoutLog.cs">
+    <Compile Include="FrmAddWorkoutLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmAddWorkoutLog.designer.cs">
+    <Compile Include="FrmAddWorkoutLog.designer.cs">
       <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutLog.cs">
+    <Compile Include="FrmWorkoutLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutLog.designer.cs">
+    <Compile Include="FrmWorkoutLog.designer.cs">
       <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
     </Compile>
     <Compile Include="ToDoFrms\FrmGiftCard.cs">
@@ -185,10 +245,10 @@
     <Compile Include="FrmMealWorkoutHistory.Designer.cs">
       <DependentUpon>FrmMealWorkoutHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDoFrms\FrmMainPage.cs">
+    <Compile Include="FrmMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmMainPage.Designer.cs">
+    <Compile Include="FrmMainPage.Designer.cs">
       <DependentUpon>FrmMainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMealLog.cs">
@@ -223,13 +283,43 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmFood.resx">
+      <DependentUpon>FrmFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFresh.resx">
+      <DependentUpon>FrmFresh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMainPageold.resx">
+      <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProgress.resx">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShoppingCart.resx">
+      <DependentUpon>FrmShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmToGo.resx">
+      <DependentUpon>FrmToGo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUploadMealPic.resx">
+      <DependentUpon>FrmUploadMealPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkoutLogChart.resx">
+      <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ToDoFrms\FrmEntry.resx">
       <DependentUpon>FrmEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmAddWorkoutLog.resx">
+    <EmbeddedResource Include="FrmAddWorkoutLog.resx">
       <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmWorkoutLog.resx">
+    <EmbeddedResource Include="FrmWorkoutLog.resx">
       <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToDoFrms\FrmGiftCard.resx">
@@ -238,7 +328,7 @@
     <EmbeddedResource Include="FrmMealWorkoutHistory.resx">
       <DependentUpon>FrmMealWorkoutHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmMainPage.resx">
+    <EmbeddedResource Include="FrmMainPage.resx">
       <DependentUpon>FrmMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMealLog.resx">

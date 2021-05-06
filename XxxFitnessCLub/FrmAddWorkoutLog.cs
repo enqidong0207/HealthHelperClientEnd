@@ -22,6 +22,8 @@ namespace HHFirstDraft
         private WorkoutBLL wBll = new WorkoutBLL();
         private ActivityLevelBLL alBll = new ActivityLevelBLL();
 
+        private DateTime oneMonthAgo = new DateTime(2021, 4, 1);
+
         public FrmAddWorkoutLog(FrmWorkoutLog _workoutLogForm)
         {
             workoutLogForm = _workoutLogForm;
@@ -56,7 +58,7 @@ namespace HHFirstDraft
             this.cmbWorkoutCategory.ValueMember = "ID";
             this.cmbWorkoutCategory.DataSource = wcList;
 
-            List<ActivityLevelDetailDTO> alList = alBll.GetActivityLevels();
+            List<ActivityLevelDetailDTO> alList = alBll.GetActivityLevels().OrderBy(e => e.ID).ToList();
             alList.Insert(0, new ActivityLevelDetailDTO
             {
                 Description = "全部強度",
@@ -75,6 +77,7 @@ namespace HHFirstDraft
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            oneMonthAgo = oneMonthAgo.AddDays(1);
             // todo
             if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours))
             {
@@ -90,7 +93,7 @@ namespace HHFirstDraft
             { 
                 MemberID = 3,
                 WorkoutID = (int)this.cmbWorkout.SelectedValue,
-                EditTime = DateTime.Now,
+                EditTime = oneMonthAgo,
                 WorkoutHours = workoutHours
             });
 
@@ -119,9 +122,16 @@ namespace HHFirstDraft
         {
             this.cmbWorkout.DisplayMember = "Name";
             this.cmbWorkout.ValueMember = "ID";
-            this.cmbWorkout.DataSource = 
-                wBll.GetWorkoutByWCAL((int)this.cmbWorkoutCategory.SelectedValue, (int)this.cmbActivityLevel.SelectedValue);
-            
+
+            List<WorkoutDetailDTO> list = wBll.GetWorkoutByWCAL((int)this.cmbWorkoutCategory.SelectedValue, (int)this.cmbActivityLevel.SelectedValue);
+            if (list.Count == 0)
+            {
+                this.cmbWorkout.DataSource = null;
+            }
+            else
+            {
+                this.cmbWorkout.DataSource = list;
+            }
         }
     }
 }

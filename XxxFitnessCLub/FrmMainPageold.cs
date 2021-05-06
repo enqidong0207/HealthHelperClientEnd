@@ -20,8 +20,8 @@ namespace XxxFitnessCLub
 
         private void button5_Click(object sender, EventArgs e)
         {
-            FrmOrderHistory f = new FrmOrderHistory();
-            f.ShowDialog();
+            //FrmOrderHistory f = new FrmOrderHistory();
+            //f.ShowDialog();
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
@@ -37,8 +37,8 @@ namespace XxxFitnessCLub
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FrmToGos f = new FrmToGos();
-            f.ShowDialog();
+            //FrmToGos f = new FrmToGos();
+            //f.ShowDialog();
         }
     }
 }

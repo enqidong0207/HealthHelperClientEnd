@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub;
 
 namespace HHFirstDraft
 {
@@ -25,8 +26,8 @@ namespace HHFirstDraft
         {
             ShowWorkoutLog();
         }
-
-        bool isSearch = false;
+        // todo
+        //bool isSearch = false;
         public void ShowWorkoutLog()
         {
             bll = new WorkoutLogBLL();
@@ -46,10 +47,8 @@ namespace HHFirstDraft
             dataGridView1.Columns["WorkoutTotalCal"].HeaderText = "總消耗卡路里";
             dataGridView1.Columns["Workout"].Visible = false;
             dataGridView1.Columns["Member"].Visible = false;
-            isSearch = false;
+            //isSearch = false;
         }
-
-       
 
         private void btnAddWorkout_Click(object sender, EventArgs e)
         {
@@ -64,7 +63,7 @@ namespace HHFirstDraft
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             keyword = textBox1.Text;
-            isSearch = true;
+            //isSearch = true;
             //ShowWorkouts();
         }
         private void btnEdit_Click(object sender, EventArgs e)
@@ -122,6 +121,17 @@ namespace HHFirstDraft
             //    isAscending = true;
             //    dataGridView1.DataSource = list.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
             //}
+        }
+
+        private void btnWorkoutLogChart_Click(object sender, EventArgs e)
+        {
+            FrmWorkoutLogChart frm = new FrmWorkoutLogChart(this);
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
+
         }
     }
 }

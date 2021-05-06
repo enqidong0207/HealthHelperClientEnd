@@ -64,12 +64,13 @@ namespace HHFirstDraft.DAL.DTO
             }
         }
 
-        public string WorkoutTotalCal
+        public double WorkoutTotalCal
         {
             get
             {
-                return $"{WorkoutHours * Workout.Calories:0.00}";
+                return WorkoutHours * Workout.Calories;
             }
+
         }
     }
 }
