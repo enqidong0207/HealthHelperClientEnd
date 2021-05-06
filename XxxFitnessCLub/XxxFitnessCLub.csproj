@@ -165,6 +165,12 @@
     <Compile Include="FrmAddWorkoutLog.designer.cs">
       <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWorkoutLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddWorkoutLog.resx">
       <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWorkoutLog.resx">
       <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
