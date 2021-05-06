@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace XxxFitnessCLub
 {
+    //
     public partial class FrmMainPage : Form
     {
         public FrmMainPage()
