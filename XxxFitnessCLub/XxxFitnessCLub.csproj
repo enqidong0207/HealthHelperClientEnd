@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1CEE8920-F855-404E-943D-2B3C4BB419BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>XxxFitnessCLub</RootNamespace>
+    <AssemblyName>XxxFitnessCLub</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ActivityLevelBLL.cs" />
+    <Compile Include="BLL\CommentBLL.cs" />
+    <Compile Include="BLL\MealBLL.cs" />
+    <Compile Include="BLL\MemberBLL.cs" />
+    <Compile Include="BLL\TagCategoryBLL.cs" />
+    <Compile Include="BLL\WorkoutBLL.cs" />
+    <Compile Include="BLL\WorkoutCategoryBLL.cs" />
+    <Compile Include="BLL\WorkoutLogBLL.cs" />
+    <Compile Include="DAL\ActivityLevel.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Comment.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DAO\ActivityLevelDAO.cs" />
+    <Compile Include="DAL\DAO\CommentDAO.cs" />
+    <Compile Include="DAL\DAO\HHContext.cs" />
+    <Compile Include="DAL\DAO\MealDAO.cs" />
+    <Compile Include="DAL\DAO\MemberDAO.cs" />
+    <Compile Include="DAL\DAO\StatusDAO.cs" />
+    <Compile Include="DAL\DAO\TagCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
+    <Compile Include="DAL\DietDetail.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DietLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DTO\ActivityLevelDetailDTO.cs" />
+    <Compile Include="DAL\DTO\ActivityLevelDTO.cs" />
+    <Compile Include="DAL\DTO\CommentDetailDTO.cs" />
+    <Compile Include="DAL\DTO\CommentDTO.cs" />
+    <Compile Include="DAL\DTO\MealDetailDTO.cs" />
+    <Compile Include="DAL\DTO\MealDTO.cs" />
+    <Compile Include="DAL\DTO\MemberDetailDTO.cs" />
+    <Compile Include="DAL\DTO\MemberDTO.cs" />
+    <Compile Include="DAL\DTO\StatusDetailDTO.cs" />
+    <Compile Include="DAL\DTO\StatusDTO.cs" />
+    <Compile Include="DAL\DTO\TagCategoryDetailDTO.cs" />
+    <Compile Include="DAL\DTO\TagCategoryDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutCategoryDetailDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutCategoryDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutDetailDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutLogDTO.cs" />
+    <Compile Include="DAL\HHModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\HHModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\HHModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MealOption.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MealTag.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MealTagCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Member.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Nutrient.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Status.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sysdiagram.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TimesOfDay.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WeightLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Workout.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WorkoutCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WorkoutLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WorkoutPreference.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddComment.Designer.cs">
+      <DependentUpon>FrmAddComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddMember.Designer.cs">
+      <DependentUpon>FrmAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmComment.Designer.cs">
+      <DependentUpon>FrmComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntry.Designer.cs">
+      <DependentUpon>FrmEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddWorkoutLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddWorkoutLog.designer.cs">
+      <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkoutLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkoutLog.designer.cs">
+      <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGiftCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGiftCard.Designer.cs">
+      <DependentUpon>FrmGiftCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMealWorkoutHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealWorkoutHistory.Designer.cs">
+      <DependentUpon>FrmMealWorkoutHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainPage.Designer.cs">
+      <DependentUpon>FrmMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMealLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealLog.Designer.cs">
+      <DependentUpon>FrmMealLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMemberProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMemberProfile.Designer.cs">
+      <DependentUpon>FrmMemberProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRules.Designer.cs">
+      <DependentUpon>FrmRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStartAProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStartAProgram.Designer.cs">
+      <DependentUpon>FrmStartAProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkoutSuggestions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkoutSuggestions.Designer.cs">
+      <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserStatic.cs" />
+    <EmbeddedResource Include="FrmAddMember.resx">
+      <DependentUpon>FrmAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmComment.resx">
+      <DependentUpon>FrmComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntry.resx">
+      <DependentUpon>FrmEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddWorkoutLog.resx">
+      <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkoutLog.resx">
+      <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGiftCard.resx">
+      <DependentUpon>FrmGiftCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMealWorkoutHistory.resx">
+      <DependentUpon>FrmMealWorkoutHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMainPage.resx">
+      <DependentUpon>FrmMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMealLog.resx">
+      <DependentUpon>FrmMealLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMemberProfile.resx">
+      <DependentUpon>FrmMemberProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRules.resx">
+      <DependentUpon>FrmRules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStartAProgram.resx">
+      <DependentUpon>FrmStartAProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkoutSuggestions.resx">
+      <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="DAL\HHModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HHModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\HHModel.edmx.diagram">
+      <DependentUpon>HHModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chartRef.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MealRed.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MealRed1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scale-lose-weight-2-1080x675.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scale-lose-weight-2-1080x6751.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a5a8f95fbb3d1062b7972f71e5ca4a46.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\螢幕擷取畫面 2021-05-02 204709.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\HHModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\HHModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
