@@ -222,5 +222,21 @@ namespace HHFirstDraft.DAL.DAO
             }
             return Members;
         }
+
+        //恩旗
+        public int AddMember(Member member)
+        {
+            try
+            {
+                db.Members.Add(member);
+                db.SaveChanges();
+                return member.ID;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
     }
 }

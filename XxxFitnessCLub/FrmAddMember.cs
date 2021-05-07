@@ -11,6 +11,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub.BLL;
+using XxxFitnessCLub.DAL;
 
 namespace XxxFitnessCLub
 {
@@ -25,6 +27,10 @@ namespace XxxFitnessCLub
         MemberBLL bll = new MemberBLL();
         public bool isUpdate = false;
         public MemberDetailDTO detail = new MemberDetailDTO();
+
+        //恩旗
+        WorkoutCategoryBLL wcBll = new WorkoutCategoryBLL();
+        WorkoutPreferencesBLL wpBll = new WorkoutPreferencesBLL();
 
         private void FrmAddMember_Load(object sender, EventArgs e)
         {
@@ -51,6 +57,9 @@ namespace XxxFitnessCLub
                 idFlag = true;
             }
             LoadComboBox();
+
+            //恩旗
+            LoadCheckedListBox();
         }
         ActivityLevelBLL activityLevelBLL = new ActivityLevelBLL();
         ActivityLevelDTO activityLevelDTO = new ActivityLevelDTO();
@@ -63,6 +72,7 @@ namespace XxxFitnessCLub
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
             MemberDetailDTO detail = new MemberDetailDTO();
             if (txtName.Text == "" ||
                 txtEmail.Text == "" ||
@@ -103,6 +113,7 @@ namespace XxxFitnessCLub
                 detail.JoinDate = DateTime.Now;
                 detail.StatusID = General.Status.active;
                 detail.Birthdate = dpBirth.Value;
+
                 if (isUpdate)
                 {
                     detail.ID = UserStatic.UserID;
@@ -112,9 +123,27 @@ namespace XxxFitnessCLub
                 }
                 else
                 {
-                    if (bll.Add(detail))
+                    int ID;
+                    if ((ID = bll.AddMember(detail)) > 0)
                     {
                         MessageBox.Show("已新增會員");
+
+                        //恩旗
+                        List<WorkoutPreference> wpList = new List<WorkoutPreference>();
+                        foreach (ClbItem item in this.clbWPreferences.CheckedItems)
+                        {
+                            wpList.Add(new WorkoutPreference
+                            {
+                                MemberID = ID,
+                                WorkoutCategoryID = item.wcID
+                            });
+                        }
+
+                        if (wpBll.AddPreferences(wpList))
+                        {
+                            MessageBox.Show("已新增運動喜好");
+                        }
+
                         this.Close();
                     }
                 }
@@ -222,5 +251,16 @@ namespace XxxFitnessCLub
                 }
             }
         }
+
+        //恩旗
+        private void LoadCheckedListBox()
+        {
+            foreach (var item in wcBll.GetWcItems())
+            {
+                this.clbWPreferences.Items.Add(item);
+                
+            }
+        }
+
     }
 }

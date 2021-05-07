@@ -102,5 +102,26 @@ namespace HHFirstDraft.BLL
         {
             return dao.IsTaiwanIDExist(text);
         }
+
+        //恩旗
+        public int AddMember(MemberDetailDTO entity)
+        {
+            Member member = new Member();
+            member.Name = entity.Name;
+            member.ID = entity.ID;
+            member.Phone = entity.Phone;
+            member.Email = entity.Email;
+            member.StatusID = entity.StatusID;
+            member.Birthdate = entity.Birthdate;
+            member.IsAdmin = entity.IsAdmin;
+            member.Password = entity.Password;
+            member.JoinDate = DateTime.Now;
+            member.Height = entity.Height;
+            member.Gender = entity.Gender;
+            member.TaiwanID = entity.TaiwanID;
+            member.StatusID = entity.StatusID;
+            member.ActivityLevelID = entity.ActivityLevelID;
+            return dao.AddMember(member);
+        }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="BLL\WorkoutBLL.cs" />
     <Compile Include="BLL\WorkoutCategoryBLL.cs" />
     <Compile Include="BLL\WorkoutLogBLL.cs" />
+    <Compile Include="BLL\WorkoutPreferencesBLL.cs" />
     <Compile Include="DAL\ActivityLevel.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="DAL\DAO\WorkoutCategoryDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutPreferencesDAO.cs" />
     <Compile Include="DAL\DietDetail.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
