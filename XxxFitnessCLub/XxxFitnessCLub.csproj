@@ -105,22 +105,17 @@
     <Compile Include="DAL\DTO\WorkoutDetailDTO.cs" />
     <Compile Include="DAL\DTO\WorkoutDTO.cs" />
     <Compile Include="DAL\DTO\WorkoutLogDTO.cs" />
-    <Compile Include="DAL\HHModel.Context.cs" />
-    <Compile Include="DAL\HHModel.Context1.cs">
+    <Compile Include="DAL\HHModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\HHModel.cs" />
-    <Compile Include="DAL\HHModel.Designer.cs">
-      <DependentUpon>HHModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\HHModel1.cs">
+    <Compile Include="DAL\HHModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\HHModel1.Designer.cs">
+    <Compile Include="DAL\HHModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.edmx</DependentUpon>
@@ -199,12 +194,6 @@
     </Compile>
     <Compile Include="FrmFresh.Designer.cs">
       <DependentUpon>FrmFresh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmGiftCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmGiftCard.Designer.cs">
-      <DependentUpon>FrmGiftCard.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
@@ -333,9 +322,6 @@
     <EmbeddedResource Include="FrmFresh.resx">
       <DependentUpon>FrmFresh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmGiftCard.resx">
-      <DependentUpon>FrmGiftCard.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -402,7 +388,7 @@
     </Compile>
     <EntityDeploy Include="DAL\HHModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HHModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>HHModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="DAL\HHModel.edmx.diagram">
       <DependentUpon>HHModel.edmx</DependentUpon>
@@ -449,18 +435,19 @@
     <None Include="Resources\螢幕擷取畫面 2021-05-02 204709.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HHModel.Context1.cs</LastGenOutput>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HHModel1.cs</LastGenOutput>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
