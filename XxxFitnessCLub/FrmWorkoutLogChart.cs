@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace XxxFitnessCLub
 {
@@ -21,9 +22,13 @@ namespace XxxFitnessCLub
             workoutLogForm = _workoutLogForm;
             InitializeComponent();
 
-            ShowChart(null, 7);
+            
+        }
 
-            this.lblTakeDaysTest.Text = "";
+        private void FrmWorkoutLogChart_Load(object sender, EventArgs e)
+        {
+            this.dtpStartDate.Value = DateTime.Now.AddDays(-6).Date;
+            ShowChart(this.dtpStartDate.Value.Date, this.dtpEndDate.Value.Date);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -33,38 +38,36 @@ namespace XxxFitnessCLub
 
         private void btnShowChat_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(this.txtTakeDays.Text, out int takeDays))
+            if (this.dtpStartDate.Value > this.dtpEndDate.Value)
             {
-                this.lblTakeDaysTest.Text = "請輸入數字";
+                MessageBox.Show("起始日期大於結束日期");
                 return;
             }
 
-            ShowChart(this.dtpStartDate.Value.Date, takeDays);
-
-            this.lblTakeDaysTest.Text = "";
+            ShowChart(this.dtpStartDate.Value.Date, this.dtpEndDate.Value.Date);
         }
 
-        private void ShowChart(DateTime? date, int takeDays)
+        private void ShowChart(DateTime? startDate, DateTime? endDate)
         {
-            var list = this.wlBll.GetWorkoutCalByDate(date?.Date, takeDays);
+            var list = this.wlBll.GetWorkoutCalByDate(startDate?.Date, endDate?.Date);
 
             if (list.Count == 0)
             {
                 MessageBox.Show("日期區間無資料");
-                list = this.wlBll.GetWorkoutCalByDate(null, takeDays);
+                list = this.wlBll.GetWorkoutCalByDate(null, null);
             }
-            else
-            {
-                this.chart1.DataSource = list;
-                this.chart1.Series[0].XValueMember = "EditDate";
-                this.chart1.Series[0].YValueMembers = "TotalCal";
-                this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
 
-                this.chart1.Series[1].XValueMember = "EditDate";
-                this.chart1.Series[1].YValueMembers = "TotalHours";
-                this.chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            }
-            
+            this.chart1.DataSource = list;
+            this.chart1.Series[0].XValueMember = "EditDate";
+            this.chart1.Series[0].YValueMembers = "TotalCal";
+            this.chart1.Series[0].ChartType = SeriesChartType.Column;
+
+            this.chart1.Series[1].XValueMember = "EditDate";
+            this.chart1.Series[1].YValueMembers = "TotalHours";
+            this.chart1.Series[1].ChartType = SeriesChartType.Column;
+
+
         }
+
     }
 }

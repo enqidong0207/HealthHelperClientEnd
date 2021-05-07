@@ -11,17 +11,13 @@ namespace HHFirstDraft.DAL.DAO
 {
     class WorkoutLogDAO : HHContext
     {
-        internal List<WorkoutLogDTO> GetWorkoutLogs()
+        //恩旗
+        internal List<WorkoutLog> GetWorkoutLogs()
         {
-            List<WorkoutLogDTO> list = new List<WorkoutLogDTO>();
-            foreach (var wl in db.WorkoutLogs)
-            {
-                list.Add(new WorkoutLogDTO(wl));
-            }
-
-            return list;
+            return db.WorkoutLogs.ToList();
         }
 
+        //恩旗
         internal bool Add(WorkoutLog entity)
         {
             try
@@ -36,6 +32,42 @@ namespace HHFirstDraft.DAL.DAO
                 return false;
             }
             
+        }
+
+        //恩旗
+        internal bool Edit(WorkoutLog entity)
+        {
+            WorkoutLog oldEntity = db.WorkoutLogs.Where(wl => wl.ID == entity.ID).SingleOrDefault();
+            try
+            {
+                oldEntity.WorkoutID = entity.WorkoutID;
+                oldEntity.EditTime = entity.EditTime;
+                oldEntity.WorkoutHours = entity.WorkoutHours;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        //恩旗
+        internal bool Delete(WorkoutLog entity)
+        {
+            WorkoutLog oldEntity = db.WorkoutLogs.Where(wl => wl.ID == entity.ID).SingleOrDefault();
+            try
+            {
+                db.WorkoutLogs.Remove(oldEntity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
     }
 }

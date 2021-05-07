@@ -10,9 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XxxFitnessCLub;
+using XxxFitnessCLub.Model.DAL;
 
 namespace HHFirstDraft
-{
+{   
+    //恩旗
     public partial class FrmWorkoutLog : Form
     {
         public FrmWorkoutLog()
@@ -20,20 +22,18 @@ namespace HHFirstDraft
             InitializeComponent();
         }
 
-        WorkoutLogBLL bll = new WorkoutLogBLL();
-        WorkoutLogDTO dto;
+        WorkoutLogBLL wlBll = new WorkoutLogBLL();
+        internal WorkoutLogDTO dto;
+        internal bool isUpdate = false;
+        internal string keyword;
+        bool isAscending = false;
+        int sortColIndex = -1;
+
         private void FrmWorkout_Load(object sender, EventArgs e)
         {
-            ShowWorkoutLog();
-        }
-        // todo
-        //bool isSearch = false;
-        public void ShowWorkoutLog()
-        {
-            bll = new WorkoutLogBLL();
+            ShowWorkoutLog(null);
 
-            dataGridView1.DataSource = bll.GetWorkoutLogs();
-
+            this.dataGridView1.DataSource = this.bsWL;
             dataGridView1.Columns["ID"].Visible = false;
             dataGridView1.Columns["MemberID"].Visible = false;
             dataGridView1.Columns["MemberName"].Visible = false;
@@ -47,11 +47,19 @@ namespace HHFirstDraft
             dataGridView1.Columns["WorkoutTotalCal"].HeaderText = "總消耗卡路里";
             dataGridView1.Columns["Workout"].Visible = false;
             dataGridView1.Columns["Member"].Visible = false;
-            //isSearch = false;
+        }
+
+        public void ShowWorkoutLog(string keyword)
+        {
+            wlBll = new WorkoutLogBLL();
+            this.bsWL.DataSource = wlBll.GetWorkoutLogsByKeyword(keyword);
+
         }
 
         private void btnAddWorkout_Click(object sender, EventArgs e)
         {
+            isUpdate = false;
+
             FrmAddWorkoutLog frm = new FrmAddWorkoutLog(this);
             frm.TopLevel = false;
             frm.AutoScroll = true;
@@ -59,68 +67,91 @@ namespace HHFirstDraft
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
         }
-        string keyword;
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            keyword = textBox1.Text;
-            //isSearch = true;
-            //ShowWorkouts();
-        }
+
+        
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // todo
-            //FrmAddWorkout frm = new FrmAddWorkout(this);
-            //frm.TopLevel = false;
-            //frm.AutoScroll = true;
-            //this.Controls.Add(frm);
-            //frm.FormBorderStyle = FormBorderStyle.None;
-            //frm.detail = detail;
-            //frm.dto = dto;
-            //frm.IsUpdate = true;
-            //frm.Show();
-        }
-        WorkoutDetailDTO detail = new WorkoutDetailDTO();
+            
+            if (dto.EditTime.Date != DateTime.Now.Date)
+            {
+                MessageBox.Show($"此紀錄的日期為{dto.EditTime.Date:yyyy/MM/dd}\n只能修改今天({DateTime.Now.Date:yyyy/MM/dd})的紀錄");
+                return;
+            }
 
-        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            // todo
-            //detail.ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
-            //detail.Name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
-            //detail.CategoryID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryID"].Value);
-            //detail.ActivityLevelID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ActivityLevelID"].Value);
-            //detail.Calories = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Calories"].Value);
+            isUpdate = true;
+
+            FrmAddWorkoutLog frm = new FrmAddWorkoutLog(this);
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // todo
-            //DialogResult result = MessageBox.Show("你確定欲刪除該運動 " + detail.Name + " ?", "警告", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.Yes)
-            //{
-            //    if (bll.Delete(detail.ID))
-            //    {
-            //        MessageBox.Show("已刪除該運動項目");
-            //        //ShowWorkouts();
-            //        this.textBox1.Clear();
-            //    }
-            //}
+            
+            if (dto.EditTime.Date != DateTime.Now.Date)
+            {
+                MessageBox.Show($"此紀錄的日期為{dto.EditTime.Date:yyyy/MM/dd}\n只能刪除今天({DateTime.Now.Date:yyyy/MM/dd})的紀錄");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show($"你確定欲刪除該運動紀錄\n{dto.WorkoutName}\n(紀錄時間{dto.EditTime})", "警告", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                bool isSuccess = wlBll.Delete(dto);
+
+                if (isSuccess)
+                {
+                    MessageBox.Show("刪除成功");
+                    ShowWorkoutLog(keyword);
+                }
+                else
+                {
+                    MessageBox.Show("刪除失敗");
+                }
+            }
         }
-        bool isAscending = false;
+
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // todo
-            //List<WorkoutDetailDTO> list = (List<WorkoutDetailDTO>)dataGridView1.DataSource;
-            //string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
-            //if (isAscending)
-            //{
-            //    dataGridView1.DataSource = list.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            //    isAscending = false;
-            //}
-            //else
-            //{
-            //    isAscending = true;
-            //    dataGridView1.DataSource = list.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
-            //}
+            
+            if (this.dataGridView1.Columns[e.ColumnIndex].SortMode == DataGridViewColumnSortMode.NotSortable)
+            {
+                return;
+            }
+
+            string columnName = this.dataGridView1.Columns[e.ColumnIndex].Name;
+
+            if (e.ColumnIndex == this.sortColIndex)
+            {
+                if (isAscending)
+                {
+                    this.bsWL.DataSource = wlBll.GetWorkoutLogsByKeyword(keyword)
+                        .OrderByDescending(wl => wl.GetType().GetProperty(columnName).GetValue(wl)).ToList();
+                    this.isAscending = false;
+                    this.dataGridView1.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                }
+                else
+                {
+                    this.bsWL.DataSource = wlBll.GetWorkoutLogsByKeyword(keyword)
+                        .OrderBy(wl => wl.GetType().GetProperty(columnName).GetValue(wl)).ToList();
+                    this.isAscending = true;
+                    this.dataGridView1.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                this.bsWL.DataSource = wlBll.GetWorkoutLogsByKeyword(keyword)
+                    .OrderBy(wl => wl.GetType().GetProperty(columnName).GetValue(wl)).ToList();
+                this.isAscending = true;
+                this.dataGridView1.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                this.sortColIndex = e.ColumnIndex;
+            }
+
+
+
         }
 
         private void btnWorkoutLogChart_Click(object sender, EventArgs e)
@@ -132,6 +163,29 @@ namespace HHFirstDraft
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
 
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "WorkoutTotalCal"
+                || this.dataGridView1.Columns[e.ColumnIndex].Name == "WorkoutHours")
+            {
+                e.Value = $"{e.Value:0.00}";
+            }
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            int ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
+            dto = wlBll.GetWorkoutLogByID(ID);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // todo 加入日期搜尋
+            keyword = textBox1.Text;
+            ShowWorkoutLog(keyword);
         }
     }
 }

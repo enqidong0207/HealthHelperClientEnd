@@ -10,6 +10,7 @@ namespace HHFirstDraft.DAL.DTO
 
     class WorkoutLogDTO : WorkoutLog
     {
+        // todo 要改名嗎？
         public WorkoutLogDTO() : base()
         {
 
