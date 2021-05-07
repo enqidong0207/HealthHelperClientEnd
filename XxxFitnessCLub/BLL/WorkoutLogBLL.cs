@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XxxFitnessCLub;
 using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft.BLL
@@ -37,8 +38,9 @@ namespace HHFirstDraft.BLL
             DateTime sd = startDate ?? DateTime.MinValue;
             DateTime ed = endDate ?? DateTime.MaxValue;
             
-            var q = (from wl in GetWorkoutLogs().Where(wl => wl.EditTime.Date >= sd.Date
-                    && wl.EditTime.Date <= ed.Date)
+            var q = (from wl in GetWorkoutLogs()
+                     .Where(wl => wl.MemberID == UserStatic.UserID)
+                     .Where(wl => wl.EditTime.Date >= sd.Date && wl.EditTime.Date <= ed.Date)
                      group wl by wl.EditTime.Date into g
                      select new DailyWorkoutCal
                      {
@@ -82,15 +84,13 @@ namespace HHFirstDraft.BLL
         {
             if (keyword == null)
             {
-                return GetWorkoutLogs();
+                keyword = "";
             }
-            else
-            {
-                return GetWorkoutLogs().Where(wl => wl.WorkoutName.Contains(keyword)
-                || wl.WorkoutCategoryName.Contains(keyword)
-                || wl.ActivityLevelName.Contains(keyword)).ToList();
-            }
-
+            
+            return GetWorkoutLogs().Where(wl => wl.MemberID == UserStatic.UserID)
+                    .Where(wl => wl.WorkoutName.Contains(keyword)
+                    || wl.WorkoutCategoryName.Contains(keyword)
+                    || wl.ActivityLevelName.Contains(keyword)).ToList();
             
         }
     }

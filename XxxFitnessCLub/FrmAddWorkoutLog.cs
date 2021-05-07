@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub;
 using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft
@@ -97,9 +98,9 @@ namespace HHFirstDraft
         {
             oneMonthAgo = oneMonthAgo.AddDays(1);
 
-            if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours))
+            if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours) || workoutHours == 0)
             {
-                this.lblWorkoutCategoryTest.Text = "請輸入數字";
+                this.lblWorkoutCategoryTest.Text = "請輸入數字且必須大於0";
                 return;
             }
             else
@@ -114,7 +115,7 @@ namespace HHFirstDraft
                 isSuccess = wlBll.Edit(new WorkoutLog
                 {
                     ID = workoutLogForm.dto.ID,
-                    MemberID = 3,
+                    MemberID = UserStatic.UserID,
                     WorkoutID = (int)this.cmbWorkout.SelectedValue,
                     EditTime = DateTime.Now.Date,
                     WorkoutHours = workoutHours
@@ -133,7 +134,7 @@ namespace HHFirstDraft
             {
                 isSuccess = wlBll.Add(new WorkoutLog
                 {
-                    MemberID = 3,
+                    MemberID = UserStatic.UserID,
                     WorkoutID = (int)this.cmbWorkout.SelectedValue,
                     EditTime = oneMonthAgo.Date,
                     WorkoutHours = workoutHours
@@ -149,12 +150,6 @@ namespace HHFirstDraft
                 }
             }
             
-        }
-
-        private void txtCalories_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // todo
-            //e.Handled = General.isNumber(e);
         }
 
         private void FrmAddWorkout_FormClosed(object sender, FormClosedEventArgs e)

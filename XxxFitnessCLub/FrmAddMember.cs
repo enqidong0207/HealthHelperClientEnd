@@ -20,10 +20,12 @@ namespace XxxFitnessCLub
         {
             InitializeComponent();
         }
+
         bool emailFlag, pwdFlag, nameFlag, idFlag = false;
         MemberBLL bll = new MemberBLL();
         public bool isUpdate = false;
         public MemberDetailDTO detail = new MemberDetailDTO();
+
         private void FrmAddMember_Load(object sender, EventArgs e)
         {
             if (isUpdate)
@@ -145,8 +147,6 @@ namespace XxxFitnessCLub
         {
             this.Close();
         }
-
-       
 
         private void txtTaiwanID_Leave(object sender, EventArgs e)
         {

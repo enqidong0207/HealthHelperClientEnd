@@ -26,7 +26,9 @@ namespace XxxFitnessCLub
 
         private void FrmMainPage_Load(object sender, EventArgs e) 
         {
-            
+            //恩旗
+            this.lblUser.Text += UserStatic.UserName;
+
             FrmHome frm = new FrmHome();
             frm.TopLevel = false;
             frm.AutoScroll = true;
@@ -51,7 +53,9 @@ namespace XxxFitnessCLub
         //會員資料
         private void btnMember_Click(object sender, EventArgs e)
         {
-            
+            //恩旗
+            memberDetail = memberBLL.GetMember(UserStatic.UserID);
+
             //this.Controls.Clear();
             FrmAddMember frm = new FrmAddMember();
             frm.TopLevel = false;

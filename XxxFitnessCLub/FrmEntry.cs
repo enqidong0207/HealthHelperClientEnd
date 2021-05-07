@@ -27,8 +27,13 @@ namespace XxxFitnessCLub
                 UserStatic.UserID = userID;
                 UserStatic.UserName = txtName.Text;
                 MessageBox.Show("歡迎進入進康管理系統, " + UserStatic.UserName);
+
+                //恩旗
+                this.Hide();
                 FrmMainPage f = new FrmMainPage();
+                f.Closed += (s, args) => this.Close();
                 f.Show();
+
             }
             else
             {
@@ -46,11 +51,6 @@ namespace XxxFitnessCLub
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
             this.txtName.Clear();
-        }
-
-        private void FrmEntry_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

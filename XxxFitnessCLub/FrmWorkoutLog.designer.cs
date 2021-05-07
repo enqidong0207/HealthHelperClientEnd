@@ -116,7 +116,7 @@
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAddWorkout_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
