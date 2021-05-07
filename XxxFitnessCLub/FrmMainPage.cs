@@ -108,6 +108,10 @@ namespace XxxFitnessCLub
             FrmComment frm = new FrmComment();
             frm.TopLevel = false;
             frm.AutoScroll = true;
+
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
         }
         
         //禮物卡
