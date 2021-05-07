@@ -93,10 +93,15 @@ namespace XxxFitnessCLub
         }
 
         //專屬運動推薦
-        private void button16_Click(object sender, EventArgs e)
+        private void btnWSuggestion_Click(object sender, EventArgs e)
         {
-            FrmWorkoutSuggestions f = new FrmWorkoutSuggestions();
-            f.Show();
+            FrmWorkoutSuggestions frm = new FrmWorkoutSuggestions();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         //吃過動過

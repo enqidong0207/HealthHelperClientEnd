@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace XxxFitnessCLub
 {
+    //恩旗
     public partial class FrmWorkoutLogChart : Form
     {
         private FrmWorkoutLog workoutLogForm;
@@ -21,8 +22,6 @@ namespace XxxFitnessCLub
         {
             workoutLogForm = _workoutLogForm;
             InitializeComponent();
-
-            
         }
 
         private void FrmWorkoutLogChart_Load(object sender, EventArgs e)

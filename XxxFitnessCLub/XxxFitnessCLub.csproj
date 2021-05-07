@@ -298,10 +298,10 @@
     <Compile Include="ToDoFrms\FrmStartAProgram.Designer.cs">
       <DependentUpon>FrmStartAProgram.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutSuggestions.cs">
+    <Compile Include="FrmWorkoutSuggestions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutSuggestions.Designer.cs">
+    <Compile Include="FrmWorkoutSuggestions.Designer.cs">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -373,7 +373,7 @@
     <EmbeddedResource Include="ToDoFrms\FrmStartAProgram.resx">
       <DependentUpon>FrmStartAProgram.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmWorkoutSuggestions.resx">
+    <EmbeddedResource Include="FrmWorkoutSuggestions.resx">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
