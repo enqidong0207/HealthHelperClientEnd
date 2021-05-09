@@ -81,6 +81,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtPassword.Location = new System.Drawing.Point(247, 167);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
@@ -98,6 +99,7 @@
             // 
             // txtName
             // 
+            this.txtName.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtName.Location = new System.Drawing.Point(247, 123);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";

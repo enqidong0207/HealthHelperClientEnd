@@ -19,5 +19,17 @@ namespace XxxFitnessCLub.BLL
         {
             return dao.AddPreferences(wplist);
         }
+
+        //恩旗
+        public bool EditPreferences(List<WorkoutPreference> wplist)
+        {
+            return dao.EditPreferences(wplist);
+        }
+
+        //恩旗
+        public List<WorkoutPreference> GetPreferences(int MemberID)
+        {
+            return dao.GetPreferences(MemberID);
+        }
     }
 }

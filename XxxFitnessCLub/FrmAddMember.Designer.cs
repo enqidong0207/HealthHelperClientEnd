@@ -56,8 +56,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.clbWPreferences = new System.Windows.Forms.CheckedListBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +91,6 @@
             this.btnAdd.Text = "註冊";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            this.btnAdd.Leave += new System.EventHandler(this.btnAdd_Click);
             // 
             // panel1
             // 
@@ -387,33 +384,11 @@
             this.txtName.TabIndex = 76;
             this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
-            // clbWPreferences
-            // 
-            this.clbWPreferences.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clbWPreferences.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.clbWPreferences.FormattingEnabled = true;
-            this.clbWPreferences.Location = new System.Drawing.Point(1103, 162);
-            this.clbWPreferences.Name = "clbWPreferences";
-            this.clbWPreferences.Size = new System.Drawing.Size(220, 238);
-            this.clbWPreferences.TabIndex = 104;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1098, 130);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(152, 25);
-            this.label10.TabIndex = 91;
-            this.label10.Text = "喜好的運動類型";
-            // 
             // FrmAddMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1465, 644);
-            this.Controls.Add(this.clbWPreferences);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.panel1);
@@ -428,7 +403,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtHeight);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTaiwanID);
             this.Controls.Add(this.dpBirth);
@@ -484,7 +458,5 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.CheckedListBox clbWPreferences;
-        private System.Windows.Forms.Label label10;
     }
 }

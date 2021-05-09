@@ -10,15 +10,22 @@ namespace XxxFitnessCLub.DAL.DAO
 {
     class WorkoutPreferencesDAO : HHContext
     {
-        //恩旗
         internal bool AddPreferences(List<WorkoutPreference> wplist)
         {
             try
             {
                 foreach (var item in wplist)
                 {
-                    db.WorkoutPreferences.Add(item);
+                    var q = db.WorkoutPreferences
+                        .Where(wp => wp.MemberID == item.MemberID && wp.WorkoutCategoryID == item.MemberID)
+                        .SingleOrDefault();
+
+                    if (q == null)
+                    {
+                        db.WorkoutPreferences.Add(item);
+                    }
                 }
+
                 db.SaveChanges();
                 return true;
             }
@@ -27,6 +34,49 @@ namespace XxxFitnessCLub.DAL.DAO
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        internal bool EditPreferences(List<WorkoutPreference> wplist)
+        {
+            try
+            {
+                foreach (var item in wplist)
+                {
+                    var q = db.WorkoutPreferences
+                        .Where(wp => wp.MemberID == item.MemberID && wp.WorkoutCategoryID == item.WorkoutCategoryID)
+                        .SingleOrDefault();
+
+                    if (q == null)
+                    {
+                        db.WorkoutPreferences.Add(item);
+                    }
+                }
+
+                foreach (var item in db.WorkoutPreferences)
+                {
+                    var q = wplist
+                        .Where(wp => item.MemberID == wp.MemberID && item.WorkoutCategoryID == wp.WorkoutCategoryID)
+                        .SingleOrDefault();
+
+                    if (q == null)
+                    {
+                        db.WorkoutPreferences.Remove(item);
+                    }
+                }
+
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        internal List<WorkoutPreference> GetPreferences(int MemberID)
+        {
+            return db.WorkoutPreferences.Where(wp => wp.MemberID == MemberID).ToList();
         }
     }
 }
