@@ -7,20 +7,30 @@ using System.Collections.Generic;
 using System.Device.Location;
 using System.Drawing;
 using System.Windows.Forms;
+using GoogleApi.Entities.Places.Search.NearBy.Request;
+using GoogleApi.Entities.Places.Search.NearBy.Response;
+using System.Linq;
+using Location = GoogleApi.Entities.Places.Search.NearBy.Request.Location;
 
 namespace XxxFitnessCLub
 {
+    //恩旗
     public partial class FrmGMap : Form
     {
-        List<PointLatLng> searchResult;
-        GeocodingProvider gp;
-        GoogleMapProvider gmp;
         GeoCoordinate coord;
         GMapOverlay overlayOne = new GMapOverlay("circle");
+        string keyword;
 
         public FrmGMap()
         {
+
+        }
+
+        public FrmGMap(string keyword)
+        {
             InitializeComponent();
+
+            this.keyword = keyword;
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
@@ -51,19 +61,34 @@ namespace XxxFitnessCLub
             this.gMapControl1.MapProvider = GMapProviders.GoogleMap;
             this.gMapControl1.Position = new PointLatLng(coord.Latitude, coord.Longitude);
 
-            gmp = this.gMapControl1.MapProvider as GoogleMapProvider;
-            gmp.ApiKey = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
+            //gmp = this.gMapControl1.MapProvider as GoogleMapProvider;
+            //gmp.ApiKey = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
 
             //gp = GMapProviders.OpenStreetMap;
             GMapProvider.Language = LanguageType.ChineseTraditional;
 
-            CreateCircle(new PointF((float)coord.Latitude, (float)coord.Longitude), 0.01d, 60);
+            CreateCircle(new PointF((float)coord.Latitude, (float)coord.Longitude), 0.018d, 60);
+            AddPlaces(keyword);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddPlaces(string keyword)
         {
-            GeoCoderStatusCode statusCode = gmp.GetPoints("中正紀念堂", out searchResult);
-            AddMarkers(overlayOne, searchResult);
+            //GeoCoderStatusCode statusCode = gmp.GetPoints("中正紀念堂", out searchResult);
+
+            //var sCoord = new GeoCoordinate(24, 121);
+            //var eCoord = new GeoCoordinate(24.01, 121);
+            //double distance = sCoord.GetDistanceTo(eCoord);
+
+            PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
+            placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
+            placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
+            placeRequest.Keyword = keyword;
+            placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
+            placeRequest.Radius = 2000d;
+            PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
+            List<NearByResult> points = Enumerable.ToList(response.Results);
+
+            AddMarkers(overlayOne, points);
         }
 
         private void CreateCircle(PointF point, double radius, int segments)
@@ -92,16 +117,17 @@ namespace XxxFitnessCLub
             overlayOne.IsVisibile = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void AddMarkers(GMapOverlay overlay, List<PointLatLng> points)
+        private void AddMarkers(GMapOverlay overlay, List<NearByResult> points)
         {
             for (int i = 0; i < points.Count; i++)
             {
-                GMapMarker marker = new GMarkerGoogle(points[i], GMarkerGoogleType.green);
+                PointLatLng point = new PointLatLng(points[i].Geometry.Location.Latitude, points[i].Geometry.Location.Longitude);
+
+                //var distance = coord.GetDistanceTo(new GeoCoordinate(point.Lat, point.Lng));
+                //MessageBox.Show(distance.ToString());
+
+                GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.green);
+                marker.ToolTipText = points[i].Name;
                 overlay.Markers.Add(marker);
             }
             overlay.IsVisibile = false;
