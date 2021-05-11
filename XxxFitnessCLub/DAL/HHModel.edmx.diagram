@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2836b6bd5c264fd1b02b98bbe6523626" Name="Diagram1">
+      <Diagram DiagramId="eb4bbbbdddd645379b1ca04e8f31b008" Name="Diagram1" ZoomLevel="96">
         <EntityTypeShape EntityType="HealthManagement0505Model.ActivityLevel" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagement0505Model.CommentCategory" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.Comment" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.DietDetail" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.DietLog" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagement0505Model.MealOption" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagement0505Model.MealOption" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.MealTagCategory" Width="1.5" PointX="5.25" PointY="23.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.MealTag" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagement0505Model.Member" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
@@ -24,7 +25,7 @@
         <EntityTypeShape EntityType="HealthManagement0505Model.Workout" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
         <AssociationConnector Association="HealthManagement0505Model.FK_Members_ActivityLevels" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_Workouts_ActivityLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagement0505Model.FK_Comments_MealOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagement0505Model.FK_Comments_CommentCategories" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_Comments_Members" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_DietDetails_DietLog" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_DietDetails_MealOptions" ManuallyRouted="false" />
@@ -40,6 +41,7 @@
         <AssociationConnector Association="HealthManagement0505Model.FK_Preference_WorkoutCategories" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_Workouts_WorkoutCategories" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagement0505Model.FK_WorkoutLog_Workouts" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagement0505Model.FK_Comments_MealOptions" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

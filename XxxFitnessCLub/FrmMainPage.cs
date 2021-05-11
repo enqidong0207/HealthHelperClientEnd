@@ -130,10 +130,9 @@ namespace XxxFitnessCLub
 
         private void btnComment_Click(object sender, EventArgs e)
         {
-            FrmComment frm = new FrmComment();
+            FrmCommentBoard frm = new FrmCommentBoard();
             frm.TopLevel = false;
             frm.AutoScroll = true;
-            
             this.splitContainer2.Panel2.Controls.Add(frm);
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
@@ -145,6 +144,16 @@ namespace XxxFitnessCLub
             
             memberDetail = memberBLL.GetMember(UserStatic.UserID);
             lblUser.Text = "Welcome back, " + UserStatic.UserName + "!";
+        }
+
+        private void btnWeightLog_Click(object sender, EventArgs e)
+        {
+            FrmWeightLog frm = new FrmWeightLog();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
         }
     }
 }

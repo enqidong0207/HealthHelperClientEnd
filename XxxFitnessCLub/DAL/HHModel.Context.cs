@@ -26,6 +26,7 @@ namespace XxxFitnessCLub.DAL
         }
     
         public virtual DbSet<ActivityLevel> ActivityLevels { get; set; }
+        public virtual DbSet<CommentCategory> CommentCategories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DietDetail> DietDetails { get; set; }
         public virtual DbSet<DietLog> DietLogs { get; set; }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnWeightLog = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnComment = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,12 +45,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnWeightLog);
             this.splitContainer1.Panel1.Controls.Add(this.lblUser);
             this.splitContainer1.Panel1.Controls.Add(this.btnComment);
             this.splitContainer1.Panel1.Controls.Add(this.button16);
@@ -86,9 +88,29 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnWeightLog
+            // 
+            this.btnWeightLog.Location = new System.Drawing.Point(20, 332);
+            this.btnWeightLog.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnWeightLog.Name = "btnWeightLog";
+            this.btnWeightLog.Size = new System.Drawing.Size(131, 32);
+            this.btnWeightLog.TabIndex = 33;
+            this.btnWeightLog.Text = "體重記錄";
+            this.btnWeightLog.UseVisualStyleBackColor = true;
+            this.btnWeightLog.Click += new System.EventHandler(this.btnWeightLog_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(20, 25);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(61, 22);
+            this.lblUser.TabIndex = 32;
+            this.lblUser.Text = "用戶: ";
+            // 
             // btnComment
             // 
-            this.btnComment.Location = new System.Drawing.Point(20, 332);
+            this.btnComment.Location = new System.Drawing.Point(20, 378);
             this.btnComment.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnComment.Name = "btnComment";
             this.btnComment.Size = new System.Drawing.Size(131, 32);
@@ -255,19 +277,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Time Limited";
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button4.Location = new System.Drawing.Point(0, 517);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(1000, 35);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "遊戲規則";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
@@ -280,6 +289,19 @@
             this.button5.Text = "更新體重";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button4.Location = new System.Drawing.Point(0, 517);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(1000, 35);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "遊戲規則";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -320,16 +342,6 @@
             this.button1.Text = "紀錄飲食";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(20, 25);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(61, 22);
-            this.lblUser.TabIndex = 32;
-            this.lblUser.Text = "用戶: ";
-            
             // 
             // FrmMainPage
             // 
@@ -378,5 +390,6 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button btnComment;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnWeightLog;
     }
 }

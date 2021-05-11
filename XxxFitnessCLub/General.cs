@@ -26,5 +26,12 @@ namespace XxxFitnessCLub
             public static int pending = 2;
             public static int locked = 3;
         }
+        public static class CommentCategory
+        {
+            public static int mealSystem = 1;
+            public static int workoutSystem = 2;
+            public static int weightSystem = 3;
+            public static int meal = 4;
+        }
     }
 }

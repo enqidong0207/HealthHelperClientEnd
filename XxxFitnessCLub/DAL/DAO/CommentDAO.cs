@@ -8,7 +8,7 @@ using XxxFitnessCLub.DAL.DTO;
 
 namespace XxxFitnessCLub.DAL.DAO
 {
-    class CommentDAO : HHContext
+    public class CommentDAO : HHContext
     {
         public void Add(Comment comment)
         {
@@ -37,10 +37,15 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.MemberID = item.MemberID;
                 dto.Member = item.Member.Name;
                 dto.AddDate = item.AddDate;
+                dto.CategoryID = (int)item.CategoryID;
+                dto.CategoryName = item.CommentCategory.Name;
                 dto.IsApproved = item.IsApproved;
-                dto.MealID = item.MealOptionID;
-                dto.MealName = item.MealOption.Name;
                 dto.Rating = item.Rating;
+                if (item.MealOptionID != null)
+                {
+                    dto.MealOptionID = (int)item.MealOptionID;
+                    dto.MealName = item.MealOption.Name;
+                }
                 dtoList.Add(dto);
             }
             return dtoList;
@@ -58,11 +63,16 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.CommentContent = item.CommentContent;
                 dto.MemberID = item.MemberID;
                 dto.Member = item.Member.Name;
+                dto.CategoryID = (int)item.CategoryID;
+                dto.CategoryName = item.CommentCategory.Name;
                 dto.AddDate = item.AddDate;
                 dto.IsApproved = item.IsApproved;
-                dto.MealID = item.MealOptionID;
-                dto.MealName = item.MealOption.Name;
                 dto.Rating = item.Rating;
+                if (item.MealOptionID != null)
+                {
+                    dto.MealOptionID = (int)item.MealOptionID;
+                    dto.MealName = item.MealOption.Name;
+                }
                 dtoList.Add(dto);
             }
             return dtoList;
@@ -81,10 +91,15 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.MemberID = item.MemberID;
                 dto.Member = item.Member.Name;
                 dto.AddDate = item.AddDate;
+                dto.CategoryID = (int)item.CategoryID;
+                dto.CategoryName = item.CommentCategory.Name;
                 dto.IsApproved = item.IsApproved;
-                dto.MealID = item.MealOptionID;
-                dto.MealName = item.MealOption.Name;
                 dto.Rating = item.Rating;
+                if (item.MealOptionID != null)
+                {
+                    dto.MealOptionID = (int)item.MealOptionID;
+                    dto.MealName = item.MealOption.Name;
+                }
                 dtoList.Add(dto);
             }
             return dtoList;
@@ -102,8 +117,10 @@ namespace XxxFitnessCLub.DAL.DAO
             Comment comment = db.Comments.FirstOrDefault(x => x.ID == entity.ID);
             comment.Title = entity.Title;
             comment.CommentContent = entity.CommentContent;
+            comment.CategoryID = entity.CategoryID;
             comment.Rating = entity.Rating;
             comment.IsApproved = entity.IsApproved;
+            comment.MealOptionID = entity.MealOptionID;
             db.SaveChanges();
         }
     }

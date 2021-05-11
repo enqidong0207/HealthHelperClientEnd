@@ -4,13 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HealthManagement0505Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HealthManagement0505Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityLevels">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -22,8 +29,9 @@
           <Property Name="MemberID" Type="int" Nullable="false" />
           <Property Name="AddDate" Type="datetime" Nullable="false" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
-          <Property Name="MealOptionID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="MealOptionID" Type="int" />
         </EntityType>
         <EntityType Name="DietDetails">
           <Key>
@@ -172,8 +180,20 @@
           <Property Name="Calories" Type="float" Nullable="false" />
           <Property Name="ActivityLevelID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Comments_CommentCategories">
+          <End Role="CommentCategories" Type="Self.CommentCategories" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comments_MealOptions">
-          <End Role="MealOptions" Type="Self.MealOptions" Multiplicity="1" />
+          <End Role="MealOptions" Type="Self.MealOptions" Multiplicity="0..1" />
           <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MealOptions">
@@ -390,6 +410,7 @@
         </Association>
         <EntityContainer Name="HealthManagement0505ModelStoreContainer">
           <EntitySet Name="ActivityLevels" EntityType="Self.ActivityLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentCategories" EntityType="Self.CommentCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DietDetails" EntityType="Self.DietDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DietLog" EntityType="Self.DietLog" Schema="dbo" store:Type="Tables" />
@@ -406,6 +427,10 @@
           <EntitySet Name="WorkoutLog" EntityType="Self.WorkoutLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkoutPreferences" EntityType="Self.WorkoutPreferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Workouts" EntityType="Self.Workouts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Comments_CommentCategories" Association="Self.FK_Comments_CommentCategories">
+            <End Role="CommentCategories" EntitySet="CommentCategories" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_MealOptions" Association="Self.FK_Comments_MealOptions">
             <End Role="MealOptions" EntitySet="MealOptions" />
             <End Role="Comments" EntitySet="Comments" />
@@ -479,8 +504,7 @@
             <End Role="Workouts" EntitySet="Workouts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HealthManagement0505Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -493,6 +517,14 @@
           <NavigationProperty Name="Members" Relationship="Self.FK_Members_ActivityLevels" FromRole="ActivityLevels" ToRole="Members" />
           <NavigationProperty Name="Workouts" Relationship="Self.FK_Workouts_ActivityLevels" FromRole="ActivityLevels" ToRole="Workouts" />
         </EntityType>
+        <EntityType Name="CommentCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_CommentCategories" FromRole="CommentCategories" ToRole="Comments" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="ID" />
@@ -503,10 +535,12 @@
           <Property Name="MemberID" Type="Int32" Nullable="false" />
           <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="MealOptionID" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MealOption" Relationship="Self.FK_Comments_MealOptions" FromRole="Comments" ToRole="MealOptions" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="CommentCategory" Relationship="Self.FK_Comments_CommentCategories" FromRole="Comments" ToRole="CommentCategories" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Comments_Members" FromRole="Comments" ToRole="Members" />
+          <Property Name="MealOptionID" Type="Int32" />
+          <NavigationProperty Name="MealOption" Relationship="HealthManagement0505Model.FK_Comments_MealOptions" FromRole="Comment" ToRole="MealOption" />
         </EntityType>
         <EntityType Name="DietDetail">
           <Key>
@@ -540,10 +574,10 @@
           <Property Name="Calories" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NutrientID" Type="Int32" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_MealOptions" FromRole="MealOptions" ToRole="Comments" />
           <NavigationProperty Name="DietDetails" Relationship="Self.FK_DietDetails_MealOptions" FromRole="MealOptions" ToRole="DietDetails" />
           <NavigationProperty Name="Nutrient" Relationship="Self.FK_MealOptions_Nutrient" FromRole="MealOptions" ToRole="Nutrient" />
           <NavigationProperty Name="MealTags" Relationship="Self.FK_MealTags_MealOptions" FromRole="MealOptions" ToRole="MealTags" />
+          <NavigationProperty Name="Comments" Relationship="HealthManagement0505Model.FK_Comments_MealOptions" FromRole="MealOption" ToRole="Comment" />
         </EntityType>
         <EntityType Name="MealTagCategory">
           <Key>
@@ -711,15 +745,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Comments_MealOptions">
-          <End Role="MealOptions" Type="Self.MealOption" Multiplicity="1" />
+        <Association Name="FK_Comments_CommentCategories">
+          <End Role="CommentCategories" Type="Self.CommentCategory" Multiplicity="0..1" />
           <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MealOptions">
+            <Principal Role="CommentCategories">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Comments">
-              <PropertyRef Name="MealOptionID" />
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -905,6 +939,7 @@
         </Association>
         <EntityContainer Name="HealthManagement0505Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivityLevels" EntityType="Self.ActivityLevel" />
+          <EntitySet Name="CommentCategories" EntityType="Self.CommentCategory" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="DietDetails" EntityType="Self.DietDetail" />
           <EntitySet Name="DietLogs" EntityType="Self.DietLog" />
@@ -929,8 +964,8 @@
             <End Role="ActivityLevels" EntitySet="ActivityLevels" />
             <End Role="Workouts" EntitySet="Workouts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Comments_MealOptions" Association="Self.FK_Comments_MealOptions">
-            <End Role="MealOptions" EntitySet="MealOptions" />
+          <AssociationSet Name="FK_Comments_CommentCategories" Association="Self.FK_Comments_CommentCategories">
+            <End Role="CommentCategories" EntitySet="CommentCategories" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK_Comments_Members" Association="Self.FK_Comments_Members">
@@ -993,7 +1028,23 @@
             <End Role="Workouts" EntitySet="Workouts" />
             <End Role="WorkoutLog" EntitySet="WorkoutLogs" />
           </AssociationSet>
+          <AssociationSet Name="FK_Comments_MealOptions" Association="HealthManagement0505Model.FK_Comments_MealOptions">
+            <End Role="MealOption" EntitySet="MealOptions" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Comments_MealOptions">
+          <End Type="HealthManagement0505Model.MealOption" Role="MealOption" Multiplicity="0..1" />
+          <End Type="HealthManagement0505Model.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealOption">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="MealOptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1008,17 +1059,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CommentCategories">
+            <EntityTypeMapping TypeName="HealthManagement0505Model.CommentCategory">
+              <MappingFragment StoreEntitySet="CommentCategories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="HealthManagement0505Model.Comment">
               <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="MealOptionID" ColumnName="MealOptionID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
                 <ScalarProperty Name="AddDate" ColumnName="AddDate" />
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="MealOptionID" ColumnName="MealOptionID" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

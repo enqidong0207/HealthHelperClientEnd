@@ -9,15 +9,16 @@ namespace XxxFitnessCLub.DAL.DTO
     public class CommentDetailDTO
     {
         public string Member { get; set; }
-        public string MealName { get; set; }
         public int Rating { get; set; }
-
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public int? MealOptionID { get; set; }
+        public string MealName { get; set; }
         public int ID { get; set; }
         public string Title { get; set; }
         public string CommentContent { get; set; }
         public int MemberID { get; set; }
         public DateTime AddDate { get; set; }
         public bool IsApproved { get; set; }
-        public int MealID { get; set; }
     }
 }

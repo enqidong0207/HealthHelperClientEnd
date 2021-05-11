@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XxxFitnessCLub.DAL.DTO
+namespace HHFirstDraft.DAL.DTO
 {
-    public class CommentDTO
+    public class WeightLogDTO
     {
-        public List<CommentDetailDTO> Comments { get; set; }
-
+        public List<WeightLogDetailDTO> WeightLogs { get; set; }
     }
 }
