@@ -11,6 +11,7 @@ using GoogleApi.Entities.Places.Search.NearBy.Request;
 using GoogleApi.Entities.Places.Search.NearBy.Response;
 using System.Linq;
 using Location = GoogleApi.Entities.Places.Search.NearBy.Request.Location;
+using HHFirstDraft.BLL;
 
 namespace XxxFitnessCLub
 {
@@ -20,23 +21,23 @@ namespace XxxFitnessCLub
         GeoCoordinate coord;
         GMapOverlay overlayOne = new GMapOverlay("circle");
         string keyword;
+        WorkoutBLL wBll = new WorkoutBLL();
 
         public FrmGMap()
         {
             InitializeComponent();
         }
 
-        public FrmGMap(string keyword)
+        public FrmGMap(string keyword, GeoCoordinate coord)
         {
             InitializeComponent();
 
             this.keyword = keyword;
+            this.coord = coord;
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
         {
-
-            coord = GetCurrentPosition();
 
             GMaps.Instance.Mode = AccessMode.ServerOnly;
             this.gMapControl1.MapProvider = GMapProviders.GoogleMap;
@@ -64,14 +65,16 @@ namespace XxxFitnessCLub
             //var eCoord = new GeoCoordinate(24.01, 121);
             //double distance = sCoord.GetDistanceTo(eCoord);
 
-            PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
-            placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
-            placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
-            placeRequest.Keyword = keyword;
-            placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
-            placeRequest.Radius = 2000d;
-            PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
-            List<NearByResult> points = Enumerable.ToList(response.Results);
+            //PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
+            //placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
+            //placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
+            //placeRequest.Keyword = keyword;
+            //placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
+            //placeRequest.Radius = 2000d;
+            //PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
+            //List<NearByResult> points = Enumerable.ToList(response.Results);
+
+            List<NearByResult> points = wBll.GetWorkoutPlaces(keyword, coord);
 
             AddMarkers(overlayOne, points);
         }

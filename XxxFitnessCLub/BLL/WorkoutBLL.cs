@@ -1,8 +1,11 @@
-﻿using HHFirstDraft.DAL;
+﻿using GoogleApi.Entities.Places.Search.NearBy.Request;
+using GoogleApi.Entities.Places.Search.NearBy.Response;
+using HHFirstDraft.DAL;
 using HHFirstDraft.DAL.DAO;
 using HHFirstDraft.DAL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,6 +123,19 @@ namespace HHFirstDraft.BLL
                 return null;
             }
 
+        }
+
+        internal List<NearByResult> GetWorkoutPlaces(string keyword, GeoCoordinate coord)
+        {
+            PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
+            placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
+            placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
+            placeRequest.Keyword = keyword;
+            placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
+            placeRequest.Radius = 2000d;
+            PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
+            List<NearByResult> points = Enumerable.ToList(response.Results);
+            return points;
         }
     }
 }
