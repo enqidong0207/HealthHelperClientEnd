@@ -16,7 +16,7 @@ namespace XxxFitnessCLub
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmGMap());
+            Application.Run(new FrmWorkoutSuggestions());
         }
     }
 }

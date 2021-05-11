@@ -72,5 +72,54 @@ namespace HHFirstDraft.BLL
             return dao.GetWorkouts()
                 .Where(e => (wcID == -1 || e.CategoryID == wcID) && (alID == -1 || e.ActivityLevelID == alID)).ToList();
         }
+
+        //恩旗
+        public string ToPlacesKeyword(string workout)
+        {
+            if (workout.Contains("跑")
+                || workout.Contains("步")
+                || workout.Contains("走")
+                || workout == "衝刺")
+            {
+                return "公園";
+            }
+            else if (workout.Contains("樓梯"))
+            {
+                return null;
+            }
+            else if (workout.Contains("騎"))
+            {
+                return "自行車道";
+            }
+            else if (workout.Contains("瑜珈"))
+            {
+                return workout;
+            }
+            else if (workout.Contains("舞蹈"))
+            {
+                return workout;
+            }
+            else if (workout.Contains("游"))
+            {
+                return "游泳池";
+            }
+            else if (workout.Contains("跳繩"))
+            {
+                return "公園";
+            }
+            else if (workout.Contains("球"))
+            {
+                return workout + "場";
+            }
+            else if (workout.Contains("有氧") || workout.Contains("飛輪"))
+            {
+                return "健身房";
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

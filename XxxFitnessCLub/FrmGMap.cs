@@ -36,27 +36,8 @@ namespace XxxFitnessCLub
         private void gMapControl1_Load(object sender, EventArgs e)
         {
 
+            coord = GetCurrentPosition();
 
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-
-            // Do not suppress prompt, and wait 1000 milliseconds to start.
-            coord = new GeoCoordinate();
-            while (coord.IsUnknown)
-            {
-                watcher.TryStart(true, TimeSpan.FromMilliseconds(5000));
-                coord = watcher.Position.Location;
-            }
-
-            if (coord.IsUnknown != true)
-            {
-                MessageBox.Show($"Lat: {coord.Latitude}, Long: {coord.Longitude}");
-            }
-            else
-            {
-                MessageBox.Show("Unknown latitude and longitude.");
-            }
-
-            
             GMaps.Instance.Mode = AccessMode.ServerOnly;
             this.gMapControl1.MapProvider = GMapProviders.GoogleMap;
             this.gMapControl1.Position = new PointLatLng(coord.Latitude, coord.Longitude);
@@ -73,6 +54,10 @@ namespace XxxFitnessCLub
 
         private void AddPlaces(string keyword)
         {
+            if (keyword == null)
+            {
+                keyword = "";
+            }
             //GeoCoderStatusCode statusCode = gmp.GetPoints("中正紀念堂", out searchResult);
 
             //var sCoord = new GeoCoordinate(24, 121);
@@ -132,6 +117,30 @@ namespace XxxFitnessCLub
             }
             overlay.IsVisibile = false;
             overlay.IsVisibile = true;
+        }
+
+        internal static GeoCoordinate GetCurrentPosition()
+        {
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+
+            // Do not suppress prompt, and wait 1000 milliseconds to start.
+            GeoCoordinate coord = new GeoCoordinate();
+            while (coord.IsUnknown)
+            {
+                watcher.TryStart(true, TimeSpan.FromMilliseconds(5000));
+                coord = watcher.Position.Location;
+            }
+
+            if (coord.IsUnknown != true)
+            {
+                MessageBox.Show($"Lat: {coord.Latitude}, Long: {coord.Longitude}");
+            }
+            else
+            {
+                MessageBox.Show("Unknown latitude and longitude.");
+            }
+
+            return coord;
         }
     }
 }

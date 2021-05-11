@@ -24,7 +24,7 @@ namespace XxxFitnessCLub
         WorkoutBLL wBll = new WorkoutBLL();
 
         const int TBL_CONTENT_START_X = 1;
-        const int TBL_CONTENT_START_Y = 4;
+        const int TBL_CONTENT_START_Y = 3;
 
         public FrmWorkoutSuggestions()
         {
@@ -35,7 +35,7 @@ namespace XxxFitnessCLub
 
         private void FrmWorkoutSuggestions_Load(object sender, EventArgs e)
         {
-            //todo 寫成method
+            
             alList = alBLL.GetActivityLevels().OrderBy(al => al.ID).ToList();
             wcList = wcBLL.GetCategories();
 
@@ -64,7 +64,7 @@ namespace XxxFitnessCLub
                         lbl.Height = (int)(lbl.Font.Size * 2.5);
                         lbl.Margin = new Padding(2);
                         lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
-
+                        lbl.Click += lblWorkout_Click;
                         panel.Controls.Add(lbl);
                     }
                     
@@ -88,7 +88,7 @@ namespace XxxFitnessCLub
                     this.tableLayoutPanel1.ColumnCount++;
                     this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / (i + 1)));
                 }
-                this.tableLayoutPanel1.Controls.Add(lbl, 1 + i, 2);
+                this.tableLayoutPanel1.Controls.Add(lbl, TBL_CONTENT_START_X + i, 1);
                 this.tableLayoutPanel1.SetRowSpan(lbl, 2);
             }
 
@@ -103,11 +103,20 @@ namespace XxxFitnessCLub
                 lbl.Margin = new Padding(2);
                 this.tableLayoutPanel1.RowCount++;
                 this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100f));
-                this.tableLayoutPanel1.Controls.Add(lbl, 0, 4 + i);
+                this.tableLayoutPanel1.Controls.Add(lbl, 0, TBL_CONTENT_START_Y + i);
 
             }
         }
 
+        private void lblWorkout_Click(object sender, EventArgs e)
+        {
+            Label lblWorkout = sender as Label;
+
+            string keyword = wBll.ToPlacesKeyword(lblWorkout.Text);
+
+            FrmGMap frm = new FrmGMap(keyword);
+            frm.ShowDialog();
+        }
     }
 
 }
