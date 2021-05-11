@@ -12,6 +12,7 @@ using GoogleApi.Entities.Places.Search.NearBy.Response;
 using System.Linq;
 using Location = GoogleApi.Entities.Places.Search.NearBy.Request.Location;
 using HHFirstDraft.BLL;
+using System.Threading.Tasks;
 
 namespace XxxFitnessCLub
 {
@@ -74,7 +75,11 @@ namespace XxxFitnessCLub
             //PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
             //List<NearByResult> points = Enumerable.ToList(response.Results);
 
-            List<NearByResult> points = wBll.GetWorkoutPlaces(keyword, coord);
+            Task<PlacesNearbySearchResponse> task = wBll.GetWorkoutPlaces(keyword, coord);
+
+            PlacesNearbySearchResponse response = task.Result;
+
+            List<NearByResult> points = Enumerable.ToList(response.Results);
 
             AddMarkers(overlayOne, points);
         }
@@ -107,6 +112,9 @@ namespace XxxFitnessCLub
 
         private void AddMarkers(GMapOverlay overlay, List<NearByResult> points)
         {
+            GMapMarker marker = new GMarkerGoogle(new PointLatLng(coord.Latitude, coord.Longitude), GMarkerGoogleType.red);
+            overlay.Markers.Add(marker);
+
             for (int i = 0; i < points.Count; i++)
             {
                 PointLatLng point = new PointLatLng(points[i].Geometry.Location.Latitude, points[i].Geometry.Location.Longitude);
@@ -114,7 +122,7 @@ namespace XxxFitnessCLub
                 //var distance = coord.GetDistanceTo(new GeoCoordinate(point.Lat, point.Lng));
                 //MessageBox.Show(distance.ToString());
 
-                GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.green);
+                marker = new GMarkerGoogle(point, GMarkerGoogleType.green);
                 marker.ToolTipText = points[i].Name;
                 overlay.Markers.Add(marker);
             }

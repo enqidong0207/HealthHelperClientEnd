@@ -125,7 +125,7 @@ namespace HHFirstDraft.BLL
 
         }
 
-        internal List<NearByResult> GetWorkoutPlaces(string keyword, GeoCoordinate coord)
+        internal Task<PlacesNearbySearchResponse> GetWorkoutPlaces(string keyword, GeoCoordinate coord)
         {
             PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
             placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
@@ -133,9 +133,7 @@ namespace HHFirstDraft.BLL
             placeRequest.Keyword = keyword;
             placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
             placeRequest.Radius = 2000d;
-            PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
-            List<NearByResult> points = Enumerable.ToList(response.Results);
-            return points;
+            return GoogleApi.GooglePlaces.NearBySearch.QueryAsync(placeRequest);
         }
     }
 }

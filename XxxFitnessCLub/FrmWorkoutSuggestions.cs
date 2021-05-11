@@ -15,6 +15,7 @@ using XxxFitnessCLub.DAL;
 
 namespace XxxFitnessCLub
 {
+    //恩旗
     public partial class FrmWorkoutSuggestions : Form
     {
         WorkoutCategoryBLL wcBLL = new WorkoutCategoryBLL();
@@ -37,7 +38,7 @@ namespace XxxFitnessCLub
             
         }
 
-        private void FrmWorkoutSuggestions_Load(object sender, EventArgs e)
+        private async void FrmWorkoutSuggestions_LoadAsync(object sender, EventArgs e)
         {
             coord = FrmGMap.GetCurrentPosition();
 
@@ -45,8 +46,7 @@ namespace XxxFitnessCLub
             wcList = wcBLL.GetCategories();
 
             LoadTableHeader(wcList, alList);
-            LoadTableContent(wcList, alList);
-
+            await LoadTableContentAsync(wcList, alList);
         }
 
         private void ClearTableContent() 
@@ -54,7 +54,7 @@ namespace XxxFitnessCLub
             this.tableLayoutPanel1.Controls.Clear();
         }
 
-        private void LoadTableContent(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
+        private async Task LoadTableContentAsync(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
         {
             for (int i = 0; i < wcList.Count; i++)
             {
@@ -64,22 +64,56 @@ namespace XxxFitnessCLub
                     panel.BorderStyle = BorderStyle.FixedSingle;
                     panel.Dock = DockStyle.Fill;
                     this.tableLayoutPanel1.Controls.Add(panel, TBL_CONTENT_START_X + j, TBL_CONTENT_START_Y + i);
-                    
+
+                    List<Task> tasks = new List<Task>();
+                    Dictionary<String, List<string>> keywords = new Dictionary<String, List<string>>();
+
                     foreach (var item in wBll.GetWorkoutByWCAL(wcList[i].ID, alList[j].ID))
                     {
-                        List<NearByResult> points = wBll.GetWorkoutPlaces(item.Name, coord);
-
-                        if (points.Count > 0)
+                        string kw = wBll.ToPlacesKeyword(item.Name);
+                        if (kw == null)
                         {
-                            Label lbl = new Label();
-                            lbl.Text = item.Name;
-                            lbl.Font = new Font(lbl.Font.Name, 12f);
-                            lbl.Height = (int)(lbl.Font.Size * 2.5);
-                            lbl.Margin = new Padding(2);
-                            lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
-                            lbl.Click += lblWorkout_Click;
-                            panel.Controls.Add(lbl);
+                            kw = "";
                         }
+                        if (keywords.ContainsKey(kw))
+                        {
+                            keywords[kw].Add(item.Name);
+                        }
+                        else
+                        {
+                            keywords.Add(kw, new List<string> { item.Name });
+                            Task<PlacesNearbySearchResponse> task = wBll.GetWorkoutPlaces(kw, coord);
+                            tasks.Add(task);
+                        }
+                    }
+
+                    while (tasks.Count > 0)
+                    {
+                        Task finishedTask = await Task.WhenAny(tasks);
+
+                        int index = tasks.IndexOf(finishedTask);
+
+                        List<String> places = keywords.ElementAt(index).Value;
+
+                        Task<PlacesNearbySearchResponse> task = finishedTask as Task<PlacesNearbySearchResponse>;
+                        PlacesNearbySearchResponse response = task.Result;
+                        if (Enumerable.ToList(response.Results).Count > 0)
+                        {
+                            for (int k = 0; k < places.Count; k++)
+                            {
+                                Label lbl = new Label();
+                                lbl.Text = places[k];
+                                lbl.Font = new Font(lbl.Font.Name, 12f);
+                                lbl.Height = (int)(lbl.Font.Size * 2.5);
+                                lbl.Margin = new Padding(2);
+                                lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
+                                lbl.Click += lblWorkout_Click;
+                                panel.Controls.Add(lbl);
+                            }
+                            
+                        }
+
+                        tasks.Remove(finishedTask);
                     }
                     
                 }
@@ -132,11 +166,11 @@ namespace XxxFitnessCLub
             frm.ShowDialog();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_ClickAsync(object sender, EventArgs e)
         {
             coord = FrmGMap.GetCurrentPosition();
             ClearTableContent();
-            LoadTableContent(wcList, alList);
+            await LoadTableContentAsync(wcList, alList);
         }
     }
 

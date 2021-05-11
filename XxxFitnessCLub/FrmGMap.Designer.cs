@@ -35,7 +35,7 @@ namespace XxxFitnessCLub
             // gMapControl1
             // 
             this.gMapControl1.Bearing = 0F;
-            this.gMapControl1.CanDragMap = false;
+            this.gMapControl1.CanDragMap = true;
             this.gMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
             this.gMapControl1.GrayScaleMode = false;
