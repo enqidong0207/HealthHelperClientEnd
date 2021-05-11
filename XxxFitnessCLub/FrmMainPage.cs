@@ -114,5 +114,15 @@ namespace XxxFitnessCLub
             FrmStartAProgram f = new FrmStartAProgram();
             f.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmNutrient frm = new FrmNutrient();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
+        }
     }
 }

@@ -88,6 +88,12 @@
     <Compile Include="FrmMainPageold.Designer.cs">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNutrient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNutrient.Designer.cs">
+      <DependentUpon>FrmNutrient.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,7 @@
     <Compile Include="Model\BLL\ActivityLevelBLL.cs" />
     <Compile Include="Model\BLL\MealBLL.cs" />
     <Compile Include="Model\BLL\MemberBLL.cs" />
+    <Compile Include="Model\BLL\NutrientBLL.cs" />
     <Compile Include="Model\BLL\TagCategoryBLL.cs" />
     <Compile Include="Model\BLL\WorkoutBLL.cs" />
     <Compile Include="Model\BLL\WorkoutCategoryBLL.cs" />
@@ -135,6 +142,7 @@
     <Compile Include="Model\DAL\DAO\HHContext.cs" />
     <Compile Include="Model\DAL\DAO\MealDAO.cs" />
     <Compile Include="Model\DAL\DAO\MemberDAO.cs" />
+    <Compile Include="Model\DAL\DAO\NutrientDAO.cs" />
     <Compile Include="Model\DAL\DAO\StatusDAO.cs" />
     <Compile Include="Model\DAL\DAO\TagCategoryDAO.cs" />
     <Compile Include="Model\DAL\DAO\WorkoutCategoryDAO.cs" />
@@ -152,6 +160,7 @@
     <Compile Include="Model\DAL\DTO\MealDTO.cs" />
     <Compile Include="Model\DAL\DTO\MemberDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\MemberDTO.cs" />
+    <Compile Include="Model\DAL\DTO\NutrientDTO.cs" />
     <Compile Include="Model\DAL\DTO\StatusDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\StatusDTO.cs" />
     <Compile Include="Model\DAL\DTO\TagCategoryDetailDTO.cs" />
@@ -298,6 +307,9 @@
     <EmbeddedResource Include="FrmMainPageold.resx">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNutrient.resx">
+      <DependentUpon>FrmNutrient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProgress.resx">
       <DependentUpon>FrmProgress.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,10 +417,13 @@
     <None Include="Resources\螢幕擷取畫面 2021-05-02 204709.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
       <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -416,9 +431,5 @@
       <LastGenOutput>HHModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

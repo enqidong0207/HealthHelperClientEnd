@@ -102,7 +102,7 @@
           <Property Name="VitD" Type="float" Nullable="false" />
           <Property Name="VitE" Type="float" Nullable="false" />
           <Property Name="Na" Type="float" Nullable="false" />
-          <Property Name="Ka" Type="float" Nullable="false" />
+          <Property Name="K" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -604,7 +604,7 @@
           <Property Name="VitD" Type="Double" Nullable="false" />
           <Property Name="VitE" Type="Double" Nullable="false" />
           <Property Name="Na" Type="Double" Nullable="false" />
-          <Property Name="Ka" Type="Double" Nullable="false" />
+          <Property Name="K" Type="Double" Nullable="false" />
           <NavigationProperty Name="MealOptions" Relationship="Self.FK_MealOptions_Nutrient" FromRole="Nutrient" ToRole="MealOptions" />
         </EntityType>
         <EntityType Name="Status">
@@ -1104,7 +1104,7 @@
                 <ScalarProperty Name="VitD" ColumnName="VitD" />
                 <ScalarProperty Name="VitE" ColumnName="VitE" />
                 <ScalarProperty Name="Na" ColumnName="Na" />
-                <ScalarProperty Name="Ka" ColumnName="Ka" />
+                <ScalarProperty Name="K" ColumnName="K" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
