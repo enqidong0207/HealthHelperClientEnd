@@ -23,7 +23,7 @@ namespace XxxFitnessCLub
 
         public FrmGMap()
         {
-
+            InitializeComponent();
         }
 
         public FrmGMap(string keyword)
