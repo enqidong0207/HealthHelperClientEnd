@@ -135,5 +135,10 @@ namespace HHFirstDraft.BLL
             placeRequest.Radius = 2000d;
             return GoogleApi.GooglePlaces.NearBySearch.QueryAsync(placeRequest);
         }
+
+        internal Workout GetWorkout(string name)
+        {
+            return dao.GetWorkout(name);
+        }
     }
 }

@@ -31,6 +31,8 @@ namespace XxxFitnessCLub
 
         GeoCoordinate coord;
 
+        List<List<FlowLayoutPanel>> panelList = new List<List<FlowLayoutPanel>>();
+
         public FrmWorkoutSuggestions()
         {
             InitializeComponent();
@@ -41,82 +43,85 @@ namespace XxxFitnessCLub
         private async void FrmWorkoutSuggestions_LoadAsync(object sender, EventArgs e)
         {
             coord = FrmGMap.GetCurrentPosition();
+            this.lblCoord.Text = $"  Latitude：{coord.Latitude}\nLongtitude：{coord.Longitude}";
 
             alList = alBLL.GetActivityLevels().OrderBy(al => al.ID).ToList();
             wcList = wcBLL.GetCategories();
 
             LoadTableHeader(wcList, alList);
+            LoadTableCell();
             await LoadTableContentAsync(wcList, alList);
+            AddClickHandler();
+
+            MessageBox.Show("load success");
         }
 
         private void ClearTableContent() 
         {
-            this.tableLayoutPanel1.Controls.Clear();
+            
+            foreach (var item in this.panelList.SelectMany(l => l))
+            {
+                item.Controls.Clear();
+            }
+                
         }
 
         private async Task LoadTableContentAsync(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
         {
-            for (int i = 0; i < wcList.Count; i++)
+            List<Task> tasks = new List<Task>();
+            Dictionary<String, List<string>> keywords = new Dictionary<String, List<string>>();
+            foreach (var item in wBll.GetWorkoutByWCAL(-1, -1))
             {
-                for (int j = 0; j < alList.Count; j++)
+                string kw = wBll.ToPlacesKeyword(item.Name);
+                if (kw == null)
                 {
-                    FlowLayoutPanel panel = new FlowLayoutPanel();
-                    panel.BorderStyle = BorderStyle.FixedSingle;
-                    panel.Dock = DockStyle.Fill;
-                    this.tableLayoutPanel1.Controls.Add(panel, TBL_CONTENT_START_X + j, TBL_CONTENT_START_Y + i);
-
-                    List<Task> tasks = new List<Task>();
-                    Dictionary<String, List<string>> keywords = new Dictionary<String, List<string>>();
-
-                    foreach (var item in wBll.GetWorkoutByWCAL(wcList[i].ID, alList[j].ID))
-                    {
-                        string kw = wBll.ToPlacesKeyword(item.Name);
-                        if (kw == null)
-                        {
-                            kw = "";
-                        }
-                        if (keywords.ContainsKey(kw))
-                        {
-                            keywords[kw].Add(item.Name);
-                        }
-                        else
-                        {
-                            keywords.Add(kw, new List<string> { item.Name });
-                            Task<PlacesNearbySearchResponse> task = wBll.GetWorkoutPlaces(kw, coord);
-                            tasks.Add(task);
-                        }
-                    }
-
-                    while (tasks.Count > 0)
-                    {
-                        Task finishedTask = await Task.WhenAny(tasks);
-
-                        int index = tasks.IndexOf(finishedTask);
-
-                        List<String> places = keywords.ElementAt(index).Value;
-
-                        Task<PlacesNearbySearchResponse> task = finishedTask as Task<PlacesNearbySearchResponse>;
-                        PlacesNearbySearchResponse response = task.Result;
-                        if (Enumerable.ToList(response.Results).Count > 0)
-                        {
-                            for (int k = 0; k < places.Count; k++)
-                            {
-                                Label lbl = new Label();
-                                lbl.Text = places[k];
-                                lbl.Font = new Font(lbl.Font.Name, 12f);
-                                lbl.Height = (int)(lbl.Font.Size * 2.5);
-                                lbl.Margin = new Padding(2);
-                                lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
-                                lbl.Click += lblWorkout_Click;
-                                panel.Controls.Add(lbl);
-                            }
-                            
-                        }
-
-                        tasks.Remove(finishedTask);
-                    }
-                    
+                    kw = "";
                 }
+                if (keywords.ContainsKey(kw))
+                {
+                    keywords[kw].Add(item.Name);
+                }
+                else
+                {
+                    keywords.Add(kw, new List<string> { item.Name });
+                    Task<PlacesNearbySearchResponse> task = wBll.GetWorkoutPlaces(kw, coord);
+                    tasks.Add(task);
+                }
+            }
+
+            while (tasks.Count > 0)
+            {
+                Task finishedTask = await Task.WhenAny(tasks);
+
+                int index = tasks.IndexOf(finishedTask);
+
+                List<String> places = keywords.ElementAt(index).Value;
+
+                Task<PlacesNearbySearchResponse> task = finishedTask as Task<PlacesNearbySearchResponse>;
+                PlacesNearbySearchResponse response = task.Result;
+                if (response.Results.Count() > 0)
+                {
+                    for (int k = 0; k < places.Count; k++)
+                    {
+                        Workout w = wBll.GetWorkout(places[k]);
+
+                        Label lbl = new Label();
+                        lbl.Text = places[k];
+                        lbl.Font = new Font(lbl.Font.Name, 12f);
+                        lbl.Height = (int)(lbl.Font.Size * 2.5);
+                        lbl.Margin = new Padding(2);
+                        lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
+
+                        int yIndex = wcList.IndexOf(wcList.SingleOrDefault(wc => wc.ID == w.WorkoutCategoryID));
+                        int xIndex = alList.IndexOf(alList.SingleOrDefault(al => al.ID == w.ActivityLevelID));
+
+                        panelList[yIndex][xIndex].Controls.Add(lbl);
+                    }
+
+                }
+
+                keywords.Remove(keywords.ElementAt(index).Key);
+                tasks.Remove(finishedTask);
             }
         }
 
@@ -154,6 +159,8 @@ namespace XxxFitnessCLub
                 this.tableLayoutPanel1.Controls.Add(lbl, 0, TBL_CONTENT_START_Y + i);
 
             }
+
+            Application.DoEvents();
         }
 
         private void lblWorkout_Click(object sender, EventArgs e)
@@ -168,9 +175,48 @@ namespace XxxFitnessCLub
 
         private async void btnAdd_ClickAsync(object sender, EventArgs e)
         {
+            
             coord = FrmGMap.GetCurrentPosition();
+            this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
+
             ClearTableContent();
             await LoadTableContentAsync(wcList, alList);
+            AddClickHandler();
+
+            MessageBox.Show("load success");
+        }
+
+        private void LoadTableCell()
+        {
+            for (int i = 0; i < wcList.Count; i++)
+            {
+                panelList.Add(new List<FlowLayoutPanel>());
+                for (int j = 0; j < alList.Count; j++)
+                {
+                    FlowLayoutPanel panel = new FlowLayoutPanel();
+                    panel.Visible = false;
+                    panel.BorderStyle = BorderStyle.FixedSingle;
+                    panel.Dock = DockStyle.Fill;
+                    panelList[i].Add(panel);
+                    this.tableLayoutPanel1.Controls.Add(panel, TBL_CONTENT_START_X + j, TBL_CONTENT_START_Y + i);
+                }
+            }
+
+            foreach (var panel in panelList.SelectMany(p => p))
+            {
+                panel.Visible = true;
+            }
+        }
+
+        private void AddClickHandler()
+        {
+            List<Control> lblList =  this.panelList.SelectMany(l => l)
+                .SelectMany(l => l.Controls.Cast<Control>().ToList()).ToList();
+
+            foreach (var lbl in lblList)
+            {
+                lbl.Click += lblWorkout_Click;
+            }
         }
     }
 
