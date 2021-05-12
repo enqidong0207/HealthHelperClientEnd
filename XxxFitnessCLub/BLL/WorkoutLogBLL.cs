@@ -11,12 +11,12 @@ using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft.BLL
 {
+    //恩旗
     class WorkoutLogBLL
     {
         WorkoutLogDAO dao = new WorkoutLogDAO();
         const int TAKEDAYS = 14;
 
-        //恩旗
         internal List<WorkoutLogDTO> GetWorkoutLogs()
         {
             List<WorkoutLogDTO> list = new List<WorkoutLogDTO>();
@@ -32,7 +32,6 @@ namespace HHFirstDraft.BLL
             return dao.Add(entity);
         }
 
-        //恩旗
         internal List<DailyWorkoutCal> GetWorkoutCalByDate(DateTime? startDate, DateTime? endDate)
         {
             DateTime sd = startDate ?? DateTime.MinValue;
@@ -61,25 +60,22 @@ namespace HHFirstDraft.BLL
             }
 
         }
-        //恩旗
+        
         internal WorkoutLogDTO GetWorkoutLogByID(int ID)
         {
             return GetWorkoutLogs().SingleOrDefault(r => r.ID == ID);
         }
 
-        //恩旗
         internal bool Edit(WorkoutLog entity)
         {
             return dao.Edit(entity);
         }
 
-        //恩旗
         internal bool Delete(WorkoutLog entity)
         {
             return dao.Delete(entity);
         }
 
-        //恩旗
         internal List<WorkoutLogDTO> GetWorkoutLogsByKeyword(string keyword)
         {
             if (keyword == null)

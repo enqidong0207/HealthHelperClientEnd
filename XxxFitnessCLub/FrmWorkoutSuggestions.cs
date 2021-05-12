@@ -36,8 +36,6 @@ namespace XxxFitnessCLub
         public FrmWorkoutSuggestions()
         {
             InitializeComponent();
-
-            
         }
 
         private async void FrmWorkoutSuggestions_LoadAsync(object sender, EventArgs e)

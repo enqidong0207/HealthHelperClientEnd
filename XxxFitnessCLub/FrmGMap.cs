@@ -44,10 +44,6 @@ namespace XxxFitnessCLub
             this.gMapControl1.MapProvider = GMapProviders.GoogleMap;
             this.gMapControl1.Position = new PointLatLng(coord.Latitude, coord.Longitude);
 
-            //gmp = this.gMapControl1.MapProvider as GoogleMapProvider;
-            //gmp.ApiKey = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
-
-            //gp = GMapProviders.OpenStreetMap;
             GMapProvider.Language = LanguageType.ChineseTraditional;
 
             CreateCircle(new PointF((float)coord.Latitude, (float)coord.Longitude), 0.018d, 60);
@@ -60,21 +56,7 @@ namespace XxxFitnessCLub
             {
                 keyword = "";
             }
-            //GeoCoderStatusCode statusCode = gmp.GetPoints("中正紀念堂", out searchResult);
-
-            //var sCoord = new GeoCoordinate(24, 121);
-            //var eCoord = new GeoCoordinate(24.01, 121);
-            //double distance = sCoord.GetDistanceTo(eCoord);
-
-            //PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
-            //placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
-            //placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
-            //placeRequest.Keyword = keyword;
-            //placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
-            //placeRequest.Radius = 2000d;
-            //PlacesNearbySearchResponse response = GoogleApi.GooglePlaces.NearBySearch.Query(placeRequest);
-            //List<NearByResult> points = Enumerable.ToList(response.Results);
-
+            
             Task<PlacesNearbySearchResponse> task = wBll.GetWorkoutPlaces(keyword, coord);
 
             PlacesNearbySearchResponse response = task.Result;
@@ -103,7 +85,6 @@ namespace XxxFitnessCLub
             }
             GMapPolygon gpol = new GMapPolygon(gpollist, "pol");
 
-            //add overlay to control
             overlayOne.Polygons.Add(gpol);
             this.gMapControl1.Overlays.Add(overlayOne);
             overlayOne.IsVisibile = false;
@@ -118,9 +99,6 @@ namespace XxxFitnessCLub
             for (int i = 0; i < points.Count; i++)
             {
                 PointLatLng point = new PointLatLng(points[i].Geometry.Location.Latitude, points[i].Geometry.Location.Longitude);
-
-                //var distance = coord.GetDistanceTo(new GeoCoordinate(point.Lat, point.Lng));
-                //MessageBox.Show(distance.ToString());
 
                 marker = new GMarkerGoogle(point, GMarkerGoogleType.green);
                 marker.ToolTipText = points[i].Name;

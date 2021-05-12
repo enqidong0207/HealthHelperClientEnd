@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace XxxFitnessCLub.DAL.DAO
 {
+    //恩旗
     class WorkoutPreferencesDAO : HHContext
     {
         internal bool AddPreferences(List<WorkoutPreference> wplist)

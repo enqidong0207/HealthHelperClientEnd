@@ -125,6 +125,7 @@ namespace HHFirstDraft.BLL
 
         }
 
+        //恩旗
         internal Task<PlacesNearbySearchResponse> GetWorkoutPlaces(string keyword, GeoCoordinate coord)
         {
             PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
@@ -136,6 +137,7 @@ namespace HHFirstDraft.BLL
             return GoogleApi.GooglePlaces.NearBySearch.QueryAsync(placeRequest);
         }
 
+        //恩旗
         internal Workout GetWorkout(string name)
         {
             return dao.GetWorkout(name);

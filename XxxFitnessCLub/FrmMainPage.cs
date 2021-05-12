@@ -24,9 +24,10 @@ namespace XxxFitnessCLub
             InitializeComponent();
         }
 
+        //恩旗
         private void FrmMainPage_Load(object sender, EventArgs e) 
         {
-            //恩旗
+            
             this.lblUser.Text += UserStatic.UserName;
 
             FrmHome frm = new FrmHome();

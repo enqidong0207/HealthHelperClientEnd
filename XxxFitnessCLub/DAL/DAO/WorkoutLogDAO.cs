@@ -9,15 +9,14 @@ using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft.DAL.DAO
 {
+    //恩旗
     class WorkoutLogDAO : HHContext
     {
-        //恩旗
         internal List<WorkoutLog> GetWorkoutLogs()
         {
             return db.WorkoutLogs.ToList();
         }
 
-        //恩旗
         internal bool Add(WorkoutLog entity)
         {
             try
@@ -34,7 +33,6 @@ namespace HHFirstDraft.DAL.DAO
             
         }
 
-        //恩旗
         internal bool Edit(WorkoutLog entity)
         {
             WorkoutLog oldEntity = db.WorkoutLogs.Where(wl => wl.ID == entity.ID).SingleOrDefault();
@@ -53,7 +51,6 @@ namespace HHFirstDraft.DAL.DAO
             }
         }
 
-        //恩旗
         internal bool Delete(WorkoutLog entity)
         {
             WorkoutLog oldEntity = db.WorkoutLogs.Where(wl => wl.ID == entity.ID).SingleOrDefault();

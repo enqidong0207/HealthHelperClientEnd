@@ -65,7 +65,6 @@ namespace XxxFitnessCLub
             this.chart1.Series[1].YValueMembers = "TotalHours";
             this.chart1.Series[1].ChartType = SeriesChartType.Column;
 
-
         }
 
     }

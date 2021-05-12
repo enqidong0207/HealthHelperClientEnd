@@ -7,7 +7,7 @@ using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft.DAL.DTO
 {
-
+    //恩旗
     class WorkoutLogDTO : WorkoutLog
     {
         // todo 要改名嗎？

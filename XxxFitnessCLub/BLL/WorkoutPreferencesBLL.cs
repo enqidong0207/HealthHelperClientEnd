@@ -8,25 +8,22 @@ using XxxFitnessCLub.DAL.DAO;
 
 namespace XxxFitnessCLub.BLL
 {
-    
+    //恩旗
     class WorkoutPreferencesBLL
     {
-        //恩旗
+        
         WorkoutPreferencesDAO dao = new WorkoutPreferencesDAO();
 
-        //恩旗
         public bool AddPreferences(List<WorkoutPreference> wplist)
         {
             return dao.AddPreferences(wplist);
         }
 
-        //恩旗
         public bool EditPreferences(List<WorkoutPreference> wplist)
         {
             return dao.EditPreferences(wplist);
         }
 
-        //恩旗
         public List<WorkoutPreference> GetPreferences(int MemberID)
         {
             return dao.GetPreferences(MemberID);
