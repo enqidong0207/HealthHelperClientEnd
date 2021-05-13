@@ -131,6 +131,9 @@
     <Compile Include="Model\DAL\Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DAL\CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DAL\DAO\ActivityLevelDAO.cs" />
     <Compile Include="Model\DAL\DAO\HHContext.cs" />
     <Compile Include="Model\DAL\DAO\MealDAO.cs" />
@@ -140,9 +143,6 @@
     <Compile Include="Model\DAL\DAO\WorkoutCategoryDAO.cs" />
     <Compile Include="Model\DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="Model\DAL\DAO\WorkoutLogDAO.cs" />
-    <Compile Include="Model\DAL\DietDetail.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\DAL\DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -175,6 +175,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DAL\LikedMeal.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DAL\MealOption.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
@@ -405,10 +408,13 @@
     <None Include="Resources\螢幕擷取畫面 2021-05-02 204709.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
       <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -416,9 +422,5 @@
       <LastGenOutput>HHModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

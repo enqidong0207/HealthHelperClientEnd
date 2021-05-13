@@ -85,5 +85,17 @@ namespace HHFirstDraft.BLL
         {
             dao.RemoveTags(ID);
         }
+
+        //采馨加的
+        public MealDetailDTO GetMeal(int ID)
+        {
+            MealDetailDTO theMeal = new MealDetailDTO();
+            MealOption mOpt =  dao.GetMeal(ID);
+            theMeal.ID = mOpt.ID;
+            theMeal.Name = mOpt.Name;
+            theMeal.Calories = (int)mOpt.Calories;
+            theMeal.Image = mOpt.Image;
+            return theMeal;
+        }
     }
 }

@@ -31,7 +31,9 @@ namespace XxxFitnessCLub.Model.DAL
         public double VitD { get; set; }
         public double VitE { get; set; }
         public double Na { get; set; }
-        public double Ka { get; set; }
+        public Nullable<double> Potassium { get; set; }
+        public Nullable<double> Calcium { get; set; }
+        public Nullable<double> Iron { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MealOption> MealOptions { get; set; }

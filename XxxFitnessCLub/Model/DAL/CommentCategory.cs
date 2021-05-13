@@ -12,14 +12,18 @@ namespace XxxFitnessCLub.Model.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class DietDetail
+    public partial class CommentCategory
     {
-        public int ID { get; set; }
-        public int DietLogID { get; set; }
-        public double Portion { get; set; }
-        public int MealOptionID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CommentCategory()
+        {
+            this.Comments = new HashSet<Comment>();
+        }
     
-        public virtual DietLog DietLog { get; set; }
-        public virtual MealOption MealOption { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

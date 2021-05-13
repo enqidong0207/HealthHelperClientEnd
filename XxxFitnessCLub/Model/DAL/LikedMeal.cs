@@ -12,19 +12,12 @@ namespace XxxFitnessCLub.Model.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Comment
+    public partial class LikedMeal
     {
         public int ID { get; set; }
-        public string Title { get; set; }
-        public string CommentContent { get; set; }
         public int MemberID { get; set; }
-        public System.DateTime AddDate { get; set; }
-        public bool IsApproved { get; set; }
-        public Nullable<int> MealOptionID { get; set; }
-        public int Rating { get; set; }
-        public int CategoryID { get; set; }
+        public int MealOptionID { get; set; }
     
-        public virtual CommentCategory CommentCategory { get; set; }
         public virtual MealOption MealOption { get; set; }
         public virtual Member Member { get; set; }
     }

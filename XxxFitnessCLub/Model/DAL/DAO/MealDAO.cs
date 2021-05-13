@@ -20,7 +20,7 @@ namespace HHFirstDraft.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.ID = item.ID;
                 dto.Name = item.Name;
-                dto.Calories = item.Calories;
+                dto.Calories = (int)item.Calories;
                 List<TagCategoryDetailDTO> tagDetailList = new List<TagCategoryDetailDTO>();
                 var tagList = db.MealTags.Where(x => x.MealOptionID == item.ID).ToList();
                 foreach (var tag in tagList)
@@ -149,7 +149,7 @@ namespace HHFirstDraft.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.ID = item.ID;
                 dto.Name = item.Name;
-                dto.Calories = item.Calories;
+                dto.Calories = (int)item.Calories;
                 List<TagCategoryDetailDTO> tagDetailList = new List<TagCategoryDetailDTO>();
                 var tagList = db.MealTags.Where(x => x.MealOptionID == item.ID).ToList();
                 foreach (var tag in tagList)
@@ -194,5 +194,24 @@ namespace HHFirstDraft.DAL.DAO
                 throw ex;
             }
         }
+
+        //采馨加的
+        public MealOption GetMeal(int ID)
+        {
+            try
+            {
+                MealOption theMeal = db.MealOptions.First(x => x.ID == ID);
+               
+                return theMeal;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        
     }
 }
