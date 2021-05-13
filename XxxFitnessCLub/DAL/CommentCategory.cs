@@ -12,19 +12,18 @@ namespace XxxFitnessCLub.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class DietLog
+    public partial class CommentCategory
     {
-        public int ID { get; set; }
-        public int MemberID { get; set; }
-        public int TimeOfDayID { get; set; }
-        public System.DateTime EditTime { get; set; }
-        public double Portion { get; set; }
-        public int MealOptionID { get; set; }
-        public System.DateTime Date { get; set; }
-        public bool IsValid { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CommentCategory()
+        {
+            this.Comments = new HashSet<Comment>();
+        }
     
-        public virtual MealOption MealOption { get; set; }
-        public virtual Member Member { get; set; }
-        public virtual TimesOfDay TimesOfDay { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

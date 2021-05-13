@@ -18,20 +18,23 @@ namespace XxxFitnessCLub.DAL
         public MealOption()
         {
             this.Comments = new HashSet<Comment>();
-            this.DietDetails = new HashSet<DietDetail>();
+            this.DietLogs = new HashSet<DietLog>();
+            this.LikedMeals = new HashSet<LikedMeal>();
             this.MealTags = new HashSet<MealTag>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Calories { get; set; }
+        public double Calories { get; set; }
         public byte[] Image { get; set; }
         public Nullable<int> NutrientID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DietDetail> DietDetails { get; set; }
+        public virtual ICollection<DietLog> DietLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LikedMeal> LikedMeals { get; set; }
         public virtual Nutrient Nutrient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MealTag> MealTags { get; set; }

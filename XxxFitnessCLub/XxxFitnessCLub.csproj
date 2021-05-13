@@ -107,6 +107,9 @@
     <Compile Include="DAL\Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\DAO\ActivityLevelDAO.cs" />
     <Compile Include="DAL\DAO\CommentDAO.cs" />
     <Compile Include="DAL\DAO\HHContext.cs" />
@@ -118,9 +121,6 @@
     <Compile Include="DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutPreferencesDAO.cs" />
-    <Compile Include="DAL\DietDetail.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -155,6 +155,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LikedMeal.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\MealOption.cs">
       <DependentUpon>HHModel.tt</DependentUpon>

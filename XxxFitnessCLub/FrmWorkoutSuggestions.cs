@@ -33,12 +33,14 @@ namespace XxxFitnessCLub
 
         List<List<FlowLayoutPanel>> panelList = new List<List<FlowLayoutPanel>>();
 
+        private readonly object reloadLock = new object();
+
         public FrmWorkoutSuggestions()
         {
             InitializeComponent();
         }
 
-        private async void FrmWorkoutSuggestions_LoadAsync(object sender, EventArgs e)
+        private void FrmWorkoutSuggestions_Load(object sender, EventArgs e)
         {
             coord = FrmGMap.GetCurrentPosition();
             this.lblCoord.Text = $"  Latitude：{coord.Latitude}\nLongtitude：{coord.Longitude}";
@@ -48,10 +50,7 @@ namespace XxxFitnessCLub
 
             LoadTableHeader(wcList, alList);
             LoadTableCell();
-            await LoadTableContentAsync(wcList, alList);
-            AddClickHandler();
-
-            MessageBox.Show("load success");
+            LoadTableContentAsync(wcList, alList);
         }
 
         private void ClearTableContent() 
@@ -64,7 +63,7 @@ namespace XxxFitnessCLub
                 
         }
 
-        private async Task LoadTableContentAsync(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
+        private async void LoadTableContentAsync(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
         {
             List<Task> tasks = new List<Task>();
             Dictionary<String, List<string>> keywords = new Dictionary<String, List<string>>();
@@ -121,6 +120,9 @@ namespace XxxFitnessCLub
                 keywords.Remove(keywords.ElementAt(index).Key);
                 tasks.Remove(finishedTask);
             }
+
+            AddClickHandler();
+            MessageBox.Show("load success");
         }
 
         private void LoadTableHeader(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
@@ -171,17 +173,17 @@ namespace XxxFitnessCLub
             frm.ShowDialog();
         }
 
-        private async void btnAdd_ClickAsync(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            
-            coord = FrmGMap.GetCurrentPosition();
-            this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
+            lock (reloadLock)
+            {
+                coord = FrmGMap.GetCurrentPosition();
+                this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
 
-            ClearTableContent();
-            await LoadTableContentAsync(wcList, alList);
-            AddClickHandler();
-
-            MessageBox.Show("load success");
+                ClearTableContent();
+                LoadTableContentAsync(wcList, alList);
+                
+            }
         }
 
         private void LoadTableCell()

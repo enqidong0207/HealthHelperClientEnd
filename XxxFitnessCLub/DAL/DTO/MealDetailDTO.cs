@@ -10,7 +10,7 @@ namespace HHFirstDraft.DAL.DTO
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Calories { get; set; }
+        public double Calories { get; set; }
         public List<TagCategoryDetailDTO> Tags { get; set; }
     }
 }

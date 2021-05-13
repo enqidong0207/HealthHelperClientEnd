@@ -12,14 +12,13 @@ namespace XxxFitnessCLub.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class DietDetail
+    public partial class LikedMeal
     {
         public int ID { get; set; }
-        public int DietLogID { get; set; }
-        public double Portion { get; set; }
+        public int MemberID { get; set; }
         public int MealOptionID { get; set; }
     
-        public virtual DietLog DietLog { get; set; }
         public virtual MealOption MealOption { get; set; }
+        public virtual Member Member { get; set; }
     }
 }

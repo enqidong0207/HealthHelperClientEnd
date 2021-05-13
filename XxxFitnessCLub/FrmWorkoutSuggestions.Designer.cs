@@ -77,7 +77,7 @@ namespace XxxFitnessCLub
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "刷新目前位置";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_ClickAsync);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
@@ -146,7 +146,7 @@ namespace XxxFitnessCLub
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmWorkoutSuggestions";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmWorkoutSuggestions_LoadAsync);
+            this.Load += new System.EventHandler(this.FrmWorkoutSuggestions_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
