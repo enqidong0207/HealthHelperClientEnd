@@ -1,4 +1,4 @@
-﻿namespace XxxFitnessCLub
+﻿namespace HHFirstDraft
 {
     partial class FrmAddComment
     {
