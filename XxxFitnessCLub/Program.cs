@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub;
 
-namespace XxxFitnessCLub
+namespace HHFirstDraft
 {
     static class Program
     {
@@ -16,7 +17,7 @@ namespace XxxFitnessCLub
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainPage());
+            Application.Run(new FrmEntry());
         }
     }
 }

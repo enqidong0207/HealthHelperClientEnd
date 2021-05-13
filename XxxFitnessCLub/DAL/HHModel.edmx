@@ -954,7 +954,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HealthManagement0511Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HealthManagement0511Entities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivityLevels" EntityType="Self.ActivityLevel" />
           <EntitySet Name="CommentCategories" EntityType="Self.CommentCategory" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
@@ -1055,7 +1055,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HealthManagement0511ModelStoreContainer" CdmEntityContainer="HealthManagement0511Entities2">
+        <EntityContainerMapping StorageEntityContainer="HealthManagement0511ModelStoreContainer" CdmEntityContainer="HealthManagement0511Entities3">
           <EntitySetMapping Name="ActivityLevels">
             <EntityTypeMapping TypeName="HealthManagement0511Model.ActivityLevel">
               <MappingFragment StoreEntitySet="ActivityLevels">

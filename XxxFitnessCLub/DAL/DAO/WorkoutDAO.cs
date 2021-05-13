@@ -126,5 +126,11 @@ namespace HHFirstDraft.DAL.DAO
             workout.WorkoutCategoryID = entity.WorkoutCategoryID;
             db.SaveChanges();
         }
+
+        //恩旗
+        internal Workout GetWorkout(string name)
+        {
+            return db.Workouts.Where(w => w.Name == name).SingleOrDefault();
+        }
     }
 }

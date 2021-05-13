@@ -63,5 +63,28 @@ namespace HHFirstDraft.BLL
             dtoList = workoutDAO.GetWorkouts(ID);
             return dtoList;
         }
+
+        //恩旗
+        public List<ClbItem> GetWcItems()
+        {
+            return GetCategories().Select(wc => new ClbItem 
+            { 
+                Text = wc.Name,
+                wcID = wc.ID
+            }).ToList();
+        }
+    }
+
+    //恩旗
+    public class ClbItem
+    {
+        public string Text { get; set; }
+
+        public int wcID { get; set; }
+
+        public override string ToString()
+        {
+            return this.Text;
+        }
     }
 }

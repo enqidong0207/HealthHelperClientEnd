@@ -227,5 +227,24 @@ namespace HHFirstDraft.DAL.DAO
                 throw ex;
             }
         }
+
+        //采馨加的
+        public MealOption GetMeal(int ID)
+        {
+            try
+            {
+                MealOption theMeal = db.MealOptions.First(x => x.ID == ID);
+               
+                return theMeal;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        
     }
 }

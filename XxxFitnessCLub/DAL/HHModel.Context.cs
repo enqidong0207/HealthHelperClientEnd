@@ -13,10 +13,10 @@ namespace XxxFitnessCLub.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HealthManagement0511Entities2 : DbContext
+    public partial class HealthManagement0511Entities3 : DbContext
     {
-        public HealthManagement0511Entities2()
-            : base("name=HealthManagement0511Entities2")
+        public HealthManagement0511Entities3()
+            : base("name=HealthManagement0511Entities3")
         {
         }
     

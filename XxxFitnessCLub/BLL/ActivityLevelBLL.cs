@@ -12,9 +12,10 @@ namespace HHFirstDraft.BLL
     {
         private ActivityLevelDAO dao = new ActivityLevelDAO();
 
-        internal List<ActivityLevelDetailDTO> GetActivityLevels()
+        public List<ActivityLevelDetailDTO> GetActivityLevels()
         {
             return dao.GetLevels();
         }
+       
     }
 }
