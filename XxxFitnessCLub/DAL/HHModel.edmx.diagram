@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="63f1edf6215249f09fe79427a2bfd58a" Name="Diagram1">
+      <Diagram DiagramId="2d952990266e4f9cba21b9e7423698c8" Name="Diagram1">
         <EntityTypeShape EntityType="HealthManagementModel.ActivityLevel" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagementModel.CommentCategory" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagementModel.Comment" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />

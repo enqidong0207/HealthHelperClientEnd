@@ -528,8 +528,8 @@
   <ItemGroup>
     <Content Include="DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.Context.cs</LastGenOutput>
+      <DependentUpon>HHModel.edmx</DependentUpon>
     </Content>
     <Content Include="DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

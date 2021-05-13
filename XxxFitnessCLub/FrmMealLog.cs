@@ -186,7 +186,7 @@ namespace HHFirstDraft
             dL.日期 = dL.Date;
             dL.時段 = selectedTOD.Name;        
             dL.餐點名稱 = theMeal.Name;
-            dL.每100克卡路里 = theMeal.Calories;
+            dL.每100克卡路里 = (int)theMeal.Calories;
             dL.份量 = dL.Portion;
             dL.總卡路里 = (int)(dL.每100克卡路里 * dL.份量);
             mealList.Add(dL);
