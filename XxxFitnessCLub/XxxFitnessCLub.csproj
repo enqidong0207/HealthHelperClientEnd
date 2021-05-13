@@ -94,9 +94,12 @@
   <ItemGroup>
     <Compile Include="BLL\ActivityLevelBLL.cs" />
     <Compile Include="BLL\CommentBLL.cs" />
+    <Compile Include="BLL\DietLogBLL.cs" />
     <Compile Include="BLL\MealBLL.cs" />
     <Compile Include="BLL\MemberBLL.cs" />
     <Compile Include="BLL\TagCategoryBLL.cs" />
+    <Compile Include="BLL\TempFakeUser.cs" />
+    <Compile Include="BLL\TimesOfDayBLL .cs" />
     <Compile Include="BLL\WorkoutBLL.cs" />
     <Compile Include="BLL\WorkoutCategoryBLL.cs" />
     <Compile Include="BLL\WorkoutLogBLL.cs" />
@@ -112,11 +115,13 @@
     </Compile>
     <Compile Include="DAL\DAO\ActivityLevelDAO.cs" />
     <Compile Include="DAL\DAO\CommentDAO.cs" />
+    <Compile Include="DAL\DAO\DietLogDAO.cs" />
     <Compile Include="DAL\DAO\HHContext.cs" />
     <Compile Include="DAL\DAO\MealDAO.cs" />
     <Compile Include="DAL\DAO\MemberDAO.cs" />
     <Compile Include="DAL\DAO\StatusDAO.cs" />
     <Compile Include="DAL\DAO\TagCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\TimesOfDayDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutCategoryDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
@@ -126,8 +131,11 @@
     </Compile>
     <Compile Include="DAL\DTO\ActivityLevelDetailDTO.cs" />
     <Compile Include="DAL\DTO\ActivityLevelDTO.cs" />
+    <Compile Include="DAL\DTO\ClientSelectedMealDTO.cs" />
     <Compile Include="DAL\DTO\CommentDetailDTO.cs" />
     <Compile Include="DAL\DTO\CommentDTO.cs" />
+    <Compile Include="DAL\DTO\DietDetailDTO.cs" />
+    <Compile Include="DAL\DTO\DietLogDTO.cs" />
     <Compile Include="DAL\DTO\MealDetailDTO.cs" />
     <Compile Include="DAL\DTO\MealDTO.cs" />
     <Compile Include="DAL\DTO\MemberDetailDTO.cs" />
@@ -136,6 +144,7 @@
     <Compile Include="DAL\DTO\StatusDTO.cs" />
     <Compile Include="DAL\DTO\TagCategoryDetailDTO.cs" />
     <Compile Include="DAL\DTO\TagCategoryDTO.cs" />
+    <Compile Include="DAL\DTO\TimeOfDayDTO.cs" />
     <Compile Include="DAL\DTO\WorkoutCategoryDetailDTO.cs" />
     <Compile Include="DAL\DTO\WorkoutCategoryDTO.cs" />
     <Compile Include="DAL\DTO\WorkoutDetailDTO.cs" />
@@ -264,6 +273,12 @@
     <Compile Include="FrmMainPageold.Designer.cs">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMealHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealHistory.Designer.cs">
+      <DependentUpon>FrmMealHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +322,7 @@
     <Compile Include="FrmWorkoutLog.designer.cs">
       <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaticUser.cs" />
     <Compile Include="ToDoFrms\FrmGiftCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +374,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserStatic.cs" />
+    <Compile Include="ViewModel\MyCircleProgress.cs" />
     <EmbeddedResource Include="FrmAddWorkoutPreferences.resx">
       <DependentUpon>FrmAddWorkoutPreferences.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainPageold.resx">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMealHistory.resx">
+      <DependentUpon>FrmMealHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProgress.resx">
       <DependentUpon>FrmProgress.cs</DependentUpon>
