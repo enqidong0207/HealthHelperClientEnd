@@ -33,7 +33,7 @@ namespace XxxFitnessCLub
 
         List<List<FlowLayoutPanel>> panelList = new List<List<FlowLayoutPanel>>();
 
-        private readonly object reloadLock = new object();
+        bool reloadLock = false;
 
         public FrmWorkoutSuggestions()
         {
@@ -175,14 +175,21 @@ namespace XxxFitnessCLub
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            lock (reloadLock)
+            if (reloadLock)
             {
+                return;
+            }
+            else
+            {
+                reloadLock = true;
+
                 coord = FrmGMap.GetCurrentPosition();
                 this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
 
                 ClearTableContent();
                 LoadTableContentAsync(wcList, alList);
-                
+
+                reloadLock = false;
             }
         }
 
