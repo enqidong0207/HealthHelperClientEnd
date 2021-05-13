@@ -10,10 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub;
 using XxxFitnessCLub.DAL;
 
 namespace HHFirstDraft
 {
+    //恩旗
     public partial class FrmAddWorkoutLog : Form
     {
         private FrmWorkoutLog workoutLogForm;
@@ -41,8 +43,26 @@ namespace HHFirstDraft
         {
             LoadComboBox();
 
+            if (workoutLogForm.isUpdate)
+            {
+                this.lbTitle.Text = $"修改運動紀錄\n(原本記錄時間{workoutLogForm.dto.EditTime})";
+                this.cmbWorkoutCategory.SelectedValue = workoutLogForm.dto.Workout.WorkoutCategory.ID;
+                this.cmbActivityLevel.SelectedValue = workoutLogForm.dto.Workout.ActivityLevel.ID;
+                this.cmbWorkout.SelectedValue = workoutLogForm.dto.WorkoutID;
+                this.btnAdd.Text = "修改";
+                this.btnAdd.BackColor = Color.LightSkyBlue;
+            }
+            else
+            {
+                this.lbTitle.Text = "新增運動紀錄";
+                this.btnAdd.Text = "新增";
+                this.btnAdd.BackColor = Color.PaleTurquoise;
+            }
+
             this.cmbWorkoutCategory.SelectedIndexChanged += this.cmbs_SelectedIndexChanged;
             this.cmbActivityLevel.SelectedIndexChanged += this.cmbs_SelectedIndexChanged;
+
+            
         }
 
         private void LoadComboBox()
@@ -78,10 +98,10 @@ namespace HHFirstDraft
         private void btnAdd_Click(object sender, EventArgs e)
         {
             oneMonthAgo = oneMonthAgo.AddDays(1);
-            // todo
-            if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours))
+
+            if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours) || workoutHours == 0)
             {
-                this.lblWorkoutCategoryTest.Text = "請輸入數字";
+                this.lblWorkoutCategoryTest.Text = "請輸入數字且必須大於0";
                 return;
             }
             else
@@ -89,33 +109,53 @@ namespace HHFirstDraft
                 this.lblWorkoutCategoryTest.Text = "";
             }
 
-            bool isSuccess = wlBll.Add(new WorkoutLog 
-            { 
-                MemberID = 3,
-                WorkoutID = (int)this.cmbWorkout.SelectedValue,
-                EditTime = oneMonthAgo,
-                WorkoutHours = workoutHours
-            });
+            bool isSuccess = false;
 
-            if (isSuccess)
+            if (workoutLogForm.isUpdate)
             {
-                MessageBox.Show("新增成功");
+                isSuccess = wlBll.Edit(new WorkoutLog
+                {
+                    ID = workoutLogForm.dto.ID,
+                    MemberID = UserStatic.UserID,
+                    WorkoutID = (int)this.cmbWorkout.SelectedValue,
+                    EditTime = DateTime.Now.Date,
+                    WorkoutHours = workoutHours
+                }); ;
+
+                if (isSuccess)
+                {
+                    MessageBox.Show("修改成功");
+                }
+                else
+                {
+                    MessageBox.Show("修改失敗");
+                }
             }
             else
             {
-                MessageBox.Show("新增失敗");
-            }
-        }
+                isSuccess = wlBll.Add(new WorkoutLog
+                {
+                    MemberID = UserStatic.UserID,
+                    WorkoutID = (int)this.cmbWorkout.SelectedValue,
+                    EditTime = oneMonthAgo.Date,
+                    WorkoutHours = workoutHours
+                });
 
-        private void txtCalories_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // todo
-            //e.Handled = General.isNumber(e);
+                if (isSuccess)
+                {
+                    MessageBox.Show("新增成功");
+                }
+                else
+                {
+                    MessageBox.Show("新增失敗");
+                }
+            }
+            
         }
 
         private void FrmAddWorkout_FormClosed(object sender, FormClosedEventArgs e)
         {
-            workoutLogForm.ShowWorkoutLog();
+            workoutLogForm.ShowWorkoutLog(workoutLogForm.keyword);
         }
 
         private void cmbs_SelectedIndexChanged(object sender, EventArgs e)

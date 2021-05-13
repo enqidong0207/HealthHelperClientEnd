@@ -45,6 +45,49 @@ namespace HHFirstDraft.DAL.DAO
             }
             return Members;
         }
+        public MemberDetailDTO GetMember(int ID)
+        {
+            Member member = db.Members.First(x => x.ID == ID);
+            MemberDetailDTO dto = new MemberDetailDTO();
+            dto.ID = ID;
+            dto.Name = member.Name;
+            dto.Password = member.Password;
+            dto.Phone = member.Phone;
+            dto.IsAdmin = member.IsAdmin;
+            dto.Height = (int)member.Height;
+            if (member.Gender)
+            {
+                dto.Gender = true;
+                dto.GenderString = "男";
+            }
+            else
+            {
+                dto.Gender = false;
+                dto.GenderString = "女";
+            }
+            dto.ActivityLevelID = member.ActivityLevelID;
+            dto.ActivityLevel = member.ActivityLevel.Description;
+            dto.TaiwanID = member.TaiwanID;
+            dto.StatusID = member.StatusID;
+            dto.Status = member.Status.Name;
+            dto.JoinDate = member.JoinDate;
+            dto.Birthdate = member.Birthdate;
+            dto.Email = member.Email;
+            return dto;
+        }
+        public int IsMemberExist(string name, string password)
+        {
+            Member member = db.Members.FirstOrDefault(x => x.Name == name && x.Password == password);
+            if (member != null)
+            {
+                return member.ID;
+            }
+            else
+            {
+                return 0;
+            }
+           
+        }
 
         public void Update(Member entity)
         {
@@ -178,6 +221,22 @@ namespace HHFirstDraft.DAL.DAO
                 Members.Add(dto);
             }
             return Members;
+        }
+
+        //恩旗
+        public int AddMember(Member member)
+        {
+            try
+            {
+                db.Members.Add(member);
+                db.SaveChanges();
+                return member.ID;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                return 0;
+            }
         }
     }
 }

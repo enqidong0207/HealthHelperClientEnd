@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btnComment = new System.Windows.Forms.Button();
+            this.btnWSuggestion = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -38,13 +39,17 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
-            this.btnMemberPage = new System.Windows.Forms.Button();
+            this.btnMember = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +61,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button16);
+            this.splitContainer1.Panel1.Controls.Add(this.btnComment);
+            this.splitContainer1.Panel1.Controls.Add(this.btnWSuggestion);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.button15);
             this.splitContainer1.Panel1.Controls.Add(this.button14);
@@ -65,26 +71,37 @@
             this.splitContainer1.Panel1.Controls.Add(this.button7);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.btnHomePage);
-            this.splitContainer1.Panel1.Controls.Add(this.btnMemberPage);
+            this.splitContainer1.Panel1.Controls.Add(this.btnMember);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1116, 656);
-            this.splitContainer1.SplitterDistance = 184;
+            this.splitContainer1.Size = new System.Drawing.Size(1208, 656);
+            this.splitContainer1.SplitterDistance = 199;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button16
+            // btnComment
             // 
-            this.button16.Location = new System.Drawing.Point(20, 246);
-            this.button16.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(131, 32);
-            this.button16.TabIndex = 30;
-            this.button16.Text = "專屬運動推薦";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.btnComment.Location = new System.Drawing.Point(20, 332);
+            this.btnComment.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnComment.Name = "btnComment";
+            this.btnComment.Size = new System.Drawing.Size(131, 32);
+            this.btnComment.TabIndex = 31;
+            this.btnComment.Text = "留言板";
+            this.btnComment.UseVisualStyleBackColor = true;
+            this.btnComment.Click += new System.EventHandler(this.btnComment_Click);
+            // 
+            // btnWSuggestion
+            // 
+            this.btnWSuggestion.Location = new System.Drawing.Point(20, 246);
+            this.btnWSuggestion.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnWSuggestion.Name = "btnWSuggestion";
+            this.btnWSuggestion.Size = new System.Drawing.Size(131, 32);
+            this.btnWSuggestion.TabIndex = 30;
+            this.btnWSuggestion.Text = "專屬運動推薦";
+            this.btnWSuggestion.UseVisualStyleBackColor = true;
+            this.btnWSuggestion.Click += new System.EventHandler(this.btnWSuggestion_Click);
             // 
             // label3
             // 
@@ -121,7 +138,7 @@
             // 
             // btnMealLogPage
             // 
-            this.btnMealLogPage.Location = new System.Drawing.Point(20, 156);
+            this.btnMealLogPage.Location = new System.Drawing.Point(20, 153);
             this.btnMealLogPage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnMealLogPage.Name = "btnMealLogPage";
             this.btnMealLogPage.Size = new System.Drawing.Size(131, 32);
@@ -174,16 +191,16 @@
             this.btnHomePage.UseVisualStyleBackColor = true;
             this.btnHomePage.Click += new System.EventHandler(this.btnHomePage_Click);
             // 
-            // btnMemberPage
+            // btnMember
             // 
-            this.btnMemberPage.Location = new System.Drawing.Point(20, 107);
-            this.btnMemberPage.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnMemberPage.Name = "btnMemberPage";
-            this.btnMemberPage.Size = new System.Drawing.Size(131, 32);
-            this.btnMemberPage.TabIndex = 20;
-            this.btnMemberPage.Text = "會員資料";
-            this.btnMemberPage.UseVisualStyleBackColor = true;
-            this.btnMemberPage.Click += new System.EventHandler(this.btnMemberPage_Click);
+            this.btnMember.Location = new System.Drawing.Point(20, 107);
+            this.btnMember.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnMember.Name = "btnMember";
+            this.btnMember.Size = new System.Drawing.Size(131, 32);
+            this.btnMember.TabIndex = 20;
+            this.btnMember.Text = "會員資料";
+            this.btnMember.UseVisualStyleBackColor = true;
+            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
             // 
             // splitContainer2
             // 
@@ -192,26 +209,61 @@
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.splitContainer2.Size = new System.Drawing.Size(927, 656);
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.lblUser);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.button4);
+            this.splitContainer2.Size = new System.Drawing.Size(1004, 656);
             this.splitContainer2.SplitterDistance = 95;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Location = new System.Drawing.Point(3, 7);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(76, 23);
+            this.lblUser.TabIndex = 32;
+            this.lblUser.Text = "用戶: ";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button4.Location = new System.Drawing.Point(0, 517);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(1000, 35);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "遊戲規則";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // FrmMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 656);
+            this.ClientSize = new System.Drawing.Size(1208, 656);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Consolas", 9F);
             this.Name = "FrmMainPage";
             this.Text = "FrmMainPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMainPage_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -222,15 +274,18 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnMealLogPage;
         private System.Windows.Forms.Button btnWorkoutLogPage;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button btnMemberPage;
+        private System.Windows.Forms.Button btnMember;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnWSuggestion;
         private System.Windows.Forms.Button btnHomePage;
+        private System.Windows.Forms.Button btnComment;
+        private System.Windows.Forms.Label lblUser;
     }
 }

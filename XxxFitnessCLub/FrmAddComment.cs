@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HHFirstDraft
 {
-    public partial class FrmWorkoutSuggestions : Form
+    public partial class FrmAddComment : Form
     {
-        public FrmWorkoutSuggestions()
+        public FrmAddComment()
         {
             InitializeComponent();
         }

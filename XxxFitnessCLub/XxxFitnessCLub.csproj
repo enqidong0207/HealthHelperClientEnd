@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,22 +36,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=2.0.2.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Core.2.0.2\lib\net46\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=2.0.2.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WinForms.2.0.2\lib\net46\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleApi, Version=3.10.8.0, Culture=neutral, PublicKeyToken=781851e053b06e74, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleApi.3.10.8\lib\net45\GoogleApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.113.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,75 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\DAO\DietLogDAO.cs" />
-    <Compile Include="DAL\DAO\TimesOfDayDAO.cs" />
-    <Compile Include="FrmFood.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmFood.Designer.cs">
-      <DependentUpon>FrmFood.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmFresh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmFresh.Designer.cs">
-      <DependentUpon>FrmFresh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmHome.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmHome.Designer.cs">
-      <DependentUpon>FrmHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmMainPageold.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMainPageold.Designer.cs">
-      <DependentUpon>FrmMainPageold.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmMealHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMealHistory.Designer.cs">
-      <DependentUpon>FrmMealHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmProgress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProgress.Designer.cs">
-      <DependentUpon>FrmProgress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmShoppingCart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmShoppingCart.Designer.cs">
-      <DependentUpon>FrmShoppingCart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmToGo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmToGo.Designer.cs">
-      <DependentUpon>FrmToGo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmUploadMealPic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmUploadMealPic.Designer.cs">
-      <DependentUpon>FrmUploadMealPic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmWorkoutLogChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmWorkoutLogChart.Designer.cs">
-      <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
-    </Compile>
     <Compile Include="BLL\ActivityLevelBLL.cs" />
+    <Compile Include="BLL\CommentBLL.cs" />
     <Compile Include="BLL\DietLogBLL.cs" />
     <Compile Include="BLL\MealBLL.cs" />
     <Compile Include="BLL\MemberBLL.cs" />
@@ -142,6 +109,7 @@
     <Compile Include="BLL\WorkoutBLL.cs" />
     <Compile Include="BLL\WorkoutCategoryBLL.cs" />
     <Compile Include="BLL\WorkoutLogBLL.cs" />
+    <Compile Include="BLL\WorkoutPreferencesBLL.cs" />
     <Compile Include="DAL\ActivityLevel.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -152,20 +120,26 @@
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\DAO\ActivityLevelDAO.cs" />
+    <Compile Include="DAL\DAO\CommentDAO.cs" />
+    <Compile Include="DAL\DAO\DietLogDAO.cs" />
     <Compile Include="DAL\DAO\HHContext.cs" />
     <Compile Include="DAL\DAO\MealDAO.cs" />
     <Compile Include="DAL\DAO\MemberDAO.cs" />
     <Compile Include="DAL\DAO\StatusDAO.cs" />
     <Compile Include="DAL\DAO\TagCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\TimesOfDayDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutCategoryDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutPreferencesDAO.cs" />
     <Compile Include="DAL\DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\DTO\ActivityLevelDetailDTO.cs" />
     <Compile Include="DAL\DTO\ActivityLevelDTO.cs" />
     <Compile Include="DAL\DTO\ClientSelectedMealDTO.cs" />
+    <Compile Include="DAL\DTO\CommentDetailDTO.cs" />
+    <Compile Include="DAL\DTO\CommentDTO.cs" />
     <Compile Include="DAL\DTO\DietDetailDTO.cs" />
     <Compile Include="DAL\DTO\DietLogDTO.cs" />
     <Compile Include="DAL\DTO\MealDetailDTO.cs" />
@@ -239,13 +213,109 @@
     <Compile Include="DAL\WorkoutPreference.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StaticUser.cs" />
-    <Compile Include="ToDoFrms\FrmEntry.cs">
+    <Compile Include="FrmAddComment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmEntry.Designer.cs">
+    <Compile Include="FrmAddComment.Designer.cs">
+      <DependentUpon>FrmAddComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddWorkoutPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddWorkoutPreferences.Designer.cs">
+      <DependentUpon>FrmAddWorkoutPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddMember.Designer.cs">
+      <DependentUpon>FrmAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmComment.Designer.cs">
+      <DependentUpon>FrmComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntry.Designer.cs">
       <DependentUpon>FrmEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFood.Designer.cs">
+      <DependentUpon>FrmFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFresh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFresh.Designer.cs">
+      <DependentUpon>FrmFresh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGMap.Designer.cs">
+      <DependentUpon>FrmGMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMainPageold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainPageold.Designer.cs">
+      <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMealHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealHistory.Designer.cs">
+      <DependentUpon>FrmMealHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgress.Designer.cs">
+      <DependentUpon>FrmProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShoppingCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShoppingCart.Designer.cs">
+      <DependentUpon>FrmShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmToGo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmToGo.Designer.cs">
+      <DependentUpon>FrmToGo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUploadMealPic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUploadMealPic.Designer.cs">
+      <DependentUpon>FrmUploadMealPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkoutLogChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkoutLogChart.Designer.cs">
+      <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General.cs" />
     <Compile Include="FrmAddWorkoutLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +328,7 @@
     <Compile Include="FrmWorkoutLog.designer.cs">
       <DependentUpon>FrmWorkoutLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaticUser.cs" />
     <Compile Include="ToDoFrms\FrmGiftCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,22 +371,41 @@
     <Compile Include="ToDoFrms\FrmStartAProgram.Designer.cs">
       <DependentUpon>FrmStartAProgram.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutSuggestions.cs">
+    <Compile Include="FrmWorkoutSuggestions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ToDoFrms\FrmWorkoutSuggestions.Designer.cs">
+    <Compile Include="FrmWorkoutSuggestions.Designer.cs">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserStatic.cs" />
     <Compile Include="ViewModel\MyCircleProgress.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="FrmAddComment.resx">
+      <DependentUpon>FrmAddComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddWorkoutPreferences.resx">
+      <DependentUpon>FrmAddWorkoutPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddMember.resx">
+      <DependentUpon>FrmAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmComment.resx">
+      <DependentUpon>FrmComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntry.resx">
+      <DependentUpon>FrmEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFood.resx">
       <DependentUpon>FrmFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFresh.resx">
       <DependentUpon>FrmFresh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGMap.resx">
+      <DependentUpon>FrmGMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
@@ -344,9 +434,6 @@
     <EmbeddedResource Include="FrmWorkoutLogChart.resx">
       <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmEntry.resx">
-      <DependentUpon>FrmEntry.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmAddWorkoutLog.resx">
       <DependentUpon>FrmAddWorkoutLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,7 +461,7 @@
     <EmbeddedResource Include="ToDoFrms\FrmStartAProgram.resx">
       <DependentUpon>FrmStartAProgram.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ToDoFrms\FrmWorkoutSuggestions.resx">
+    <EmbeddedResource Include="FrmWorkoutSuggestions.resx">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -441,8 +528,8 @@
   <ItemGroup>
     <Content Include="DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.Context.cs</LastGenOutput>
+      <DependentUpon>HHModel.edmx</DependentUpon>
     </Content>
     <Content Include="DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -451,4 +538,14 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>

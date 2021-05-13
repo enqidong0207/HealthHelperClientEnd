@@ -1,8 +1,11 @@
-﻿using HHFirstDraft.DAL;
+﻿using GoogleApi.Entities.Places.Search.NearBy.Request;
+using GoogleApi.Entities.Places.Search.NearBy.Response;
+using HHFirstDraft.DAL;
 using HHFirstDraft.DAL.DAO;
 using HHFirstDraft.DAL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,11 +68,79 @@ namespace HHFirstDraft.BLL
             return dao.IsWorkoutExist(name);
         }
 
+        //恩旗
         public List<WorkoutDetailDTO> GetWorkoutByWCAL(int wcID = -1, int alID = -1)
         {
 
             return dao.GetWorkouts()
                 .Where(e => (wcID == -1 || e.CategoryID == wcID) && (alID == -1 || e.ActivityLevelID == alID)).ToList();
+        }
+
+        //恩旗
+        public string ToPlacesKeyword(string workout)
+        {
+            if (workout.Contains("跑")
+                || workout.Contains("步")
+                || workout.Contains("走")
+                || workout == "衝刺")
+            {
+                return "公園";
+            }
+            else if (workout.Contains("樓梯"))
+            {
+                return null;
+            }
+            else if (workout.Contains("騎"))
+            {
+                return "自行車道";
+            }
+            else if (workout.Contains("瑜珈"))
+            {
+                return workout;
+            }
+            else if (workout.Contains("舞蹈"))
+            {
+                return workout;
+            }
+            else if (workout.Contains("游"))
+            {
+                return "游泳池";
+            }
+            else if (workout.Contains("跳繩"))
+            {
+                return "公園";
+            }
+            else if (workout.Contains("球"))
+            {
+                return workout + "場";
+            }
+            else if (workout.Contains("有氧") || workout.Contains("飛輪"))
+            {
+                return "健身房";
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        //恩旗
+        internal Task<PlacesNearbySearchResponse> GetWorkoutPlaces(string keyword, GeoCoordinate coord)
+        {
+            PlacesNearBySearchRequest placeRequest = new PlacesNearBySearchRequest();
+            placeRequest.Key = "AIzaSyAE3Hi6N9QONHypztdZAvYkdTIOXdnzNE4";
+            placeRequest.Language = GoogleApi.Entities.Common.Enums.Language.ChineseTraditional;
+            placeRequest.Keyword = keyword;
+            placeRequest.Location = new Location(coord.Latitude, coord.Longitude);
+            placeRequest.Radius = 2000d;
+            return GoogleApi.GooglePlaces.NearBySearch.QueryAsync(placeRequest);
+        }
+
+        //恩旗
+        internal Workout GetWorkout(string name)
+        {
+            return dao.GetWorkout(name);
         }
     }
 }

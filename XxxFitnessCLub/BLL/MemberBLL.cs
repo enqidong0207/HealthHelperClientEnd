@@ -24,6 +24,18 @@ namespace HHFirstDraft.BLL
             dto.ActivityLevels = activityLevelDAO.GetLevels();
             return dto;
         }
+        public MemberDetailDTO GetMember(int ID)
+        {
+            MemberDetailDTO dto = new MemberDetailDTO();
+            dto = dao.GetMember(ID);
+            return dto;
+            
+        }
+        public int IsMemberExist(string name, string password)
+        {
+            return dao.IsMemberExist(name, password);
+        }
+
         public MemberDTO GetMembers(string keyword)
         {
             MemberDTO dto = new MemberDTO();
@@ -89,6 +101,27 @@ namespace HHFirstDraft.BLL
         public bool IsTaiwanIDExist(string text)
         {
             return dao.IsTaiwanIDExist(text);
+        }
+
+        //恩旗
+        public int AddMember(MemberDetailDTO entity)
+        {
+            Member member = new Member();
+            member.Name = entity.Name;
+            member.ID = entity.ID;
+            member.Phone = entity.Phone;
+            member.Email = entity.Email;
+            member.StatusID = entity.StatusID;
+            member.Birthdate = entity.Birthdate;
+            member.IsAdmin = entity.IsAdmin;
+            member.Password = entity.Password;
+            member.JoinDate = DateTime.Now;
+            member.Height = entity.Height;
+            member.Gender = entity.Gender;
+            member.TaiwanID = entity.TaiwanID;
+            member.StatusID = entity.StatusID;
+            member.ActivityLevelID = entity.ActivityLevelID;
+            return dao.AddMember(member);
         }
     }
 }
