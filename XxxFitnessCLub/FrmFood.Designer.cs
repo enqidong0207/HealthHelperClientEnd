@@ -1,4 +1,4 @@
-﻿namespace XxxFitnessCLub
+﻿namespace HHFirstDraft
 {
     partial class FrmFood
     {
@@ -220,7 +220,7 @@
             this.button3.Dock = System.Windows.Forms.DockStyle.Right;
             this.button3.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::XxxFitnessCLub.Properties.Resources.images;
+            this.button3.Image = global::HHFirstDraft.Properties.Resources.images;
             this.button3.Location = new System.Drawing.Point(532, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(268, 64);
@@ -233,7 +233,7 @@
             this.button2.Dock = System.Windows.Forms.DockStyle.Left;
             this.button2.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::XxxFitnessCLub.Properties.Resources.images;
+            this.button2.Image = global::HHFirstDraft.Properties.Resources.images;
             this.button2.Location = new System.Drawing.Point(268, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(265, 64);
@@ -246,7 +246,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
             this.button1.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::XxxFitnessCLub.Properties.Resources.MealRed;
+            this.button1.Image = global::HHFirstDraft.Properties.Resources.MealRed;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(268, 64);

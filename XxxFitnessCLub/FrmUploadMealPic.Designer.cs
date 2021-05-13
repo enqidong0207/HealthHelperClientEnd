@@ -1,4 +1,4 @@
-﻿namespace XxxFitnessCLub
+﻿namespace HHFirstDraft
 {
     partial class FrmUploadMealPic
     {
@@ -71,7 +71,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox1.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -82,7 +82,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox2.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox2.InitialImage = null;
             this.pictureBox2.Location = new System.Drawing.Point(260, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -93,7 +93,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox6.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox6.InitialImage = null;
             this.pictureBox6.Location = new System.Drawing.Point(517, 3);
             this.pictureBox6.Name = "pictureBox6";
@@ -104,7 +104,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox4.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox4.InitialImage = null;
             this.pictureBox4.Location = new System.Drawing.Point(3, 225);
             this.pictureBox4.Name = "pictureBox4";
@@ -140,7 +140,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox3.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox3.InitialImage = null;
             this.pictureBox3.Location = new System.Drawing.Point(664, 225);
             this.pictureBox3.Name = "pictureBox3";
@@ -151,7 +151,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox7.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox7.InitialImage = null;
             this.pictureBox7.Location = new System.Drawing.Point(3, 519);
             this.pictureBox7.Name = "pictureBox7";
@@ -162,7 +162,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox8.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox8.InitialImage = null;
             this.pictureBox8.Location = new System.Drawing.Point(260, 519);
             this.pictureBox8.Name = "pictureBox8";
@@ -173,7 +173,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::XxxFitnessCLub.Properties.Resources.chartRef;
+            this.pictureBox9.Image = global::HHFirstDraft.Properties.Resources.chartRef;
             this.pictureBox9.InitialImage = null;
             this.pictureBox9.Location = new System.Drawing.Point(665, 519);
             this.pictureBox9.Name = "pictureBox9";

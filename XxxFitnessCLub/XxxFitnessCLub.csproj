@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,8 +59,13 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\DAO\DietLogDAO.cs" />
+    <Compile Include="DAL\DAO\TimesOfDayDAO.cs" />
     <Compile Include="FrmFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +95,18 @@
     </Compile>
     <Compile Include="FrmMainPageold.Designer.cs">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMealHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealHistory.Designer.cs">
+      <DependentUpon>FrmMealHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMealInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMealInfo.Designer.cs">
+      <DependentUpon>FrmMealInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProgress.cs">
       <SubType>Form</SubType>
@@ -118,106 +138,114 @@
     <Compile Include="FrmWorkoutLogChart.Designer.cs">
       <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BLL\ActivityLevelBLL.cs" />
-    <Compile Include="Model\BLL\MealBLL.cs" />
-    <Compile Include="Model\BLL\MemberBLL.cs" />
-    <Compile Include="Model\BLL\TagCategoryBLL.cs" />
-    <Compile Include="Model\BLL\WorkoutBLL.cs" />
-    <Compile Include="Model\BLL\WorkoutCategoryBLL.cs" />
-    <Compile Include="Model\BLL\WorkoutLogBLL.cs" />
-    <Compile Include="Model\DAL\ActivityLevel.cs">
+    <Compile Include="BLL\ActivityLevelBLL.cs" />
+    <Compile Include="BLL\DietLogBLL.cs" />
+    <Compile Include="BLL\MealBLL.cs" />
+    <Compile Include="BLL\MemberBLL.cs" />
+    <Compile Include="BLL\TagCategoryBLL.cs" />
+    <Compile Include="BLL\TempFakeUser.cs" />
+    <Compile Include="BLL\TimesOfDayBLL .cs" />
+    <Compile Include="BLL\WorkoutBLL.cs" />
+    <Compile Include="BLL\WorkoutCategoryBLL.cs" />
+    <Compile Include="BLL\WorkoutLogBLL.cs" />
+    <Compile Include="DAL\ActivityLevel.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\Comment.cs">
+    <Compile Include="DAL\Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\CommentCategory.cs">
+    <Compile Include="DAL\CommentCategory.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\DAO\ActivityLevelDAO.cs" />
-    <Compile Include="Model\DAL\DAO\HHContext.cs" />
-    <Compile Include="Model\DAL\DAO\MealDAO.cs" />
-    <Compile Include="Model\DAL\DAO\MemberDAO.cs" />
-    <Compile Include="Model\DAL\DAO\StatusDAO.cs" />
-    <Compile Include="Model\DAL\DAO\TagCategoryDAO.cs" />
-    <Compile Include="Model\DAL\DAO\WorkoutCategoryDAO.cs" />
-    <Compile Include="Model\DAL\DAO\WorkoutDAO.cs" />
-    <Compile Include="Model\DAL\DAO\WorkoutLogDAO.cs" />
-    <Compile Include="Model\DAL\DietLog.cs">
+    <Compile Include="DAL\DAO\ActivityLevelDAO.cs" />
+    <Compile Include="DAL\DAO\HHContext.cs" />
+    <Compile Include="DAL\DAO\MealDAO.cs" />
+    <Compile Include="DAL\DAO\MemberDAO.cs" />
+    <Compile Include="DAL\DAO\StatusDAO.cs" />
+    <Compile Include="DAL\DAO\TagCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutCategoryDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutDAO.cs" />
+    <Compile Include="DAL\DAO\WorkoutLogDAO.cs" />
+    <Compile Include="DAL\DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\DTO\ActivityLevelDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\ActivityLevelDTO.cs" />
-    <Compile Include="Model\DAL\DTO\MealDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\MealDTO.cs" />
-    <Compile Include="Model\DAL\DTO\MemberDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\MemberDTO.cs" />
-    <Compile Include="Model\DAL\DTO\StatusDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\StatusDTO.cs" />
-    <Compile Include="Model\DAL\DTO\TagCategoryDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\TagCategoryDTO.cs" />
-    <Compile Include="Model\DAL\DTO\WorkoutCategoryDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\WorkoutCategoryDTO.cs" />
-    <Compile Include="Model\DAL\DTO\WorkoutDetailDTO.cs" />
-    <Compile Include="Model\DAL\DTO\WorkoutDTO.cs" />
-    <Compile Include="Model\DAL\DTO\WorkoutLogDTO.cs" />
-    <Compile Include="Model\DAL\HHModel.Context.cs">
+    <Compile Include="DAL\DTO\ActivityLevelDetailDTO.cs" />
+    <Compile Include="DAL\DTO\ActivityLevelDTO.cs" />
+    <Compile Include="DAL\DTO\ClientSelectedMealDTO.cs" />
+    <Compile Include="DAL\DTO\DietDetailDTO.cs" />
+    <Compile Include="DAL\DTO\DietLogDTO.cs" />
+    <Compile Include="DAL\DTO\MealDetailDTO.cs" />
+    <Compile Include="DAL\DTO\MealDTO.cs" />
+    <Compile Include="DAL\DTO\MemberDetailDTO.cs" />
+    <Compile Include="DAL\DTO\MemberDTO.cs" />
+    <Compile Include="DAL\DTO\StatusDetailDTO.cs" />
+    <Compile Include="DAL\DTO\StatusDTO.cs" />
+    <Compile Include="DAL\DTO\TagCategoryDetailDTO.cs" />
+    <Compile Include="DAL\DTO\TagCategoryDTO.cs" />
+    <Compile Include="DAL\DTO\TimeOfDayDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutCategoryDetailDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutCategoryDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutDetailDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutDTO.cs" />
+    <Compile Include="DAL\DTO\WorkoutLogDTO.cs" />
+    <Compile Include="DAL\HHModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\HHModel.cs">
+    <Compile Include="DAL\HHModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\HHModel.Designer.cs">
+    <Compile Include="DAL\HHModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HHModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\LikedMeal.cs">
+    <Compile Include="DAL\LikedMeal.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\MealOption.cs">
+    <Compile Include="DAL\MealOption.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\MealTag.cs">
+    <Compile Include="DAL\MealTag.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\MealTagCategory.cs">
+    <Compile Include="DAL\MealTagCategory.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\Member.cs">
+    <Compile Include="DAL\Member.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\Nutrient.cs">
+    <Compile Include="DAL\Nutrient.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\Status.cs">
+    <Compile Include="DAL\Status.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\sysdiagram.cs">
+    <Compile Include="DAL\sysdiagram.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\TimesOfDay.cs">
+    <Compile Include="DAL\TimesOfDay.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\WeightLog.cs">
+    <Compile Include="DAL\WeightLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\Workout.cs">
+    <Compile Include="DAL\Workout.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\WorkoutCategory.cs">
+    <Compile Include="DAL\WorkoutCategory.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\WorkoutLog.cs">
+    <Compile Include="DAL\WorkoutLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\DAL\WorkoutPreference.cs">
+    <Compile Include="DAL\WorkoutPreference.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StaticUser.cs" />
     <Compile Include="ToDoFrms\FrmEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +314,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\MyCircleProgress.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="FrmFood.resx">
       <DependentUpon>FrmFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainPageold.resx">
       <DependentUpon>FrmMainPageold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMealHistory.resx">
+      <DependentUpon>FrmMealHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMealInfo.resx">
+      <DependentUpon>FrmMealInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProgress.resx">
       <DependentUpon>FrmProgress.cs</DependentUpon>
@@ -359,11 +396,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Model\DAL\HHModel.edmx">
+    <EntityDeploy Include="DAL\HHModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HHModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\DAL\HHModel.edmx.diagram">
+    <None Include="DAL\HHModel.edmx.diagram">
       <DependentUpon>HHModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -411,12 +448,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\DAL\HHModel.Context.tt">
+    <Content Include="DAL\HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\DAL\HHModel.tt">
+    <Content Include="DAL\HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.cs</LastGenOutput>
