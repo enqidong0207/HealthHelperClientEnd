@@ -1,12 +1,12 @@
-﻿using System;
+﻿using HHFirstDraft.DAL.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XxxFitnessCLub.DAL;
-using XxxFitnessCLub.DAL.DAO;
 
-namespace XxxFitnessCLub.BLL
+namespace HHFirstDraft.BLL
 {
     //恩旗
     class WorkoutPreferencesBLL

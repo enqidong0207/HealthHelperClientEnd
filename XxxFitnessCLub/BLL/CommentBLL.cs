@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XxxFitnessCLub.DAL;
-using XxxFitnessCLub.DAL.DAO;
-using XxxFitnessCLub.DAL.DTO;
 
-namespace XxxFitnessCLub.BLL
+namespace HHFirstDraft.BLL
 {
     public class CommentBLL
     {

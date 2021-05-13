@@ -1,12 +1,13 @@
 ﻿using HHFirstDraft.DAL.DAO;
+using HHFirstDraft.DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XxxFitnessCLub.DAL.DTO;
+using XxxFitnessCLub.DAL;
 
-namespace XxxFitnessCLub.DAL.DAO
+namespace HHFirstDraft.DAL.DAO
 {
     class CommentDAO : HHContext
     {

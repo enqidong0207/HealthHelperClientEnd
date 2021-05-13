@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub.DAL;
 
-namespace XxxFitnessCLub.DAL.DAO
+namespace HHFirstDraft.DAL.DAO
 {
     //恩旗
     class WorkoutPreferencesDAO : HHContext
