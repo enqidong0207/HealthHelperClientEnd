@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace XxxFitnessCLub
+namespace HHFirstDraft
 {
     //恩旗
     public partial class FrmWorkoutLogChart : Form

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace HHFirstDraft.DAL.DTO
 {
-    public class MealDetailDTO
+    public class TimeOfDayDTO
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public byte[] Image { get; set; }
-        public double Calories { get; set; }
-        public List<TagCategoryDetailDTO> Tags { get; set; }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace XxxFitnessCLub
+namespace HHFirstDraft
 {
     partial class FrmWorkoutLogChart
     {

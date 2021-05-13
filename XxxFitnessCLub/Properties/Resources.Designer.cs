@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XxxFitnessCLub.Properties {
+namespace HHFirstDraft.Properties {
     using System;
     
     
