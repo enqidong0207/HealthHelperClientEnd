@@ -10,7 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using XxxFitnessCLub.Model.DAL;
+using XxxFitnessCLub.DAL;
+
 
 namespace HHFirstDraft
 {

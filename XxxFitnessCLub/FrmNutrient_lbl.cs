@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using XxxFitnessCLub.Model.BLL;
-using XxxFitnessCLub.Model.DAL.DTO;
+using HHFirstDraft.BLL;
+using HHFirstDraft.DAL.DTO;
 
 namespace XxxFitnessCLub
 {
