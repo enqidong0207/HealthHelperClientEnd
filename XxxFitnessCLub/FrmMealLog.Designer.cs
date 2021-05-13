@@ -203,7 +203,6 @@ namespace HHFirstDraft
             // 
             // pBoxMeal
             // 
-            this.pBoxMeal.Image = global::HHFirstDraft.Properties.Resources.images;
             this.pBoxMeal.Location = new System.Drawing.Point(28, 51);
             this.pBoxMeal.Name = "pBoxMeal";
             this.pBoxMeal.Size = new System.Drawing.Size(250, 166);
@@ -561,7 +560,9 @@ namespace HHFirstDraft
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMealLog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMealLog";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.FrmMealLog_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

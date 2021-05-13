@@ -103,7 +103,6 @@ namespace HHFirstDraft
             this.btnMealPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMealPage.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
             this.btnMealPage.ForeColor = System.Drawing.Color.White;
-            this.btnMealPage.Image = global::HHFirstDraft.Properties.Resources.MealRed;
             this.btnMealPage.Location = new System.Drawing.Point(10, 10);
             this.btnMealPage.Margin = new System.Windows.Forms.Padding(10);
             this.btnMealPage.Name = "btnMealPage";
@@ -118,7 +117,6 @@ namespace HHFirstDraft
             this.btnWorkoutLogPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnWorkoutLogPage.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWorkoutLogPage.ForeColor = System.Drawing.Color.White;
-            this.btnWorkoutLogPage.Image = global::HHFirstDraft.Properties.Resources.螢幕擷取畫面_2021_05_02_204709;
             this.btnWorkoutLogPage.Location = new System.Drawing.Point(404, 10);
             this.btnWorkoutLogPage.Margin = new System.Windows.Forms.Padding(10);
             this.btnWorkoutLogPage.Name = "btnWorkoutLogPage";
@@ -133,7 +131,6 @@ namespace HHFirstDraft
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::HHFirstDraft.Properties.Resources.images;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button2.Location = new System.Drawing.Point(798, 10);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
@@ -173,7 +170,6 @@ namespace HHFirstDraft
             this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button5.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::HHFirstDraft.Properties.Resources.scale_lose_weight_2_1080x6751;
             this.button5.Location = new System.Drawing.Point(0, 0);
             this.button5.Margin = new System.Windows.Forms.Padding(10);
             this.button5.Name = "button5";

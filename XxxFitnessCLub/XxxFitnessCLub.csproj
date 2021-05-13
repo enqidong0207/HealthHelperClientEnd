@@ -102,12 +102,6 @@
     <Compile Include="FrmMealHistory.Designer.cs">
       <DependentUpon>FrmMealHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMealInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmMealInfo.Designer.cs">
-      <DependentUpon>FrmMealInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,9 +328,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMealHistory.resx">
       <DependentUpon>FrmMealHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmMealInfo.resx">
-      <DependentUpon>FrmMealInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProgress.resx">
       <DependentUpon>FrmProgress.cs</DependentUpon>
