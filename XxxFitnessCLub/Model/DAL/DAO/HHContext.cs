@@ -9,6 +9,6 @@ namespace HHFirstDraft.DAL.DAO
 {
     public class HHContext
     {
-        public HealthManagementEntities db = new HealthManagementEntities(); 
+        public HealthManagement0511Entities2 db = new HealthManagement0511Entities2(); 
     }
 }

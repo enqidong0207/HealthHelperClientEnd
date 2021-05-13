@@ -124,5 +124,19 @@ namespace XxxFitnessCLub
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmNutrient_lbl frm = new FrmNutrient_lbl();
+          
+            frm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+                FrmAllNutrientOfDay frm = new FrmAllNutrientOfDay();
+
+            frm.Show();
+        }
     }
 }

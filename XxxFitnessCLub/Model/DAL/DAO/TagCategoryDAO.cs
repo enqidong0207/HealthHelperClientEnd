@@ -56,7 +56,7 @@ namespace HHFirstDraft.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.Name = item.Name;
                 dto.ID = item.ID;
-                dto.Calories = item.Calories;
+                dto.Calories =Convert.ToInt32( item.Calories);
                 dtoList.Add(dto);
             }
             return dtoList;

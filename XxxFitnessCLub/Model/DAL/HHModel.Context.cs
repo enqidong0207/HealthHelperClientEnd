@@ -13,10 +13,10 @@ namespace XxxFitnessCLub.Model.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HealthManagementEntities : DbContext
+    public partial class HealthManagement0511Entities2 : DbContext
     {
-        public HealthManagementEntities()
-            : base("name=HealthManagementEntities")
+        public HealthManagement0511Entities2()
+            : base("name=HealthManagement0511Entities2")
         {
         }
     
@@ -26,6 +26,7 @@ namespace XxxFitnessCLub.Model.DAL
         }
     
         public virtual DbSet<ActivityLevel> ActivityLevels { get; set; }
+        public virtual DbSet<CommentCategory> CommentCategories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<DietDetail> DietDetails { get; set; }
         public virtual DbSet<DietLog> DietLogs { get; set; }

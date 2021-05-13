@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XxxFitnessCLub.Model.BLL;
 using XxxFitnessCLub.Model.DAL.DTO;
 
 namespace XxxFitnessCLub.Model.DAL.DAO
@@ -31,7 +32,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
             dto.VitD = (float)nutrient.VitD;
             dto.VitE = (float)nutrient.VitE;
             dto.Na = (float)nutrient.Na;
-            dto.K = (float)nutrient.K;
+            dto.K = (float)nutrient.Calcium;
 
 
             return dto;
@@ -82,8 +83,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -94,7 +94,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -105,8 +105,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -117,7 +116,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -128,8 +127,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -140,7 +138,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -151,8 +149,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -163,7 +160,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -174,8 +171,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -186,7 +182,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -197,8 +193,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -209,7 +204,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -220,8 +215,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -232,7 +226,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -243,8 +237,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -255,7 +248,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -266,8 +259,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -278,7 +270,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
@@ -289,8 +281,7 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -301,19 +292,18 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
             else if (text == "鉀")
             {
-                var list = db.MealOptions.OrderByDescending(x => x.Nutrient.K).Take(5).ToList();
+                var list = db.MealOptions.OrderByDescending(x => x.Nutrient.Calcium).Take(5).ToList();
                 foreach (var item in list)
                 {
                     MealDetailDTO dto = new MealDetailDTO();
                     dto.Name = item.Name;
-                    dto.Calories = item.Calories;
-                    dto.Fat = (float)item.Nutrient.Fat;
+                    dto.Calories = Convert.ToInt32(item.Calories);
                     dto.Fat = (float)item.Nutrient.Fat;
                     dto.Protein = (float)item.Nutrient.Protein;
                     dto.Carbs = (float)item.Nutrient.Carbs;
@@ -324,13 +314,44 @@ namespace XxxFitnessCLub.Model.DAL.DAO
                     dto.VitD = (float)item.Nutrient.VitD;
                     dto.VitE = (float)item.Nutrient.VitE;
                     dto.Na = (float)item.Nutrient.Na;
-                    dto.K = (float)item.Nutrient.K;
+                    dto.K = (float)item.Nutrient.Calcium;
                     dtolist.Add(dto);
                 }
             }
             return dtolist;
         }
 
+
+        public List<MealDetailDTO> Nutrient_Of_AllDay(int id)//NutrientID
+        {
+            var list = db.MealOptions.Where(x => x.Nutrient.ID == id);
+            List<MealDetailDTO> dtoList = new List<MealDetailDTO>();
+            foreach (var item in list)
+            {
+                NutrientBLL nutrientBLL = new NutrientBLL();
+                MealDetailDTO dto = new MealDetailDTO();
+                dto.ID = item.ID;
+                dto.Name = item.Name;
+                dto.Calories = Convert.ToInt32(item.Calories);
+                dto.Image = item.Image;
+                dto.Nutrient = nutrientBLL.GetNutrient(dto.ID);
+                dto.NutrientID = dto.Nutrient.ID;
+                dto.Fat = dto.Nutrient.Fat;
+                dto.Protein = dto.Nutrient.Protein;
+                dto.Carbs = dto.Nutrient.Carbs;
+                dto.Sugar = dto.Nutrient.Sugar;
+                dto.VitA = dto.Nutrient.VitA;
+                dto.VitB = dto.Nutrient.VitB;
+                dto.VitC = dto.Nutrient.VitC;
+                dto.VitD = dto.Nutrient.VitD;
+                dto.VitE = dto.Nutrient.VitE;
+                dto.Na = dto.Nutrient.Na;
+                dto.K = dto.Nutrient.K;
+                dtoList.Add(dto);
+            }
+            
+            return dtoList;
+        }
     }
 }
 

@@ -25,6 +25,7 @@ namespace HHFirstDraft.BLL
             MealOption meal = new MealOption();
             meal.Name = entity.Name;
             meal.Calories = entity.Calories;
+            meal.Image = entity.Image;
             return dao.Add(meal);
         }
 
@@ -39,6 +40,7 @@ namespace HHFirstDraft.BLL
             meal.ID = entity.ID;
             meal.Name = entity.Name;
             meal.Calories = entity.Calories;
+            meal.Image = entity.Image;
             dao.Update(meal);
         }
 

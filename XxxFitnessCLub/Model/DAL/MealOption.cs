@@ -24,7 +24,7 @@ namespace XxxFitnessCLub.Model.DAL
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Calories { get; set; }
+        public double Calories { get; set; }
         public byte[] Image { get; set; }
         public Nullable<int> NutrientID { get; set; }
     

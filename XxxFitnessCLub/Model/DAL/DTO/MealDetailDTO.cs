@@ -13,6 +13,7 @@ namespace HHFirstDraft.DAL.DTO
         public string Name { get; set; }
         public int Calories { get; set; }
         public List<TagCategoryDetailDTO> Tags { get; set; }
+        public byte[] Image { get; set; }
         public NutrientDTO Nutrient { get; set; }
 
         public int NutrientID { get; set; }

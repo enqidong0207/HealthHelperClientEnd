@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAllNutrientOfDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAllNutrientOfDay.Designer.cs">
+      <DependentUpon>FrmAllNutrientOfDay.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFood.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="FrmNutrient.Designer.cs">
       <DependentUpon>FrmNutrient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNutrient_lbl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNutrient_lbl.Designer.cs">
+      <DependentUpon>FrmNutrient_lbl.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProgress.cs">
       <SubType>Form</SubType>
@@ -138,7 +150,11 @@
     <Compile Include="Model\DAL\Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DAL\CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DAL\DAO\ActivityLevelDAO.cs" />
+    <Compile Include="Model\DAL\DAO\DietDetailDAO.cs" />
     <Compile Include="Model\DAL\DAO\HHContext.cs" />
     <Compile Include="Model\DAL\DAO\MealDAO.cs" />
     <Compile Include="Model\DAL\DAO\MemberDAO.cs" />
@@ -156,6 +172,8 @@
     </Compile>
     <Compile Include="Model\DAL\DTO\ActivityLevelDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\ActivityLevelDTO.cs" />
+    <Compile Include="Model\DAL\DTO\DietDetailsDTO.cs" />
+    <Compile Include="Model\DAL\DTO\DietLogDTO.cs" />
     <Compile Include="Model\DAL\DTO\MealDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\MealDTO.cs" />
     <Compile Include="Model\DAL\DTO\MemberDetailDTO.cs" />
@@ -165,6 +183,7 @@
     <Compile Include="Model\DAL\DTO\StatusDTO.cs" />
     <Compile Include="Model\DAL\DTO\TagCategoryDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\TagCategoryDTO.cs" />
+    <Compile Include="Model\DAL\DTO\TimesOfDayDTO.cs" />
     <Compile Include="Model\DAL\DTO\WorkoutCategoryDetailDTO.cs" />
     <Compile Include="Model\DAL\DTO\WorkoutCategoryDTO.cs" />
     <Compile Include="Model\DAL\DTO\WorkoutDetailDTO.cs" />
@@ -292,6 +311,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAllNutrientOfDay.resx">
+      <DependentUpon>FrmAllNutrientOfDay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFood.resx">
       <DependentUpon>FrmFood.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNutrient.resx">
       <DependentUpon>FrmNutrient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNutrient_lbl.resx">
+      <DependentUpon>FrmNutrient_lbl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProgress.resx">
       <DependentUpon>FrmProgress.cs</DependentUpon>

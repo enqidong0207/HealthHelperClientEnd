@@ -4,13 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HealthManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="HealthManagement0511Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityLevels">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -24,6 +31,7 @@
           <Property Name="IsApproved" Type="bit" Nullable="false" />
           <Property Name="MealOptionID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
         </EntityType>
         <EntityType Name="DietDetails">
           <Key>
@@ -49,7 +57,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Calories" Type="int" Nullable="false" />
+          <Property Name="Calories" Type="float" Nullable="false" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="NutrientID" Type="int" />
         </EntityType>
@@ -102,7 +110,9 @@
           <Property Name="VitD" Type="float" Nullable="false" />
           <Property Name="VitE" Type="float" Nullable="false" />
           <Property Name="Na" Type="float" Nullable="false" />
-          <Property Name="K" Type="float" Nullable="false" />
+          <Property Name="Potassium" Type="float" />
+          <Property Name="Calcium" Type="float" />
+          <Property Name="Iron" Type="float" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -172,6 +182,18 @@
           <Property Name="Calories" Type="float" Nullable="false" />
           <Property Name="ActivityLevelID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Comments_CommentCategories">
+          <End Role="CommentCategories" Type="Self.CommentCategories" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comments_MealOptions">
           <End Role="MealOptions" Type="Self.MealOptions" Multiplicity="1" />
           <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
@@ -388,8 +410,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HealthManagementModelStoreContainer">
+        <EntityContainer Name="HealthManagement0511ModelStoreContainer">
           <EntitySet Name="ActivityLevels" EntityType="Self.ActivityLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentCategories" EntityType="Self.CommentCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DietDetails" EntityType="Self.DietDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DietLog" EntityType="Self.DietLog" Schema="dbo" store:Type="Tables" />
@@ -406,6 +429,10 @@
           <EntitySet Name="WorkoutLog" EntityType="Self.WorkoutLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkoutPreferences" EntityType="Self.WorkoutPreferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Workouts" EntityType="Self.Workouts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Comments_CommentCategories" Association="Self.FK_Comments_CommentCategories">
+            <End Role="CommentCategories" EntitySet="CommentCategories" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_MealOptions" Association="Self.FK_Comments_MealOptions">
             <End Role="MealOptions" EntitySet="MealOptions" />
             <End Role="Comments" EntitySet="Comments" />
@@ -483,7 +510,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HealthManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HealthManagement0511Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ActivityLevel">
           <Key>
             <PropertyRef Name="ID" />
@@ -492,6 +519,14 @@
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Members" Relationship="Self.FK_Members_ActivityLevels" FromRole="ActivityLevels" ToRole="Members" />
           <NavigationProperty Name="Workouts" Relationship="Self.FK_Workouts_ActivityLevels" FromRole="ActivityLevels" ToRole="Workouts" />
+        </EntityType>
+        <EntityType Name="CommentCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_CommentCategories" FromRole="CommentCategories" ToRole="Comments" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -505,6 +540,8 @@
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="MealOptionID" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="CommentCategory" Relationship="Self.FK_Comments_CommentCategories" FromRole="Comments" ToRole="CommentCategories" />
           <NavigationProperty Name="MealOption" Relationship="Self.FK_Comments_MealOptions" FromRole="Comments" ToRole="MealOptions" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Comments_Members" FromRole="Comments" ToRole="Members" />
         </EntityType>
@@ -537,7 +574,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Calories" Type="Int32" Nullable="false" />
+          <Property Name="Calories" Type="Double" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NutrientID" Type="Int32" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_MealOptions" FromRole="MealOptions" ToRole="Comments" />
@@ -604,7 +641,9 @@
           <Property Name="VitD" Type="Double" Nullable="false" />
           <Property Name="VitE" Type="Double" Nullable="false" />
           <Property Name="Na" Type="Double" Nullable="false" />
-          <Property Name="K" Type="Double" Nullable="false" />
+          <Property Name="Potassium" Type="Double" />
+          <Property Name="Calcium" Type="Double" />
+          <Property Name="Iron" Type="Double" />
           <NavigationProperty Name="MealOptions" Relationship="Self.FK_MealOptions_Nutrient" FromRole="Nutrient" ToRole="MealOptions" />
         </EntityType>
         <EntityType Name="Status">
@@ -708,6 +747,18 @@
             </Principal>
             <Dependent Role="Workouts">
               <PropertyRef Name="ActivityLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_CommentCategories">
+          <End Role="CommentCategories" Type="Self.CommentCategory" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentCategories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -903,8 +954,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HealthManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HealthManagement0511Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActivityLevels" EntityType="Self.ActivityLevel" />
+          <EntitySet Name="CommentCategories" EntityType="Self.CommentCategory" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="DietDetails" EntityType="Self.DietDetail" />
           <EntitySet Name="DietLogs" EntityType="Self.DietLog" />
@@ -928,6 +980,10 @@
           <AssociationSet Name="FK_Workouts_ActivityLevels" Association="Self.FK_Workouts_ActivityLevels">
             <End Role="ActivityLevels" EntitySet="ActivityLevels" />
             <End Role="Workouts" EntitySet="Workouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_CommentCategories" Association="Self.FK_Comments_CommentCategories">
+            <End Role="CommentCategories" EntitySet="CommentCategories" />
+            <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
           <AssociationSet Name="FK_Comments_MealOptions" Association="Self.FK_Comments_MealOptions">
             <End Role="MealOptions" EntitySet="MealOptions" />
@@ -999,17 +1055,25 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HealthManagementModelStoreContainer" CdmEntityContainer="HealthManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="HealthManagement0511ModelStoreContainer" CdmEntityContainer="HealthManagement0511Entities2">
           <EntitySetMapping Name="ActivityLevels">
-            <EntityTypeMapping TypeName="HealthManagementModel.ActivityLevel">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.ActivityLevel">
               <MappingFragment StoreEntitySet="ActivityLevels">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CommentCategories">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.CommentCategory">
+              <MappingFragment StoreEntitySet="CommentCategories">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="HealthManagementModel.Comment">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.Comment">
               <MappingFragment StoreEntitySet="Comments">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1019,11 +1083,12 @@
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="MealOptionID" ColumnName="MealOptionID" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DietDetails">
-            <EntityTypeMapping TypeName="HealthManagementModel.DietDetail">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.DietDetail">
               <MappingFragment StoreEntitySet="DietDetails">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DietLogID" ColumnName="DietLogID" />
@@ -1033,7 +1098,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DietLogs">
-            <EntityTypeMapping TypeName="HealthManagementModel.DietLog">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.DietLog">
               <MappingFragment StoreEntitySet="DietLog">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
@@ -1043,7 +1108,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MealOptions">
-            <EntityTypeMapping TypeName="HealthManagementModel.MealOption">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.MealOption">
               <MappingFragment StoreEntitySet="MealOptions">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1054,7 +1119,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MealTagCategories">
-            <EntityTypeMapping TypeName="HealthManagementModel.MealTagCategory">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.MealTagCategory">
               <MappingFragment StoreEntitySet="MealTagCategories">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1062,7 +1127,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MealTags">
-            <EntityTypeMapping TypeName="HealthManagementModel.MealTag">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.MealTag">
               <MappingFragment StoreEntitySet="MealTags">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MealOptionID" ColumnName="MealOptionID" />
@@ -1071,7 +1136,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Members">
-            <EntityTypeMapping TypeName="HealthManagementModel.Member">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.Member">
               <MappingFragment StoreEntitySet="Members">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TaiwanID" ColumnName="TaiwanID" />
@@ -1091,7 +1156,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nutrients">
-            <EntityTypeMapping TypeName="HealthManagementModel.Nutrient">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.Nutrient">
               <MappingFragment StoreEntitySet="Nutrient">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Fat" ColumnName="Fat" />
@@ -1104,12 +1169,14 @@
                 <ScalarProperty Name="VitD" ColumnName="VitD" />
                 <ScalarProperty Name="VitE" ColumnName="VitE" />
                 <ScalarProperty Name="Na" ColumnName="Na" />
-                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="Potassium" ColumnName="Potassium" />
+                <ScalarProperty Name="Calcium" ColumnName="Calcium" />
+                <ScalarProperty Name="Iron" ColumnName="Iron" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="HealthManagementModel.Status">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1117,7 +1184,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="HealthManagementModel.sysdiagram">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1128,7 +1195,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TimesOfDays">
-            <EntityTypeMapping TypeName="HealthManagementModel.TimesOfDay">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.TimesOfDay">
               <MappingFragment StoreEntitySet="TimesOfDay">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1136,7 +1203,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WeightLogs">
-            <EntityTypeMapping TypeName="HealthManagementModel.WeightLog">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.WeightLog">
               <MappingFragment StoreEntitySet="WeightLog">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
@@ -1146,7 +1213,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorkoutCategories">
-            <EntityTypeMapping TypeName="HealthManagementModel.WorkoutCategory">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.WorkoutCategory">
               <MappingFragment StoreEntitySet="WorkoutCategories">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1154,7 +1221,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorkoutLogs">
-            <EntityTypeMapping TypeName="HealthManagementModel.WorkoutLog">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.WorkoutLog">
               <MappingFragment StoreEntitySet="WorkoutLog">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
@@ -1165,7 +1232,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WorkoutPreferences">
-            <EntityTypeMapping TypeName="HealthManagementModel.WorkoutPreference">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.WorkoutPreference">
               <MappingFragment StoreEntitySet="WorkoutPreferences">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MemberID" ColumnName="MemberID" />
@@ -1174,7 +1241,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Workouts">
-            <EntityTypeMapping TypeName="HealthManagementModel.Workout">
+            <EntityTypeMapping TypeName="HealthManagement0511Model.Workout">
               <MappingFragment StoreEntitySet="Workouts">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="WorkoutCategoryID" ColumnName="WorkoutCategoryID" />

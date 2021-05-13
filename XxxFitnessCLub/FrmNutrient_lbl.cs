@@ -10,26 +10,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XxxFitnessCLub.Model.BLL;
-using XxxFitnessCLub.Model.DAL.DAO;
 using XxxFitnessCLub.Model.DAL.DTO;
 
 namespace XxxFitnessCLub
 {
-    public partial class FrmNutrient : Form
+    public partial class FrmNutrient_lbl : Form
     {
-        public FrmNutrient()
+        public FrmNutrient_lbl()
         {
             InitializeComponent();
         }
-
+        NutrientBLL bll = new NutrientBLL();
+        public NutrientDTO dto = new NutrientDTO();
+        public MealDetailDTO detail = new MealDetailDTO();
+        public int selectNutrientID;
         string keyword;
         bool isSearch = false;
-        private void selectTextbox_TextChanged(object sender, EventArgs e)
-        {
-            keyword = selectTextbox.Text;
-            isSearch = true;
-            ShowNutrient();
-        }
         MealBLL mbll = new MealBLL();
         public void ShowNutrient()
         {
@@ -40,7 +36,7 @@ namespace XxxFitnessCLub
             //dto = mbll.GetMeals();
             if (isSearch) dto = mbll.GetMeals(keyword);
             else dto = mbll.GetMeals();
-            
+
             dataGridView1.DataSource = dto.Meals;
             dataGridView1.Columns["ID"].Visible = false;
             dataGridView1.Columns["Name"].HeaderText = "食物名稱";
@@ -63,55 +59,24 @@ namespace XxxFitnessCLub
 
         }
 
-        private void FrmNutrient_Load(object sender, EventArgs e)
+        private void FrmNutrient_lbl_Load(object sender, EventArgs e)
         {
             ShowNutrient();
-            NutrientComboBox_Load();
-        }
-        MealDetailDTO dto = new MealDetailDTO();
-        
-        private void NutrientComboBox_Load()
-        {
-            NutrientComboBox.Items.Add("脂肪");
-            NutrientComboBox.Items.Add("蛋白質");
-            NutrientComboBox.Items.Add("碳水化合物");
-            NutrientComboBox.Items.Add("醣");
-            NutrientComboBox.Items.Add("維生素A");
-            NutrientComboBox.Items.Add("維生素B");
-            NutrientComboBox.Items.Add("維生素C");
-            NutrientComboBox.Items.Add("維生素D");
-            NutrientComboBox.Items.Add("維生素E");
-            NutrientComboBox.Items.Add("鈉");
-            NutrientComboBox.Items.Add("鉀");
-        }
-        NutrientDAO dao = new NutrientDAO();
-        NutrientBLL bll = new NutrientBLL();
-        //public void button2_Click(object sender, EventArgs e)
-        //{
-        //    string ComboBox_select = NutrientComboBox.SelectedItem.ToString();
-
-        //    dataGridView1.DataSource = bll.selectNutrient(ComboBox_select);
-        //}
-
-        private void NutrientComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string ComboBox_select = NutrientComboBox.SelectedItem.ToString();
-
-            dataGridView1.DataSource = bll.selectNutrient(ComboBox_select);
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            byte[] bytes = (byte[])dataGridView1.Rows[e.RowIndex].Cells["Image"].Value;
-            if (bytes != null)
-            {
-                System.IO.MemoryStream ms = new System.IO.MemoryStream(bytes);
-                pictureBox1.Image = Image.FromStream(ms);
-            }
-            else
-            {
-                pictureBox1.Image = null;
-            }
+            lblFat.Text = dataGridView1.Rows[e.RowIndex].Cells["Fat"].Value.ToString();
+            lblPrtein.Text = dataGridView1.Rows[e.RowIndex].Cells["Protein"].Value.ToString();
+            lblCarbs.Text = dataGridView1.Rows[e.RowIndex].Cells["Carbs"].Value.ToString();
+            lblSugar.Text = dataGridView1.Rows[e.RowIndex].Cells["Sugar"].Value.ToString();
+            lblVitA.Text = dataGridView1.Rows[e.RowIndex].Cells["VitA"].Value.ToString();
+            lblVitB.Text = dataGridView1.Rows[e.RowIndex].Cells["VitB"].Value.ToString();
+            lblVitC.Text = dataGridView1.Rows[e.RowIndex].Cells["VitC"].Value.ToString();
+            lblVitD.Text = dataGridView1.Rows[e.RowIndex].Cells["VitD"].Value.ToString();
+            lblVitE.Text = dataGridView1.Rows[e.RowIndex].Cells["VitE"].Value.ToString();
+            lblNa.Text =dataGridView1.Rows[e.RowIndex].Cells["Na"].Value.ToString();
+            lblK.Text =dataGridView1.Rows[e.RowIndex].Cells["K"].Value.ToString();
         }
     }
 }

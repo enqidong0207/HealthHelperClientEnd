@@ -22,8 +22,9 @@ namespace HHFirstDraft.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.ID = item.ID;
                 dto.Name = item.Name;
-                dto.Calories = item.Calories;
+                dto.Calories =Convert.ToInt32( item.Calories);
                 dto.Nutrient = nutrientBLL.GetNutrient(dto.ID);
+                dto.Image = item.Image;
                 dto.NutrientID = dto.Nutrient.ID;
                 dto.Fat = dto.Nutrient.Fat;
                 dto.Protein = dto.Nutrient.Protein;
@@ -165,7 +166,8 @@ namespace HHFirstDraft.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.ID = item.ID;
                 dto.Name = item.Name;
-                dto.Calories = item.Calories;
+                dto.Calories =Convert.ToInt32( item.Calories);
+                dto.Image = item.Image;
                 dto.Nutrient = nutrientBLL.GetNutrient(dto.ID);
                 dto.NutrientID = dto.Nutrient.ID;
                 dto.Fat = dto.Nutrient.Fat;
