@@ -1,5 +1,5 @@
 ﻿
-namespace XxxFitnessCLub.ClientEnd
+namespace HHFirstDraft
 {
     partial class FrmMealHistory
     {
