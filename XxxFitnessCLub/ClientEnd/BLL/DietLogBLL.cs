@@ -40,10 +40,7 @@ namespace XxxFitnessCLub.ClientEnd.BLL
 
 
 
-        internal List<dynamic> GetDaysRecord(DateTime startD, DateTime endD)
-        {
-            return dao.GetDietLogs(startD, endD);
-        }
+        
 
         internal List<dynamic> GetDietLogHistory()
         {
@@ -55,15 +52,31 @@ namespace XxxFitnessCLub.ClientEnd.BLL
             return dao.GetDietLogs(startD, endD);
 
         }
+
+        
         internal List<dynamic> GetDietLogHistory(DateTime date)
         {
             return dao.GetDietLogs(date);
+        }
+        internal List<dynamic> GetDietLogHistory(DateTime startD, DateTime endD, int timeOfDateID)
+        {
+            return dao.GetDietLogs(startD, endD, timeOfDateID);
 
         }
 
         internal double GetTimeOfDayGainedCal(string timeOfDayName, DateTime date)
         {
             return dao.GetTimeOfDayGainedCal(timeOfDayName, date);
+        }
+
+        internal bool DeleteDietLog(int dietLogID)
+        {
+            return dao.DeleteDietLog(dietLogID);
+        }
+
+        internal bool UpdateDietLogPortion(int dietLogID, double newPortion)
+        {
+            return dao.UpdateDietLogPortion(dietLogID, newPortion );
         }
     }
 }

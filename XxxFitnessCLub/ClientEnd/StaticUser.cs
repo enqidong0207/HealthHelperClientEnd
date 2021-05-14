@@ -9,7 +9,7 @@ namespace XxxFitnessCLub.ClientEnd
     public static class StaticUser
     {
         private static int _UserID = 3;
-        private static string _UserName = "Bro";
+        private static string _UserName = "Lulu";
         private static int _TBLL = 2000;
 
         public static int UserID { get { return _UserID; } }
