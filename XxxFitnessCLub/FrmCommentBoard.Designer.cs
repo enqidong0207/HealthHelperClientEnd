@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cmbMeals = new System.Windows.Forms.ComboBox();
+            this.lblMeals = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.numericRating = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,8 +51,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbMeals = new System.Windows.Forms.ComboBox();
-            this.lblMeals = new System.Windows.Forms.Label();
+            this.lblFeedback = new System.Windows.Forms.Label();
+            this.txtFeedback = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,6 +71,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblFeedback);
+            this.splitContainer1.Panel1.Controls.Add(this.txtFeedback);
             this.splitContainer1.Panel1.Controls.Add(this.cmbMeals);
             this.splitContainer1.Panel1.Controls.Add(this.lblMeals);
             this.splitContainer1.Panel1.Controls.Add(this.cmbCategory);
@@ -93,6 +97,27 @@
             this.splitContainer1.Size = new System.Drawing.Size(1353, 741);
             this.splitContainer1.SplitterDistance = 417;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // cmbMeals
+            // 
+            this.cmbMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMeals.FormattingEnabled = true;
+            this.cmbMeals.Location = new System.Drawing.Point(819, 164);
+            this.cmbMeals.Name = "cmbMeals";
+            this.cmbMeals.Size = new System.Drawing.Size(182, 43);
+            this.cmbMeals.TabIndex = 109;
+            // 
+            // lblMeals
+            // 
+            this.lblMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMeals.AutoSize = true;
+            this.lblMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblMeals.Location = new System.Drawing.Point(731, 168);
+            this.lblMeals.Name = "lblMeals";
+            this.lblMeals.Size = new System.Drawing.Size(63, 35);
+            this.lblMeals.TabIndex = 108;
+            this.lblMeals.Text = "餐點";
             // 
             // cmbCategory
             // 
@@ -204,7 +229,7 @@
             this.txtComment.Location = new System.Drawing.Point(215, 245);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(786, 136);
+            this.txtComment.Size = new System.Drawing.Size(500, 136);
             this.txtComment.TabIndex = 8;
             // 
             // panel1
@@ -297,20 +322,20 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -319,35 +344,34 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Noto Sans TC", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Noto Sans TC", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1353, 320);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
-            // cmbMeals
+            // lblFeedback
             // 
-            this.cmbMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMeals.FormattingEnabled = true;
-            this.cmbMeals.Location = new System.Drawing.Point(819, 164);
-            this.cmbMeals.Name = "cmbMeals";
-            this.cmbMeals.Size = new System.Drawing.Size(182, 43);
-            this.cmbMeals.TabIndex = 109;
+            this.lblFeedback.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblFeedback.AutoSize = true;
+            this.lblFeedback.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedback.Location = new System.Drawing.Point(731, 248);
+            this.lblFeedback.Name = "lblFeedback";
+            this.lblFeedback.Size = new System.Drawing.Size(63, 35);
+            this.lblFeedback.TabIndex = 111;
+            this.lblFeedback.Text = "回覆";
             // 
-            // lblMeals
+            // txtFeedback
             // 
-            this.lblMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblMeals.AutoSize = true;
-            this.lblMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblMeals.Location = new System.Drawing.Point(731, 168);
-            this.lblMeals.Name = "lblMeals";
-            this.lblMeals.Size = new System.Drawing.Size(63, 35);
-            this.lblMeals.TabIndex = 108;
-            this.lblMeals.Text = "餐點";
+            this.txtFeedback.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFeedback.Location = new System.Drawing.Point(808, 248);
+            this.txtFeedback.Multiline = true;
+            this.txtFeedback.Name = "txtFeedback";
+            this.txtFeedback.Size = new System.Drawing.Size(193, 136);
+            this.txtFeedback.TabIndex = 110;
             // 
             // FrmCommentBoard
             // 
@@ -394,5 +418,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbMeals;
         private System.Windows.Forms.Label lblMeals;
+        private System.Windows.Forms.Label lblFeedback;
+        private System.Windows.Forms.TextBox txtFeedback;
     }
 }

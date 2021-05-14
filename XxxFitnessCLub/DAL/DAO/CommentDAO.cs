@@ -41,6 +41,7 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.CategoryName = item.CommentCategory.Name;
                 dto.IsApproved = item.IsApproved;
                 dto.Rating = item.Rating;
+                dto.Feedback = item.Feedback;
                 if (item.MealOptionID != null)
                 {
                     dto.MealOptionID = (int)item.MealOptionID;
@@ -68,6 +69,7 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.AddDate = item.AddDate;
                 dto.IsApproved = item.IsApproved;
                 dto.Rating = item.Rating;
+                dto.Feedback = item.Feedback;
                 if (item.MealOptionID != null)
                 {
                     dto.MealOptionID = (int)item.MealOptionID;
@@ -95,6 +97,7 @@ namespace XxxFitnessCLub.DAL.DAO
                 dto.CategoryName = item.CommentCategory.Name;
                 dto.IsApproved = item.IsApproved;
                 dto.Rating = item.Rating;
+                dto.Feedback = item.Feedback;
                 if (item.MealOptionID != null)
                 {
                     dto.MealOptionID = (int)item.MealOptionID;
@@ -118,9 +121,13 @@ namespace XxxFitnessCLub.DAL.DAO
             comment.Title = entity.Title;
             comment.CommentContent = entity.CommentContent;
             comment.CategoryID = entity.CategoryID;
+            if (comment.CategoryID == General.CommentCategory.meal)
+            {
+                comment.MealOptionID = entity.MealOptionID;
+            }
             comment.Rating = entity.Rating;
             comment.IsApproved = entity.IsApproved;
-            comment.MealOptionID = entity.MealOptionID;
+            comment.Feedback = entity.Feedback;
             db.SaveChanges();
         }
     }

@@ -32,6 +32,7 @@
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="MealOptionID" Type="int" />
+          <Property Name="Feedback" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="DietDetails">
           <Key>
@@ -541,6 +542,7 @@
           <NavigationProperty Name="Member" Relationship="Self.FK_Comments_Members" FromRole="Comments" ToRole="Members" />
           <Property Name="MealOptionID" Type="Int32" />
           <NavigationProperty Name="MealOption" Relationship="HealthManagement0505Model.FK_Comments_MealOptions" FromRole="Comment" ToRole="MealOption" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DietDetail">
           <Key>
@@ -1070,6 +1072,7 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="HealthManagement0505Model.Comment">
               <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
                 <ScalarProperty Name="MealOptionID" ColumnName="MealOptionID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

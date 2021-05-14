@@ -30,6 +30,7 @@ namespace XxxFitnessCLub
             txtMember.Text = UserStatic.UserName;
             lblMeals.Visible = false;
             cmbMeals.Visible = false;
+            txtFeedback.Enabled = false;
         }
         CommentCategoryBLL categoryBLL = new CommentCategoryBLL();
         CommentCategoryDTO categoryDTO = new CommentCategoryDTO();
@@ -64,6 +65,7 @@ namespace XxxFitnessCLub
             dataGridView1.Columns["Rating"].HeaderText = "評分";
             dataGridView1.Columns["MealOptionID"].Visible = false;
             dataGridView1.Columns["MealName"].HeaderText = "餐點";
+            dataGridView1.Columns["Feedback"].Visible = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -81,6 +83,7 @@ namespace XxxFitnessCLub
             numericRating.Value = 1;
             cmbCategory.Enabled = true;
             numericRating.Enabled = true;
+            txtFeedback.Clear();
         }
         CommentDetailDTO detail = new CommentDetailDTO();
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -95,6 +98,14 @@ namespace XxxFitnessCLub
             detail.CategoryID= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryID"].Value);
             detail.IsApproved = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["IsApproved"].Value);
             detail.MealOptionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MealOptionID"].Value);
+            if (dataGridView1.Rows[e.RowIndex].Cells["Feedback"].Value != null)
+            {
+                detail.Feedback = dataGridView1.Rows[e.RowIndex].Cells["Feedback"].Value.ToString();
+            }
+            else
+            {
+                detail.Feedback = "";
+            }
             if (dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value != null)
             {
                 detail.MealName = dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value.ToString();
@@ -105,6 +116,7 @@ namespace XxxFitnessCLub
             cmbCategory.SelectedValue = detail.CategoryID;
             numericRating.Value = detail.Rating;
             txtMember.Enabled = false;
+            txtFeedback.Text = detail.Feedback;
             if (detail.CategoryID == General.CommentCategory.meal)
             {
                 cmbMeals.Visible = true;

@@ -25,6 +25,7 @@ namespace XxxFitnessCLub.BLL
             comment.CategoryID = entity.CategoryID;
             comment.IsApproved = entity.IsApproved;
             comment.Rating = entity.Rating;
+            comment.Feedback = entity.Feedback;
             if (comment.MealOptionID != null)
             {
                 comment.MealOptionID = (int)entity.MealOptionID;
@@ -56,6 +57,7 @@ namespace XxxFitnessCLub.BLL
             comment.CategoryID = entity.CategoryID;
             comment.Rating = entity.Rating;
             comment.IsApproved = entity.IsApproved;
+            comment.Feedback = entity.Feedback;
             if (comment.MealOptionID != null)
             {
                 comment.MealOptionID = (int)entity.MealOptionID;

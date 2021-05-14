@@ -23,6 +23,7 @@ namespace XxxFitnessCLub.DAL
         public int Rating { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> MealOptionID { get; set; }
+        public string Feedback { get; set; }
     
         public virtual CommentCategory CommentCategory { get; set; }
         public virtual Member Member { get; set; }
