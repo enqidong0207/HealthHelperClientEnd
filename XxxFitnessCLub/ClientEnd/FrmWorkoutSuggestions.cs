@@ -176,6 +176,7 @@ namespace XxxFitnessCLub.ClientEnd
         {
 
             this.btnAdd.Enabled = false;
+            Application.DoEvents();
 
             coord = FrmGMap.GetCurrentPosition();
             this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
