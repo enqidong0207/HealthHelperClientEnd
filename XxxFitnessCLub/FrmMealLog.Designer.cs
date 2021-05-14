@@ -49,10 +49,17 @@ namespace HHFirstDraft
             this.DeleteCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bS_AddedMeals = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.BtnRefImg = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.myCProParBedSn = new HHFirstDraft.ViewModel.MyCircleProgress();
             this.myCProParSn = new HHFirstDraft.ViewModel.MyCircleProgress();
@@ -65,18 +72,13 @@ namespace HHFirstDraft
             this.btnClear = new System.Windows.Forms.Button();
             this.DGVRecordOfToday = new System.Windows.Forms.DataGridView();
             this.bS_RecordOfToday = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxMeal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVAddedMeals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bS_AddedMeals)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -85,7 +87,6 @@ namespace HHFirstDraft
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRecordOfToday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bS_RecordOfToday)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -292,27 +293,97 @@ namespace HHFirstDraft
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1830, 873);
             this.tableLayoutPanel1.TabIndex = 35;
             // 
-            // panel4
+            // groupBox1
             // 
-            this.panel4.BackColor = System.Drawing.Color.IndianRed;
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 336);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(909, 34);
-            this.panel4.TabIndex = 39;
+            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.pBoxMeal);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.LabelMealTitle);
+            this.groupBox1.Controls.Add(this.tBoxCal);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.tBoxPortion);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnAddToList);
+            this.groupBox1.Controls.Add(this.BtnRefImg);
+            this.groupBox1.Controls.Add(this.cBoxTimesOfDay);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.lblGainCal);
+            this.groupBox1.Controls.Add(this.cBoxKeyWord);
+            this.groupBox1.Controls.Add(this.btnProtionCheck);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(905, 323);
+            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabStop = false;
             // 
-            // label1
+            // listBox1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(404, -2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 29);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "今日紀錄";
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 18;
+            this.listBox1.Location = new System.Drawing.Point(630, 27);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(270, 291);
+            this.listBox1.TabIndex = 38;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Location = new System.Drawing.Point(360, 208);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 29);
+            this.textBox1.TabIndex = 42;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(249, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 18);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "獲取卡路里:";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(303, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 18);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "時段:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(303, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 18);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "日期:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(548, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 18);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "/ 每100克";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // BtnRefImg
             // 
@@ -335,11 +406,34 @@ namespace HHFirstDraft
             this.dateTimePicker1.TabIndex = 35;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.IndianRed;
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 336);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(909, 34);
+            this.panel4.TabIndex = 39;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(404, -2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 29);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "今日紀錄";
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.myCProParBedSn);
             this.panel2.Controls.Add(this.myCProParSn);
             this.panel2.Controls.Add(this.myCProParDn);
@@ -573,97 +667,17 @@ namespace HHFirstDraft
             this.DGVRecordOfToday.Size = new System.Drawing.Size(909, 494);
             this.DGVRecordOfToday.TabIndex = 38;
             // 
-            // label3
+            // label7
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(548, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 18);
-            this.label3.TabIndex = 37;
-            this.label3.Text = "/ 每100克";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(630, 27);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(270, 291);
-            this.listBox1.TabIndex = 38;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(303, 76);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 18);
-            this.label4.TabIndex = 39;
-            this.label4.Text = "日期:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(303, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 18);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "時段:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(360, 208);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 29);
-            this.textBox1.TabIndex = 42;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(249, 207);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 18);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "獲取卡路里:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.pBoxMeal);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.LabelMealTitle);
-            this.groupBox1.Controls.Add(this.tBoxCal);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.tBoxPortion);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btnAddToList);
-            this.groupBox1.Controls.Add(this.BtnRefImg);
-            this.groupBox1.Controls.Add(this.cBoxTimesOfDay);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.lblGainCal);
-            this.groupBox1.Controls.Add(this.cBoxKeyWord);
-            this.groupBox1.Controls.Add(this.btnProtionCheck);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(5, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(905, 323);
-            this.groupBox1.TabIndex = 43;
-            this.groupBox1.TabStop = false;
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(177, 234);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 18);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "YOOOO";
+            this.label7.Visible = false;
             // 
             // FrmMealLog
             // 
@@ -684,6 +698,8 @@ namespace HHFirstDraft
             ((System.ComponentModel.ISupportInitialize)(this.DGVAddedMeals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bS_AddedMeals)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -694,8 +710,6 @@ namespace HHFirstDraft
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVRecordOfToday)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bS_RecordOfToday)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -744,5 +758,6 @@ namespace HHFirstDraft
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
     }
 }
