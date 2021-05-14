@@ -116,7 +116,7 @@ namespace XxxFitnessCLub.ClientEnd
         //留言板
         private void btnComment_Click(object sender, EventArgs e)
         {
-            FrmComment frm = new FrmComment();
+            FrmCommentBoard frm = new FrmCommentBoard();
             frm.TopLevel = false;
             frm.AutoScroll = true;
 
@@ -155,6 +155,16 @@ namespace XxxFitnessCLub.ClientEnd
         {
             FrmRules f = new FrmRules();
             f.Show();
+        }
+
+        private void btnWeightLog_Click(object sender, EventArgs e)
+        {
+            FrmWeightLog frm = new FrmWeightLog();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
         }
     }
 }

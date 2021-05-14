@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnWeightLog = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnComment = new System.Windows.Forms.Button();
             this.btnWSuggestion = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +63,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnWeightLog);
+            this.splitContainer1.Panel1.Controls.Add(this.lblUser);
             this.splitContainer1.Panel1.Controls.Add(this.btnComment);
             this.splitContainer1.Panel1.Controls.Add(this.btnWSuggestion);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -81,9 +85,29 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnWeightLog
+            // 
+            this.btnWeightLog.Location = new System.Drawing.Point(20, 332);
+            this.btnWeightLog.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnWeightLog.Name = "btnWeightLog";
+            this.btnWeightLog.Size = new System.Drawing.Size(131, 32);
+            this.btnWeightLog.TabIndex = 33;
+            this.btnWeightLog.Text = "體重記錄";
+            this.btnWeightLog.UseVisualStyleBackColor = true;
+            this.btnWeightLog.Click += new System.EventHandler(this.btnWeightLog_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(20, 25);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(61, 22);
+            this.lblUser.TabIndex = 32;
+            this.lblUser.Text = "用戶: ";
+            // 
             // btnComment
             // 
-            this.btnComment.Location = new System.Drawing.Point(20, 332);
+            this.btnComment.Location = new System.Drawing.Point(20, 378);
             this.btnComment.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnComment.Name = "btnComment";
             this.btnComment.Size = new System.Drawing.Size(131, 32);
@@ -232,6 +256,19 @@
             this.lblUser.TabIndex = 32;
             this.lblUser.Text = "用戶: ";
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Image = global::XxxFitnessCLub.Properties.Resources.scale_lose_weight_2_1080x6751;
+            this.button5.Location = new System.Drawing.Point(34, 230);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(222, 190);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "更新體重";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -244,6 +281,69 @@
             this.button4.Text = "遊戲規則";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Image = global::XxxFitnessCLub.Properties.Resources.scale_lose_weight_2_1080x6751;
+            this.button5.Location = new System.Drawing.Point(34, 230);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(222, 190);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "更新體重";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = global::XxxFitnessCLub.Properties.Resources.螢幕擷取畫面_2021_05_02_204709;
+            this.button3.Location = new System.Drawing.Point(309, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(222, 190);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "運動日記";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::XxxFitnessCLub.Properties.Resources.images;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.Location = new System.Drawing.Point(595, 24);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(222, 190);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "推薦運動";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Consolas", 26F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::XxxFitnessCLub.Properties.Resources.MealRed;
+            this.button1.Location = new System.Drawing.Point(34, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(222, 190);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "紀錄飲食";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(20, 25);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(61, 22);
+            this.lblUser.TabIndex = 32;
+            this.lblUser.Text = "用戶: ";
+            
             // 
             // FrmMainPage
             // 
@@ -287,5 +387,6 @@
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Button btnComment;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnWeightLog;
     }
 }

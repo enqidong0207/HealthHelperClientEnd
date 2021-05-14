@@ -19,9 +19,14 @@ namespace XxxFitnessCLub.ClientEnd.BLL
             comment.CommentContent = entity.CommentContent;
             comment.MemberID = entity.MemberID;
             comment.AddDate = entity.AddDate;
-            comment.MealOptionID = entity.MealID;
+            comment.CategoryID = entity.CategoryID;
             comment.IsApproved = entity.IsApproved;
             comment.Rating = entity.Rating;
+            if (comment.MealOptionID != null)
+            {
+                comment.MealOptionID = (int)entity.MealOptionID;
+            }
+            comment.MealOptionID = entity.MealOptionID;
             commentDAO.Add(comment);
         }
 
@@ -45,8 +50,13 @@ namespace XxxFitnessCLub.ClientEnd.BLL
             comment.ID = entity.ID;
             comment.Title = entity.Title;
             comment.CommentContent = entity.CommentContent;
+            comment.CategoryID = entity.CategoryID;
             comment.Rating = entity.Rating;
             comment.IsApproved = entity.IsApproved;
+            if (comment.MealOptionID != null)
+            {
+                comment.MealOptionID = (int)entity.MealOptionID;
+            }
             commentDAO.Update(comment);
         }
 
