@@ -16,7 +16,7 @@ namespace HHFirstDraft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainPage());
+            Application.Run(new FrmMealLog());
         }
     }
 }

@@ -27,15 +27,24 @@ namespace HHFirstDraft
         public FrmMealLog()
         {
             InitializeComponent();
+
+            this.cBoxTimesOfDay.Text = "請選擇時段";
             LoadTimeOfDay();
             this.cBoxKeyWord.SelectedIndexChanged += CBoxKeyWord_SelectedIndexChanged;            
             this.cBoxKeyWord.TextChanged += CBoxKeyWord_TextChanged;
             this.tBoxPortion.GotFocus += TBoxPortion_GotFocus;          
             this.DGVAddedMeals.DataSource = bS_AddedMeals;
             this.DGVRecordOfToday.DataSource = bS_RecordOfToday;
+            this.DGVAddedMeals.CellContentClick += DGVAddedMeals_CellContentClick;
+            this.DGVRecordOfToday.CellFormatting += DGVRecordOfToday_CellFormatting;
+            this.DGVAddedMeals.CellFormatting += DGVAddedMeals_CellFormatting;
+            this.tBoxCal.ReadOnly = true;
+            this.lblGreeting.Text = $"Hello {StaticUser.UserName}," + "\n"+
+                $" 你的TBLL是 {StaticUser.TBLL}"; 
+
             //========================================
-            
-            
+
+            bS_RecordOfToday.DataSource = dBll.GetDietLogHistory(DateTime.Today);
 
             //====================================
             this.dateTimePicker1.MinDate = DateTime.Today.AddDays(-6);
@@ -49,18 +58,68 @@ namespace HHFirstDraft
             myCProParSn.timeOfDayName = "點心";
             myCProParBedSn.timeOfDayName = "宵夜";
 
+
              cBars =new MyCircleProgress[] { myCProParBf,myCProParLn,myCProParDn,myCProParSn,myCProParBedSn};
 
             //====================================================
-            bS_RecordOfToday.DataSource = dBll.GetDietLogHistory(DateTime.Today);
-            
+            //recordList = dBll.GetDietLogHistory(DateTime.Today);
+            DGVAddedMeals.AllowUserToAddRows = false;
+            DGVAddedMeals.ReadOnly = true;
+           
+
+
+
+
+        }
+
+        private void DGVAddedMeals_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv.Rows.Count <=0) return;
+            switch (dgv.Rows[e.RowIndex].Cells["時段"].Value.ToString())
+            {
+                case "早餐":
+                    e.CellStyle.BackColor = Color.Pink;
+                    break;
+                case "午餐":
+                    e.CellStyle.BackColor = Color.PapayaWhip;
+                    break;
+                case "晚餐":
+                    e.CellStyle.BackColor = Color.Honeydew;
+                    break;
+                case "點心":
+                    e.CellStyle.BackColor = Color.LightCyan;
+                    break;
+                case "宵夜":
+                    e.CellStyle.BackColor = Color.LightGray;
+                    break;
+                default:
+                    e.CellStyle.BackColor = Color.White;
+                    break;
+
+            }
+        }
+
+            private void DGVAddedMeals_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (e.ColumnIndex == 0 )   //Delete button's index is 0
+            {            
+                mealList.RemoveAt(e.RowIndex);
+            }
+
+            this.bS_AddedMeals.DataSource = mealList.Count == 0 ? null : mealList.ToList().OrderByDescending(dl => dl.Date).ThenBy(dl => dl.TimeOfDayID);
+
 
         }
 
         private void LoadTimeOfDay()
         {
-            this.cBoxTimesOfDay.DataSource = tBll.GetTimesOfDay();
-            this.cBoxTimesOfDay.DisplayMember = "Name";
+            foreach (var t in tBll.GetTimesOfDay())
+            {
+                this.cBoxTimesOfDay.Items.Add(t);
+                this.cBoxTimesOfDay.DisplayMember = "Name";
+            }
         }
         private void FrmMealLog_Shown(object sender, EventArgs e)
         {
@@ -92,7 +151,15 @@ namespace HHFirstDraft
 
         private void RefreshDailyProgressBar(DateTime date)
         {
-            this.pBarDailyGain.Value = (int)dBll.DailyGainedCalories(date);
+            int dailyTotal = (int)dBll.DailyGainedCalories(date);
+            if (dailyTotal >= this.pBarDailyGain.Maximum)
+            {
+                this.pBarDailyGain.Value = this.pBarDailyGain.Maximum;
+            }
+            else
+            {           
+                this.pBarDailyGain.Value = (int)dBll.DailyGainedCalories(date);
+            }
         }
 
         //==================================
@@ -104,16 +171,26 @@ namespace HHFirstDraft
   
         private void CBoxKeyWord_TextChanged(object sender, EventArgs e)
         {
+            
             ComboBox cb = sender as ComboBox;
             string InputKeyword = cb.Text;
-            if (InputKeyword == "") { return; }
+            if (InputKeyword == "")
+            {
+                return; 
+            }
             MealDTO Mdto = mBll.GetMeals(InputKeyword);
             if (Mdto.Meals.Count == 0) { return; }
-            cb.DataSource = Mdto.Meals;
-            cb.DisplayMember = "Name";
-            cb.ValueMember = "ID";
-            cb.DroppedDown = true;
+            foreach (var m in Mdto.Meals)
+            {
+                cb.Items.Add(m);
+                cb.DisplayMember = "Name";
+                cb.ValueMember = "ID";
+            }
             
+            cb.DroppedDown = true;
+            cb.Text = "";
+
+
         }
 
 
@@ -149,8 +226,12 @@ namespace HHFirstDraft
             }
             MessageBox.Show("ItemAdded!");
             mealList.Clear();
-            this.DGVAddedMeals.DataSource = null;
+            this.bS_AddedMeals.DataSource = mealList.ToList()/*.OrderByDescending(dl => dl.Date).ThenBy(dl => dl.TimeOfDayID);*/;
+
+            bS_RecordOfToday.DataSource = dBll.GetDietLogHistory(DateTime.Today);
             RefreshDailyProgressBar(DateTime.Today);
+            DefaultCircleProgressBars(cBars);
+
         }
 
         double thePortion;
@@ -191,38 +272,118 @@ namespace HHFirstDraft
             dL.總卡路里 = (int)(dL.每100克卡路里 * dL.份量);
             mealList.Add(dL);
 
-            foreach (var m in mealList.ToList())
-            { }
+            this.bS_AddedMeals.DataSource = mealList.ToList().OrderByDescending(dl => dl.Date).ThenBy(dl => dl.TimeOfDayID);
 
-            this.bS_AddedMeals.DataSource = mealList.ToList();         
             ShowReqdColumns();
+            DGVRecordOfToday.Update();
+
 
         }
 
-        private void ShowReqdColumns()
+        private void ShowReqdColumns()     //DTO包起來?
         {
+
             int cols = this.DGVAddedMeals.Columns.Count;
-            for (int i = 6; i < cols; i++)
+            for (int i = 8; i < cols; i++)
             {
                 this.DGVAddedMeals.Columns[i].Visible = false;
             }
-            this.DGVAddedMeals.Columns["圖片"].Visible = true;
-            this.DGVAddedMeals.Columns["日期"].Visible = true;
-            this.DGVAddedMeals.Columns["時段"].Visible = true;
-            this.DGVAddedMeals.Columns["餐點名稱"].Visible = true;
-            this.DGVAddedMeals.Columns["每100克卡路里"].Visible = true;
-            this.DGVAddedMeals.Columns["份量"].Visible = true;
-            this.DGVAddedMeals.Columns["總卡路里"].Visible = true;
+            //this.DGVAddedMeals.Columns["圖片"].Visible = true;
+            //this.DGVAddedMeals.Columns["日期"].Visible = true;
+            //this.DGVAddedMeals.Columns["時段"].Visible = true;
+            //this.DGVAddedMeals.Columns["餐點名稱"].Visible = true;
+            //this.DGVAddedMeals.Columns["每100克卡路里"].Visible = true;
+            //this.DGVAddedMeals.Columns["份量"].Visible = true;
+            //this.DGVAddedMeals.Columns["總卡路里"].Visible = true;
+            //this.DGVAddedMeals.Columns["刪除紐"].Visible = true;
+           
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             mealList.Clear();
-            this.bS_AddedMeals.DataSource = mealList.ToList();
-
+            this.bS_AddedMeals.DataSource = null;
 
         }
 
-      
+        private void DGVRecordOfToday_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //DataGridView dgv = sender as DataGridView;
+
+            //switch (dgv.Rows[e.RowIndex].Cells["TimeOfDay"].Value.ToString())
+            //{
+            //    case "早餐":
+            //        e.CellStyle.BackColor = Color.Pink;
+            //        break;
+            //    case "午餐":
+            //        e.CellStyle.BackColor = Color.PapayaWhip;
+            //        break;
+            //    case "晚餐":
+            //        e.CellStyle.BackColor = Color.Honeydew;
+            //        break;
+            //    case "點心":
+            //        e.CellStyle.BackColor = Color.LightCyan;
+            //        break;
+            //    case "宵夜":
+            //        e.CellStyle.BackColor = Color.LightGray;
+            //        break;
+            //    default:
+            //        e.CellStyle.BackColor = Color.White;
+            //        break;
+
+
+
+            //}
+        }
+
+        private void BtnRefImg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cBoxKeyWord_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cBoxTimesOfDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tBoxCal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

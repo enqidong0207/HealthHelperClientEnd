@@ -74,6 +74,42 @@ namespace HHFirstDraft.DAL.DAO
             }
         }
 
+        internal bool DeleteDietLog(int dietLogID)
+        {
+            try
+            {
+                DietLog d = db.DietLogs.FirstOrDefault(dl => dl.ID == dietLogID);
+                db.DietLogs.Remove(d);
+                db.SaveChanges();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
+        internal bool UpdateDietLogPortion(int dietLogID, double newPortion)
+        {
+
+            try
+            {
+                db.DietLogs.FirstOrDefault(dl => dl.ID == dietLogID).Portion = newPortion;
+                db.SaveChanges();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
         //=========================================================================
         internal List<dynamic> GetDietLogs(DateTime startD, DateTime endD)
         {
@@ -82,30 +118,33 @@ namespace HHFirstDraft.DAL.DAO
                     orderby dl.Date, dl.TimeOfDayID
                     select new
                     {
-                        dl.Date,
-                        TimeOfDay = dl.TimesOfDay.Name,
-                        dl.MealOption.Image,
-                        dl.MealOption.Name,
-                        dl.MealOption.Calories,
-                        dl.Portion,
-                        TotalCalories = (int)dl.MealOption.Calories * dl.Portion,
-                        dl.EditTime
+                        日期 = dl.Date,
+                        時段 = dl.TimesOfDay.Name,
+                        餐點圖片 = dl.MealOption.Image,
+                        餐點名稱 = dl.MealOption.Name,
+                        每100克卡路里 = dl.MealOption.Calories,
+                        份量 = dl.Portion,
+                        總卡路里 = (int)dl.MealOption.Calories * dl.Portion,
+                        更改時間 = dl.EditTime,
+                        DietlogID = dl.ID
                     };
             return q.ToList<dynamic>();
         }
         public List<dynamic> GetDietLogs()
         {
             var q = from dl in db.DietLogs
+                    orderby dl.Date descending, dl.TimeOfDayID
                     select new
-                    {   
-                        dl.Date,
-                        TimeOfDay = dl.TimesOfDay.Name,
-                        dl.MealOption.Image,
-                        dl.MealOption.Name,
-                        dl.MealOption.Calories,
-                        dl.Portion,
-                        TotalCalories = (int)dl.MealOption.Calories * dl.Portion,
-                        dl.EditTime
+                    {
+                        日期 = dl.Date,
+                        時段 = dl.TimesOfDay.Name,
+                        餐點圖片 = dl.MealOption.Image,
+                        餐點名稱 = dl.MealOption.Name,
+                        每100克卡路里 = dl.MealOption.Calories,
+                        份量 = dl.Portion,
+                        總卡路里 = (int)dl.MealOption.Calories * dl.Portion,
+                        更改時間 = dl.EditTime,
+                        DietlogID = dl.ID
                     };
 
             return q.ToList<dynamic>();
@@ -115,21 +154,43 @@ namespace HHFirstDraft.DAL.DAO
         {
             var q = from dl in db.DietLogs 
                     where dl.Date == date
+                    orderby dl.Date descending, dl.TimeOfDayID
                     select new
                     {
-                        dl.Date,
-                        TimeOfDay = dl.TimesOfDay.Name,
-                        dl.MealOption.Image,
-                        dl.MealOption.Name,
-                        dl.MealOption.Calories,
-                        dl.Portion,
-                        TotalCalories = (int)dl.MealOption.Calories * dl.Portion,
-                        dl.EditTime
+                        日期 = dl.Date,
+                        時段 = dl.TimesOfDay.Name,
+                        餐點圖片 = dl.MealOption.Image,
+                        餐點名稱 = dl.MealOption.Name,
+                        每100克卡路里 = dl.MealOption.Calories,
+                        份量 = dl.Portion,
+                        總卡路里 = (int)dl.MealOption.Calories * dl.Portion,
+                        更改時間 = dl.EditTime,
+                        DietlogID = dl.ID
                     };
 
             return q.ToList<dynamic>();
         }
 
+        public List<dynamic> GetDietLogs(DateTime startD, DateTime endD,  int timeOfDateID)
+        {
+            var q = from dl in db.DietLogs
+                    where dl.Date >= startD && dl.Date <= endD && dl.TimeOfDayID == timeOfDateID
+                    orderby dl.Date descending, dl.TimeOfDayID
+                    select new
+                    {
+                        日期 = dl.Date,
+                        時段 = dl.TimesOfDay.Name,
+                        餐點圖片 = dl.MealOption.Image,
+                        餐點名稱 = dl.MealOption.Name,
+                        每100克卡路里 = dl.MealOption.Calories,
+                        份量 = dl.Portion,
+                        總卡路里 = (int)dl.MealOption.Calories * dl.Portion,
+                        更改時間 = dl.EditTime,
+                        DietlogID = dl.ID
+                    };
+
+            return q.ToList<dynamic>();
+        }
 
 
     }
