@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XxxFitnessCLub;
+using XxxFitnessCLub.ClientEnd;
 
-namespace HHFirstDraft
+namespace XxxFitnessCLub
 {
     static class Program
     {
