@@ -33,8 +33,6 @@ namespace XxxFitnessCLub.ClientEnd
 
         List<List<FlowLayoutPanel>> panelList = new List<List<FlowLayoutPanel>>();
 
-        bool reloadLock = false;
-
         public FrmWorkoutSuggestions()
         {
             InitializeComponent();
@@ -123,6 +121,7 @@ namespace XxxFitnessCLub.ClientEnd
 
             AddClickHandler();
             MessageBox.Show("load success");
+            this.btnAdd.Enabled = true;
         }
 
         private void LoadTableHeader(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
@@ -175,22 +174,14 @@ namespace XxxFitnessCLub.ClientEnd
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (reloadLock)
-            {
-                return;
-            }
-            else
-            {
-                reloadLock = true;
 
-                coord = FrmGMap.GetCurrentPosition();
-                this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
+            this.btnAdd.Enabled = false;
 
-                ClearTableContent();
-                LoadTableContentAsync(wcList, alList);
+            coord = FrmGMap.GetCurrentPosition();
+            this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
 
-                reloadLock = false;
-            }
+            ClearTableContent();
+            LoadTableContentAsync(wcList, alList);
         }
 
         private void LoadTableCell()
