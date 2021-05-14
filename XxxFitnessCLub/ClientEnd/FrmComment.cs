@@ -81,13 +81,13 @@ namespace XxxFitnessCLub.ClientEnd
             detail.MealName = dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value.ToString();
             detail.Rating = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Rating"].Value);
             detail.CommentContent = dataGridView1.Rows[e.RowIndex].Cells["CommentContent"].Value.ToString();
-            detail.MealID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MealID"].Value);
+            detail.MealOptionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MealOptionID"].Value);
             detail.IsApproved = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["IsApproved"].Value);
 
             txtTitle.Text = detail.Title;
             txtComment.Text = detail.CommentContent;
             txtMember.Text = detail.Member;
-            cmbMeals.SelectedValue = detail.MealID;
+            cmbMeals.SelectedValue = detail.MealOptionID;
             numericRating.Value = detail.Rating;
             txtMember.Enabled = false;
             if (detail.MemberID == UserStatic.UserID)
@@ -125,7 +125,7 @@ namespace XxxFitnessCLub.ClientEnd
                 detail = new CommentDetailDTO();
                 detail.Title = txtTitle.Text;
                 detail.CommentContent = txtComment.Text;
-                detail.MealID = Convert.ToInt32(cmbMeals.SelectedValue);
+                detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
                 detail.Rating = Convert.ToInt32(numericRating.Value);
                 detail.MemberID = UserStatic.UserID;
                 detail.IsApproved = false;
@@ -141,7 +141,7 @@ namespace XxxFitnessCLub.ClientEnd
         {
             detail.Title = txtTitle.Text;
             detail.CommentContent = txtComment.Text;
-            detail.MealID = Convert.ToInt32(cmbMeals.SelectedValue);
+            detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
             detail.Rating = Convert.ToInt32(numericRating.Value);
             commentBLL.Update(detail);
             MessageBox.Show("已修改留言");

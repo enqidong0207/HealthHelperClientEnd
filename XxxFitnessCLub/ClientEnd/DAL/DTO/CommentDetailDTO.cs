@@ -20,6 +20,6 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DTO
         public int MemberID { get; set; }
         public DateTime AddDate { get; set; }
         public bool IsApproved { get; set; }
-        public int? MealID { get; set; }
+        public string Feedback { get; set; }
     }
 }

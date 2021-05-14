@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.cmbMeals = new System.Windows.Forms.ComboBox();
+            this.lblMeals = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.numericRating = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +51,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblFeedback = new System.Windows.Forms.Label();
+            this.txtFeedback = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +71,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblFeedback);
+            this.splitContainer1.Panel1.Controls.Add(this.txtFeedback);
             this.splitContainer1.Panel1.Controls.Add(this.cmbMeals);
             this.splitContainer1.Panel1.Controls.Add(this.numericRating);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -91,6 +97,27 @@
             this.splitContainer1.TabIndex = 2;
             // 
             // cmbMeals
+            // 
+            this.cmbMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMeals.FormattingEnabled = true;
+            this.cmbMeals.Location = new System.Drawing.Point(819, 164);
+            this.cmbMeals.Name = "cmbMeals";
+            this.cmbMeals.Size = new System.Drawing.Size(182, 43);
+            this.cmbMeals.TabIndex = 109;
+            // 
+            // lblMeals
+            // 
+            this.lblMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMeals.AutoSize = true;
+            this.lblMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblMeals.Location = new System.Drawing.Point(731, 168);
+            this.lblMeals.Name = "lblMeals";
+            this.lblMeals.Size = new System.Drawing.Size(63, 35);
+            this.lblMeals.TabIndex = 108;
+            this.lblMeals.Text = "餐點";
+            // 
+            // cmbCategory
             // 
             this.cmbMeals.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbMeals.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -199,7 +226,7 @@
             this.txtComment.Location = new System.Drawing.Point(215, 245);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(786, 136);
+            this.txtComment.Size = new System.Drawing.Size(500, 136);
             this.txtComment.TabIndex = 8;
             // 
             // panel1
@@ -323,7 +350,27 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
-            // FrmComment
+            // lblFeedback
+            // 
+            this.lblFeedback.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblFeedback.AutoSize = true;
+            this.lblFeedback.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFeedback.Location = new System.Drawing.Point(731, 248);
+            this.lblFeedback.Name = "lblFeedback";
+            this.lblFeedback.Size = new System.Drawing.Size(63, 35);
+            this.lblFeedback.TabIndex = 111;
+            this.lblFeedback.Text = "回覆";
+            // 
+            // txtFeedback
+            // 
+            this.txtFeedback.Font = new System.Drawing.Font("Noto Sans TC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFeedback.Location = new System.Drawing.Point(808, 248);
+            this.txtFeedback.Multiline = true;
+            this.txtFeedback.Name = "txtFeedback";
+            this.txtFeedback.Size = new System.Drawing.Size(193, 136);
+            this.txtFeedback.TabIndex = 110;
+            // 
+            // FrmCommentBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -363,8 +410,12 @@
         private System.Windows.Forms.TextBox txtMember;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbMeals;
+        private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.NumericUpDown numericRating;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMeals;
+        private System.Windows.Forms.Label lblFeedback;
+        private System.Windows.Forms.TextBox txtFeedback;
     }
 }
