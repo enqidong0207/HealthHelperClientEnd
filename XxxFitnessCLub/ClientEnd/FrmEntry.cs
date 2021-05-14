@@ -1,5 +1,4 @@
-﻿using HHFirstDraft.DAL.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using XxxFitnessCLub.ClientEnd;
 using XxxFitnessCLub.ClientEnd.BLL;
+using XxxFitnessCLub.ClientEnd.DAL.DTO;
 
 namespace XxxFitnessCLub.ClientEnd
 {
