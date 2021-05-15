@@ -101,7 +101,10 @@ namespace XxxFitnessCLub.ClientEnd
                 PointLatLng point = new PointLatLng(points[i].Geometry.Location.Latitude, points[i].Geometry.Location.Longitude);
 
                 marker = new GMarkerGoogle(point, GMarkerGoogleType.green);
-                marker.ToolTipText = points[i].Name;
+                marker.ToolTipText = "\n" + points[i].Name;
+
+                marker.ToolTip.TextPadding = new Size((int)marker.ToolTip.Font.Height, (int)marker.ToolTip.Font.Height);
+                
                 overlay.Markers.Add(marker);
             }
             overlay.IsVisibile = false;
@@ -130,6 +133,48 @@ namespace XxxFitnessCLub.ClientEnd
             }
 
             return coord;
+        }
+
+        //todo
+        private void gMapControl1_OnMapZoomChanged()
+        {
+            for (int i = 0; i < overlayOne.Markers.Count; i++)
+            {
+                
+            }
+        }
+    }
+
+    public class GMapMarkerWithLabel : GMarkerGoogle
+    {
+        private double zoom = 0;
+        private Font font = new Font("Arial", 12);
+        private string caption;
+
+        public GMapMarkerWithLabel(PointLatLng p, GMarkerGoogleType type, string caption, double zoom)
+            : base(p, type)
+        {
+            this.caption = caption;
+            this.zoom = zoom;
+
+        }
+
+
+        public void SetZoomLevel(double z)
+        {
+            this.zoom = z;
+        }
+
+        public override void OnRender(Graphics g)
+        {
+            base.OnRender(g);
+
+            if (zoom == 18)
+            {
+                var stringSize = g.MeasureString(this.caption, this.font);
+                var localPoint = new PointF(LocalPosition.X - stringSize.Width / 2, LocalPosition.Y - stringSize.Height);
+                g.DrawString(this.caption, this.font, Brushes.Blue, localPoint);
+            }
         }
     }
 }
