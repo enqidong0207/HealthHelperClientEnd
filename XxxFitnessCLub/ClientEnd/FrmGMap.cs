@@ -22,7 +22,7 @@ namespace XxxFitnessCLub.ClientEnd
     {
         GeoCoordinate coord;
         GMapOverlay overlayOne = new GMapOverlay("circle");
-        GMapOverlay overlayTwo = new GMapOverlay("Name");
+        MyOverlay overlayTwo;
         string keyword;
         WorkoutBLL wBll = new WorkoutBLL();
         GMapMarkerWithLabel mainMarker;
@@ -51,6 +51,9 @@ namespace XxxFitnessCLub.ClientEnd
 
             CreateCircle(new PointF((float)coord.Latitude, (float)coord.Longitude), 0.018d, 60);
             AddPlaces(keyword);
+
+
+            overlayTwo = new MyOverlay(overlayOne.Markers.Cast<GMapMarkerWithLabel>().ToList());
             this.gMapControl1.Overlays.Add(overlayTwo);
         }
 
@@ -143,7 +146,8 @@ namespace XxxFitnessCLub.ClientEnd
         //todo
         private void gMapControl1_OnMapZoomChanged()
         {
-            //DrawNameOnMarker(this.mainMarker);
+            
+            this.overlayTwo.SetZoomLevel(this.gMapControl1.Zoom);
 
             if (this.gMapControl1.Zoom == 18)
             {
@@ -166,27 +170,6 @@ namespace XxxFitnessCLub.ClientEnd
 
             
         }
-        private void DrawNameOnMarker(GMapMarkerWithLabel marker)
-        {
-            Graphics g = this.overlayTwo.Control.CreateGraphics();
-
-            var stringSize = g.MeasureString(marker.Caption, marker.Font);
-            var localPoint = new PointF(marker.LocalPosition.X + marker.Size.Width / 2 - stringSize.Width / 2, marker.LocalPosition.Y - stringSize.Height);
-
-            g.DrawString(marker.Caption, marker.Font, new SolidBrush(marker.Color), localPoint);
-
-            //GraphicsPath p = new GraphicsPath();
-            //p.AddString(
-            //    marker.Caption,             // text to draw
-            //    FontFamily.GenericSansSerif,  // or any other font family
-            //    (int)FontStyle.Bold,      // font style (bold, italic, etc.)
-            //    g.DpiY * 16 / 72,       // em size
-            //    new Point((int)localPoint.X, (int)localPoint.Y),              // location where to draw text
-            //    new StringFormat());          // set options here (e.g. center alignment)
-            //g.DrawPath(new Pen(Color.White, 3f), p);
-            //g.FillPath(new SolidBrush(marker.Color), p);
-        }
-
     }
 
     public class GMapMarkerWithLabel : GMarkerGoogle
@@ -242,21 +225,56 @@ namespace XxxFitnessCLub.ClientEnd
                 var localPoint = new PointF(LocalPosition.X + this.Size.Width / 2 - stringSize.Width / 2, LocalPosition.Y - stringSize.Height);
                 g.DrawString(this.caption, this.font, new SolidBrush(this.color), localPoint);
 
-                //GraphicsPath p = new GraphicsPath();
-                //p.AddString(
-                //    this.caption,             // text to draw
-                //    FontFamily.GenericSansSerif,  // or any other font family
-                //    (int)FontStyle.Bold,      // font style (bold, italic, etc.)
-                //    g.DpiY * 16 / 72,       // em size
-                //    new Point((int)localPoint.X, (int)localPoint.Y),              // location where to draw text
-                //    new StringFormat());          // set options here (e.g. center alignment)
-                //g.DrawPath(new Pen(Color.White, 3f), p);
-                //g.FillPath(new SolidBrush(this.color), p);
             }
 
             
         }
 
         
+    }
+
+    class MyOverlay : GMapOverlay
+    {
+        List<GMapMarkerWithLabel> markers;
+        double zoom = 0;
+
+        public MyOverlay(List<GMapMarkerWithLabel> markers)
+        {
+            this.markers = markers;
+        }
+
+        public void SetZoomLevel(double z)
+        {
+            this.zoom = z;
+        }
+
+        public override void OnRender(Graphics g)
+        {
+            base.OnRender(g);
+
+            if (this.zoom == 18)
+            {
+
+                foreach (var marker in markers)
+                {
+                    var stringSize = g.MeasureString(marker.Caption, marker.Font);
+                    var localPoint = new PointF(marker.LocalPosition.X + marker.Size.Width / 2 - stringSize.Width / 2
+                        , marker.LocalPosition.Y - stringSize.Height);
+                    //g.DrawString(marker.Caption, marker.Font, new SolidBrush(marker.Color), localPoint);
+
+                    GraphicsPath p = new GraphicsPath();
+                    p.AddString(
+                        marker.Caption,             // text to draw
+                        FontFamily.GenericSansSerif,  // or any other font family
+                        (int)FontStyle.Bold,      // font style (bold, italic, etc.)
+                        g.DpiY * 16 / 72,       // em size
+                        new Point((int)localPoint.X, (int)localPoint.Y),              // location where to draw text
+                        new StringFormat());          // set options here (e.g. center alignment)
+                    g.DrawPath(new Pen(Color.White, 3f), p);
+                    g.FillPath(new SolidBrush(marker.Color), p);
+                }
+            }
+
+        }
     }
 }
