@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessCLub.ClientEnd.DAL.DTO;
 
 namespace XxxFitnessCLub.ClientEnd.DAL.DAO
 {
@@ -90,12 +91,33 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DAO
             }
         }
 
+        internal DietLogDTO GetDietLog(int dietLogID)
+        {
+            try
+            {
+                DietLog theDLog = db.DietLogs.FirstOrDefault(dl => dl.ID == dietLogID);
+
+                DietLogDTO dto = new DietLogDTO(theDLog);
+                return dto;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
+        }
+
         internal bool UpdateDietLogPortion(int dietLogID, double newPortion)
         {
 
             try
             {
-                db.DietLogs.FirstOrDefault(dl => dl.ID == dietLogID).Portion = newPortion;
+                DietLog theRecord = db.DietLogs.FirstOrDefault(dl => dl.ID == dietLogID);
+
+                theRecord.Portion = newPortion;
+                theRecord.EditTime = DateTime.Now;
                 db.SaveChanges();
 
                 return true;

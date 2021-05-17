@@ -14,7 +14,7 @@ namespace XxxFitnessCLub.ClientEnd
 {
     public partial class FrmAddWeightLog : Form
     {
-        FrmWeightLog frmWeightLog = new FrmWeightLog();
+        readonly FrmWeightLog frmWeightLog = new FrmWeightLog();
         public FrmAddWeightLog(FrmWeightLog _frmWeightLog)
         {
             frmWeightLog = _frmWeightLog;
@@ -51,8 +51,8 @@ namespace XxxFitnessCLub.ClientEnd
             cmbTime.SelectedIndex = 0;
 
         }
-        WeightLogBLL bll = new WeightLogBLL();
-        WeightLogDTO dto = new WeightLogDTO();
+        readonly WeightLogBLL bll = new WeightLogBLL();
+        readonly WeightLogDTO dto = new WeightLogDTO();
         public WeightLogDetailDTO detail = new WeightLogDetailDTO();
         private void btnAdd_Click(object sender, EventArgs e)
         {

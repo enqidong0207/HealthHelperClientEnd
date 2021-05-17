@@ -32,6 +32,8 @@ namespace XxxFitnessCLub.ClientEnd
 
         private void FrmAddMember_Load(object sender, EventArgs e)
         {
+            LoadComboBox();
+
             if (isUpdate)
             {
                 lbTitle.Text = "會員資料頁面";
@@ -54,7 +56,6 @@ namespace XxxFitnessCLub.ClientEnd
                 nameFlag = true;
                 idFlag = true;
             }
-            LoadComboBox();
 
         }
         ActivityLevelBLL activityLevelBLL = new ActivityLevelBLL();
@@ -115,7 +116,6 @@ namespace XxxFitnessCLub.ClientEnd
                     detail.ID = UserStatic.UserID;
                     bll.Update(detail);
                     MessageBox.Show("已修改會員");
-
                     //恩旗
                     this.MemberID = UserStatic.UserID;
 

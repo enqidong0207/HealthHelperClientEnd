@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HHFirstDraft;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +56,8 @@ namespace XxxFitnessCLub.ClientEnd
         //會員資料
         private void btnMember_Click(object sender, EventArgs e)
         {
+            memberBLL = new MemberBLL(); // refresh
+
             //恩旗
             memberDetail = memberBLL.GetMember(UserStatic.UserID);
 
@@ -107,10 +110,17 @@ namespace XxxFitnessCLub.ClientEnd
         }
 
         //吃過動過
+
         private void button15_Click(object sender, EventArgs e)
         {
-            FrmMealWorkoutHistory f = new FrmMealWorkoutHistory();
-            f.Show();
+            FrmMealHistory frm = new FrmMealHistory();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+            
         }
 
         //留言板

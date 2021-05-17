@@ -107,6 +107,7 @@
     <Compile Include="ClientEnd\BLL\ActivityLevelBLL.cs" />
     <Compile Include="ClientEnd\BLL\CommentBLL.cs" />
     <Compile Include="ClientEnd\BLL\DietLogBLL.cs" />
+    <Compile Include="ClientEnd\BLL\LikedMealBLL.cs" />
     <Compile Include="ClientEnd\BLL\MealBLL.cs" />
     <Compile Include="ClientEnd\BLL\MemberBLL.cs" />
     <Compile Include="ClientEnd\BLL\TagCategoryBLL.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="ClientEnd\DAL\DAO\CommentDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\DietLogDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\HHContext.cs" />
+    <Compile Include="ClientEnd\DAL\DAO\LikedMealDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\MealDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\MemberDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\StatusDAO.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="ClientEnd\DAL\DTO\CommentDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\DietDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\DietLogDTO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\LikedMealDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MealDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MealDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MemberDetailDTO.cs" />
@@ -258,15 +261,6 @@
     <Compile Include="ClientEnd\DAL\DTO\CommentCategoryDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WeightLogDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WeightLogDTO.cs" />
-    <Compile Include="Comment.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommentCategory.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DietLog.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientEnd\FrmAddWeightLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +284,21 @@
     </Compile>
     <Compile Include="ClientEnd\FrmWeightLogChart.Designer.cs">
       <DependentUpon>FrmWeightLogChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DietLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPortionRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPortionRef.Designer.cs">
+      <DependentUpon>FrmPortionRef.cs</DependentUpon>
     </Compile>
     <Compile Include="General.cs" />
     <Compile Include="ClientEnd\FrmAddWorkoutLog.cs">
@@ -497,6 +506,9 @@
     <EmbeddedResource Include="ClientEnd\FrmWorkoutSuggestions.resx">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPortionRef.resx">
+      <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientEnd\FrmAddWeightLog.resx">
       <DependentUpon>FrmAddWeightLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -569,6 +581,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portionRef.jpg" />
+    <None Include="Resources\DefaultMeal.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HHModel.Context.tt">

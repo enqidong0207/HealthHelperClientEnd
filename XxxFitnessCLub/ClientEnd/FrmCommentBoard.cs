@@ -64,7 +64,7 @@ namespace XxxFitnessCLub.ClientEnd
             dataGridView1.Columns["Rating"].HeaderText = "評分";
             dataGridView1.Columns["MealOptionID"].Visible = false;
             dataGridView1.Columns["MealName"].HeaderText = "餐點";
-            dataGridView1.Columns["Feedback"].Visible = false;
+            dataGridView1.Columns["Feedback"].HeaderText = "回覆";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -219,6 +219,22 @@ namespace XxxFitnessCLub.ClientEnd
             {
                 lblMeals.Visible = false;
                 cmbMeals.Visible = false;
+            }
+        }
+        bool isAscending = false;
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            List<CommentDetailDTO> list = (List<CommentDetailDTO>)dataGridView1.DataSource;
+            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (isAscending)
+            {
+                dataGridView1.DataSource = list.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+                isAscending = false;
+            }
+            else
+            {
+                isAscending = true;
+                dataGridView1.DataSource = list.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
             }
         }
     }

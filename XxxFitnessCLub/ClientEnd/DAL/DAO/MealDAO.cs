@@ -149,7 +149,8 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DAO
                 MealDetailDTO dto = new MealDetailDTO();
                 dto.ID = item.ID;
                 dto.Name = item.Name;
-                dto.Calories = (int)item.Calories;
+                dto.Calories = item.Calories;
+                dto.Image = item.Image;
                 List<TagCategoryDetailDTO> tagDetailList = new List<TagCategoryDetailDTO>();
                 var tagList = db.MealTags.Where(x => x.MealOptionID == item.ID).ToList();
                 foreach (var tag in tagList)
@@ -160,9 +161,9 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DAO
                     tagDetailList.Add(tagDTO);
                 }
                 dto.Tags = tagDetailList;
-                dtoList.Add(dto);
+                dtoList.Add(dto); 
             }
-            return dtoList;
+            return dtoList; 
         }
 
         public bool Delete(int ID)
