@@ -84,6 +84,7 @@
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -102,6 +103,172 @@
     <Compile Include="ActivityLevel.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BackEnd\BLL\CommentBLL.cs" />
+    <Compile Include="BackEnd\BLL\CommentCategoryBLL.cs" />
+    <Compile Include="BackEnd\BLL\MealBLL.cs" />
+    <Compile Include="BackEnd\BLL\MemberBLL.cs" />
+    <Compile Include="BackEnd\BLL\NutrientBLL.cs" />
+    <Compile Include="BackEnd\BLL\TagCategoryBLL.cs" />
+    <Compile Include="BackEnd\BLL\WeightLogBLL.cs" />
+    <Compile Include="BackEnd\BLL\WorkoutBLL.cs" />
+    <Compile Include="BackEnd\BLL\WorkoutCategoryBLL.cs" />
+    <Compile Include="BackEnd\BLL\WorkoutLogBLL.cs" />
+    <Compile Include="BackEnd\BSFrmAddComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddComment.designer.cs">
+      <DependentUpon>BSFrmAddComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddMeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddMeal.Designer.cs">
+      <DependentUpon>BSFrmAddMeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddMember.Designer.cs">
+      <DependentUpon>BSFrmAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddNutrient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddNutrient.designer.cs">
+      <DependentUpon>BSFrmAddNutrient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWeightLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWeightLog.designer.cs">
+      <DependentUpon>BSFrmAddWeightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkout.Designer.cs">
+      <DependentUpon>BSFrmAddWorkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkoutCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkoutCat.Designer.cs">
+      <DependentUpon>BSFrmAddWorkoutCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkoutLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmAddWorkoutLog.designer.cs">
+      <DependentUpon>BSFrmAddWorkoutLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmComment.designer.cs">
+      <DependentUpon>BSFrmComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmEditWorkoutCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmEditWorkoutCat.designer.cs">
+      <DependentUpon>BSFrmEditWorkoutCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMain.Designer.cs">
+      <DependentUpon>BSFrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMeal.Designer.cs">
+      <DependentUpon>BSFrmMeal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmMember.Designer.cs">
+      <DependentUpon>BSFrmMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmNutrient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmNutrient.designer.cs">
+      <DependentUpon>BSFrmNutrient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmPie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmPie.Designer.cs">
+      <DependentUpon>BSFrmPie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmTag.Designer.cs">
+      <DependentUpon>BSFrmTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWeightLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWeightLog.designer.cs">
+      <DependentUpon>BSFrmWeightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWeightLogChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWeightLogChart.designer.cs">
+      <DependentUpon>BSFrmWeightLogChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWorkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWorkout.Designer.cs">
+      <DependentUpon>BSFrmWorkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWorkoutLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackEnd\BSFrmWorkoutLog.designer.cs">
+      <DependentUpon>BSFrmWorkoutLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd\DAL\DAO\ActivityLevelDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\CommentCategoryDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\CommentDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\HHContext.cs" />
+    <Compile Include="BackEnd\DAL\DAO\MealDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\MemberDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\NutrientDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\StatusDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\TagCategoryDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\WeightLogDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\WorkoutCategoryDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\WorkoutDAO.cs" />
+    <Compile Include="BackEnd\DAL\DAO\WorkoutLogDAO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\ActivityLevelDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\ActivityLevelDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\CommentCategoryDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\CommentCategoryDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\CommentDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\CommentDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\MealDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\MealDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\MemberDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\MemberDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\NutrientDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\StatusDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\StatusDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\TagCategoryDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\TagCategoryDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WeightLogDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WeightLogDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutCategoryDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutCategoryDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutLogDetailDTO.cs" />
+    <Compile Include="BackEnd\DAL\DTO\WorkoutLogDTO.cs" />
     <Compile Include="ClientEnd\BLL\CommentCategoryBLL.cs" />
     <Compile Include="ClientEnd\BLL\WeightLogBLL.cs" />
     <Compile Include="ClientEnd\BLL\ActivityLevelBLL.cs" />
@@ -425,6 +592,66 @@
     <Compile Include="WorkoutPreference.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BackEnd\BSFrmAddComment.resx">
+      <DependentUpon>BSFrmAddComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddMeal.resx">
+      <DependentUpon>BSFrmAddMeal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddMember.resx">
+      <DependentUpon>BSFrmAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddNutrient.resx">
+      <DependentUpon>BSFrmAddNutrient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddWeightLog.resx">
+      <DependentUpon>BSFrmAddWeightLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddWorkout.resx">
+      <DependentUpon>BSFrmAddWorkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddWorkoutCat.resx">
+      <DependentUpon>BSFrmAddWorkoutCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmAddWorkoutLog.resx">
+      <DependentUpon>BSFrmAddWorkoutLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmComment.resx">
+      <DependentUpon>BSFrmComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmEditWorkoutCat.resx">
+      <DependentUpon>BSFrmEditWorkoutCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmMain.resx">
+      <DependentUpon>BSFrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmMeal.resx">
+      <DependentUpon>BSFrmMeal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmMember.resx">
+      <DependentUpon>BSFrmMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmNutrient.resx">
+      <DependentUpon>BSFrmNutrient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmPie.resx">
+      <DependentUpon>BSFrmPie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmTag.resx">
+      <DependentUpon>BSFrmTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmWeightLog.resx">
+      <DependentUpon>BSFrmWeightLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmWeightLogChart.resx">
+      <DependentUpon>BSFrmWeightLogChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmWorkout.resx">
+      <DependentUpon>BSFrmWorkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackEnd\BSFrmWorkoutLog.resx">
+      <DependentUpon>BSFrmWorkoutLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientEnd\FrmAddComment.resx">
       <DependentUpon>FrmAddComment.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,6 +814,7 @@
     <None Include="Resources\DefaultMeal.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackEnd\Image\cantfind.jpg" />
     <Content Include="HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>

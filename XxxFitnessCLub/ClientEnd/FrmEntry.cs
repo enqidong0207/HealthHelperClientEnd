@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XxxFitnessClub.BackEnd;
 using XxxFitnessCLub.ClientEnd;
 using XxxFitnessCLub.ClientEnd.BLL;
 using XxxFitnessCLub.ClientEnd.DAL.DTO;
@@ -47,6 +48,7 @@ namespace XxxFitnessCLub.ClientEnd
                     UserStatic.UserID = userID;
                     UserStatic.UserName = txtName.Text;
                     MessageBox.Show("歡迎進入進康管理系統, " + UserStatic.UserName);
+
                     //恩旗
                     this.Hide();
                     FrmMainPage f = new FrmMainPage();
@@ -58,9 +60,10 @@ namespace XxxFitnessCLub.ClientEnd
                     UserStatic.UserID = userID;
                     UserStatic.UserName = txtName.Text;
                     MessageBox.Show("歡迎進入進康管理後臺系統, 管理者" + UserStatic.UserName);
+
                     //恩旗
                     this.Hide();
-                    FrmMainPage f = new FrmMainPage();
+                    BSFrmMain f = new BSFrmMain();
                     f.Closed += (s, args) => this.Close();
                     f.Show();
                 }
