@@ -511,6 +511,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPortionRef.resx">
       <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientEnd\FrmAddWeightLog.resx">
       <DependentUpon>FrmAddWeightLog.cs</DependentUpon>
     </EmbeddedResource>
