@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="螢幕擷取畫面 2021-05-02 204709" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\螢幕擷取畫面 2021-05-02 204709.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="scale-lose-weight-2-1080x6751" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scale-lose-weight-2-1080x6751.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DefaultMeal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DefaultMeal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\up.jfif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MealRed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MealRed1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.jfif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="like" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\like.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MealRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MealRed.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="a5a8f95fbb3d1062b7972f71e5ca4a46" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\a5a8f95fbb3d1062b7972f71e5ca4a46.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="scale-lose-weight-2-1080x675" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scale-lose-weight-2-1080x675.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="chartRef" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\chartRef.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="portionRef" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\portionRef.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  
 </root>

@@ -33,8 +33,6 @@ namespace XxxFitnessCLub.ClientEnd
 
         List<List<FlowLayoutPanel>> panelList = new List<List<FlowLayoutPanel>>();
 
-        bool reloadLock = false;
-
         public FrmWorkoutSuggestions()
         {
             InitializeComponent();
@@ -43,7 +41,7 @@ namespace XxxFitnessCLub.ClientEnd
         private void FrmWorkoutSuggestions_Load(object sender, EventArgs e)
         {
             coord = FrmGMap.GetCurrentPosition();
-            this.lblCoord.Text = $"  Latitude：{coord.Latitude}\nLongtitude：{coord.Longitude}";
+            this.lblCoord.Text = $"  Latitude：{coord.Latitude:0.0000}\nLongtitude：{coord.Longitude:0.0000}";
 
             alList = alBLL.GetActivityLevels().OrderBy(al => al.ID).ToList();
             wcList = wcBLL.GetCategories();
@@ -65,6 +63,9 @@ namespace XxxFitnessCLub.ClientEnd
 
         private async void LoadTableContentAsync(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
         {
+
+            this.Parent.Parent.Parent.Parent.Enabled = false;
+
             List<Task> tasks = new List<Task>();
             Dictionary<String, List<string>> keywords = new Dictionary<String, List<string>>();
             foreach (var item in wBll.GetWorkoutByWCAL(-1, -1))
@@ -108,7 +109,7 @@ namespace XxxFitnessCLub.ClientEnd
                         lbl.Height = (int)(lbl.Font.Size * 2.5);
                         lbl.Margin = new Padding(2);
                         lbl.Paint += FrmAddWorkoutPreferences.LblWorkout_Paint;
-
+                        lbl.Click += lblWorkout_Click;
                         int yIndex = wcList.IndexOf(wcList.SingleOrDefault(wc => wc.ID == w.WorkoutCategoryID));
                         int xIndex = alList.IndexOf(alList.SingleOrDefault(al => al.ID == w.ActivityLevelID));
 
@@ -121,8 +122,8 @@ namespace XxxFitnessCLub.ClientEnd
                 tasks.Remove(finishedTask);
             }
 
-            AddClickHandler();
             MessageBox.Show("load success");
+            this.Parent.Parent.Parent.Parent.Enabled = true;
         }
 
         private void LoadTableHeader(List<WorkoutCategoryDetailDTO> wcList, List<ActivityLevelDetailDTO> alList)
@@ -175,22 +176,11 @@ namespace XxxFitnessCLub.ClientEnd
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (reloadLock)
-            {
-                return;
-            }
-            else
-            {
-                reloadLock = true;
+            coord = FrmGMap.GetCurrentPosition();
+            this.lblCoord.Text = $"Latitude：{coord.Latitude:0.0000}\nLongtitude{coord.Longitude:0.0000}";
 
-                coord = FrmGMap.GetCurrentPosition();
-                this.lblCoord.Text = $"Latitude：{coord.Latitude}\nLongtitude{coord.Longitude}";
-
-                ClearTableContent();
-                LoadTableContentAsync(wcList, alList);
-
-                reloadLock = false;
-            }
+            ClearTableContent();
+            LoadTableContentAsync(wcList, alList);
         }
 
         private void LoadTableCell()
@@ -215,16 +205,16 @@ namespace XxxFitnessCLub.ClientEnd
             }
         }
 
-        private void AddClickHandler()
-        {
-            List<Control> lblList =  this.panelList.SelectMany(l => l)
-                .SelectMany(l => l.Controls.Cast<Control>().ToList()).ToList();
+        //private void AddClickHandler()
+        //{
+        //    List<Control> lblList =  this.panelList.SelectMany(l => l)
+        //        .SelectMany(l => l.Controls.Cast<Control>().ToList()).ToList();
 
-            foreach (var lbl in lblList)
-            {
-                lbl.Click += lblWorkout_Click;
-            }
-        }
+        //    foreach (var lbl in lblList)
+        //    {
+        //        lbl.Click += lblWorkout_Click;
+        //    }
+        //}
     }
 
 }

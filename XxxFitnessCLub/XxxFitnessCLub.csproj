@@ -102,6 +102,9 @@
     <Compile Include="ActivityLevel.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
+
+    <Compile Include="ClientEnd\BLL\CommentCategoryBLL.cs" />
+    <Compile Include="ClientEnd\BLL\WeightLogBLL.cs" />
     <Compile Include="ClientEnd\BLL\ActivityLevelBLL.cs" />
     <Compile Include="ClientEnd\BLL\CommentBLL.cs" />
     <Compile Include="ClientEnd\BLL\DietLogBLL.cs" />
@@ -253,6 +256,37 @@
     <Compile Include="ClientEnd\FrmWorkoutLogChart.Designer.cs">
       <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="ClientEnd\DAL\DAO\CommentCategoryDAO.cs" />
+    <Compile Include="ClientEnd\DAL\DAO\WeightLogDAO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\CommentCategoryDetailDTO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\CommentCategoryDTO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\WeightLogDetailDTO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\WeightLogDTO.cs" />
+    <Compile Include="ClientEnd\FrmAddWeightLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEnd\FrmAddWeightLog.Designer.cs">
+      <DependentUpon>FrmAddWeightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientEnd\FrmCommentBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEnd\FrmCommentBoard.Designer.cs">
+      <DependentUpon>FrmCommentBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientEnd\FrmWeightLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEnd\FrmWeightLog.designer.cs">
+      <DependentUpon>FrmWeightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientEnd\FrmWeightLogChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEnd\FrmWeightLogChart.Designer.cs">
+      <DependentUpon>FrmWeightLogChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -268,6 +302,7 @@
     <Compile Include="FrmPortionRef.Designer.cs">
       <DependentUpon>FrmPortionRef.cs</DependentUpon>
     </Compile>
+
     <Compile Include="General.cs" />
     <Compile Include="ClientEnd\FrmAddWorkoutLog.cs">
       <SubType>Form</SubType>
@@ -476,6 +511,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPortionRef.resx">
       <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    <EmbeddedResource Include="ClientEnd\FrmAddWeightLog.resx">
+      <DependentUpon>FrmAddWeightLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientEnd\FrmCommentBoard.resx">
+      <DependentUpon>FrmCommentBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientEnd\FrmWeightLog.resx">
+      <DependentUpon>FrmWeightLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientEnd\FrmWeightLogChart.resx">
+      <DependentUpon>FrmWeightLogChart.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -543,6 +590,7 @@
     <None Include="Resources\DefaultMeal.png" />
   </ItemGroup>
   <ItemGroup>
+
     <Content Include="HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>
@@ -553,7 +601,9 @@
       <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\like.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

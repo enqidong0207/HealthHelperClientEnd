@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnWeightLog = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnComment = new System.Windows.Forms.Button();
             this.btnWSuggestion = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnHistory = new System.Windows.Forms.Button();
+            this.btnPerformance = new System.Windows.Forms.Button();
             this.btnMealLogPage = new System.Windows.Forms.Button();
             this.btnWorkoutLogPage = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnProgram = new System.Windows.Forms.Button();
+            this.btnGift = new System.Windows.Forms.Button();
             this.btnHomePage = new System.Windows.Forms.Button();
             this.btnMember = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.lblUser = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,15 +62,16 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnWeightLog);
             this.splitContainer1.Panel1.Controls.Add(this.btnComment);
             this.splitContainer1.Panel1.Controls.Add(this.btnWSuggestion);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.button15);
-            this.splitContainer1.Panel1.Controls.Add(this.button14);
+            this.splitContainer1.Panel1.Controls.Add(this.btnHistory);
+            this.splitContainer1.Panel1.Controls.Add(this.btnPerformance);
             this.splitContainer1.Panel1.Controls.Add(this.btnMealLogPage);
             this.splitContainer1.Panel1.Controls.Add(this.btnWorkoutLogPage);
-            this.splitContainer1.Panel1.Controls.Add(this.button7);
-            this.splitContainer1.Panel1.Controls.Add(this.button6);
+            this.splitContainer1.Panel1.Controls.Add(this.btnProgram);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGift);
             this.splitContainer1.Panel1.Controls.Add(this.btnHomePage);
             this.splitContainer1.Panel1.Controls.Add(this.btnMember);
             // 
@@ -81,9 +83,29 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnWeightLog
+            // 
+            this.btnWeightLog.Location = new System.Drawing.Point(20, 332);
+            this.btnWeightLog.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnWeightLog.Name = "btnWeightLog";
+            this.btnWeightLog.Size = new System.Drawing.Size(131, 32);
+            this.btnWeightLog.TabIndex = 33;
+            this.btnWeightLog.Text = "體重記錄";
+            this.btnWeightLog.UseVisualStyleBackColor = true;
+            this.btnWeightLog.Click += new System.EventHandler(this.btnWeightLog_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(20, 25);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(56, 18);
+            this.lblUser.TabIndex = 32;
+            this.lblUser.Text = "用戶: ";
+            // 
             // btnComment
             // 
-            this.btnComment.Location = new System.Drawing.Point(20, 332);
+            this.btnComment.Location = new System.Drawing.Point(20, 378);
             this.btnComment.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnComment.Name = "btnComment";
             this.btnComment.Size = new System.Drawing.Size(131, 32);
@@ -114,8 +136,9 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "網頁收到左邊";
             // 
-            // button15
+            // btnHistory
             // 
+
             this.button15.Location = new System.Drawing.Point(20, 287);
             this.button15.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button15.Name = "button15";
@@ -124,17 +147,19 @@
             this.button15.Text = "飲食story";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
+
+
             // 
-            // button14
+            // btnPerformance
             // 
-            this.button14.Location = new System.Drawing.Point(20, 551);
-            this.button14.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(131, 32);
-            this.button14.TabIndex = 26;
-            this.button14.Text = "我的表現";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.btnPerformance.Location = new System.Drawing.Point(20, 551);
+            this.btnPerformance.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnPerformance.Name = "btnPerformance";
+            this.btnPerformance.Size = new System.Drawing.Size(131, 32);
+            this.btnPerformance.TabIndex = 26;
+            this.btnPerformance.Text = "我的表現";
+            this.btnPerformance.UseVisualStyleBackColor = true;
+            this.btnPerformance.Click += new System.EventHandler(this.button14_Click);
             // 
             // btnMealLogPage
             // 
@@ -158,27 +183,27 @@
             this.btnWorkoutLogPage.UseVisualStyleBackColor = true;
             this.btnWorkoutLogPage.Click += new System.EventHandler(this.btnWorkoutLogPage_Click);
             // 
-            // button7
+            // btnProgram
             // 
-            this.button7.Location = new System.Drawing.Point(20, 602);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(131, 32);
-            this.button7.TabIndex = 22;
-            this.button7.Text = "開始計畫";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnProgram.Location = new System.Drawing.Point(20, 602);
+            this.btnProgram.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnProgram.Name = "btnProgram";
+            this.btnProgram.Size = new System.Drawing.Size(131, 32);
+            this.btnProgram.TabIndex = 22;
+            this.btnProgram.Text = "開始計畫";
+            this.btnProgram.UseVisualStyleBackColor = true;
+            this.btnProgram.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button6
+            // btnGift
             // 
-            this.button6.Location = new System.Drawing.Point(20, 501);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(131, 32);
-            this.button6.TabIndex = 21;
-            this.button6.Text = "My禮物卡";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnGift.Location = new System.Drawing.Point(20, 501);
+            this.btnGift.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnGift.Name = "btnGift";
+            this.btnGift.Size = new System.Drawing.Size(131, 32);
+            this.btnGift.TabIndex = 21;
+            this.btnGift.Text = "My禮物卡";
+            this.btnGift.UseVisualStyleBackColor = true;
+            this.btnGift.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnHomePage
             // 
@@ -222,6 +247,7 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
+
             // lblUser
             // 
             this.lblUser.AutoSize = true;
@@ -232,6 +258,8 @@
             this.lblUser.TabIndex = 32;
             this.lblUser.Text = "用戶: ";
             // 
+
+
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -275,17 +303,18 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnHistory;
+        private System.Windows.Forms.Button btnPerformance;
         private System.Windows.Forms.Button btnMealLogPage;
         private System.Windows.Forms.Button btnWorkoutLogPage;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnProgram;
+        private System.Windows.Forms.Button btnGift;
         private System.Windows.Forms.Button btnMember;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnWSuggestion;
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Button btnComment;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btnWeightLog;
     }
 }

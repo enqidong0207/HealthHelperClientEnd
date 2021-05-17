@@ -47,7 +47,11 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DAO
         }
         public MemberDetailDTO GetMember(int ID)
         {
-            Member member = db.Members.First(x => x.ID == ID);
+            Member member = db.Members.FirstOrDefault(x => x.ID == ID);
+            if (member == null)
+            {
+                return null;
+            }
             MemberDetailDTO dto = new MemberDetailDTO();
             dto.ID = ID;
             dto.Name = member.Name;

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Emily_in_Cdisc\ToHome\05162021\ForGitHubHHClientEnd0517\XxxFitnessCLub\HHModel.edmx'. 
+
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

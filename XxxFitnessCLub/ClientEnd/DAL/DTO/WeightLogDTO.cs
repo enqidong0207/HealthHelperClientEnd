@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace XxxFitnessCLub.ClientEnd.DAL.DTO
 {
-    public class CommentDTO
+    public class WeightLogDTO
     {
-        public List<CommentDetailDTO> Comments { get; set; }
-
+        public List<WeightLogDetailDTO> WeightLogs { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace XxxFitnessCLub.ClientEnd.DAL.DTO
 {
-    public class CommentDTO
+    public class CommentCategoryDetailDTO
     {
-        public List<CommentDetailDTO> Comments { get; set; }
-
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }

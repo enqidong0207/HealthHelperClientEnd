@@ -12,9 +12,9 @@ using XxxFitnessCLub.ClientEnd.DAL.DTO;
 
 namespace XxxFitnessCLub.ClientEnd
 {
-    public partial class FrmComment : Form
+    public partial class FrmCommentBoard : Form
     {
-        public FrmComment()
+        public FrmCommentBoard()
         {
             InitializeComponent();
         }
@@ -26,11 +26,21 @@ namespace XxxFitnessCLub.ClientEnd
             LoadComboBox();
             txtMember.Enabled = false;
             txtMember.Text = UserStatic.UserName;
+            lblMeals.Visible = false;
+            cmbMeals.Visible = false;
+            txtFeedback.Enabled = false;
+           
         }
-        MealBLL mealBLL = new MealBLL();
+        CommentCategoryBLL categoryBLL = new CommentCategoryBLL();
+        CommentCategoryDTO categoryDTO = new CommentCategoryDTO();
         MealDTO mealDTO = new MealDTO();
+        MealBLL mealBLL = new MealBLL();
         private void LoadComboBox()
         {
+            categoryDTO.CommentCategories = categoryBLL.GetCommentCategories();
+            cmbCategory.DataSource = categoryDTO.CommentCategories;
+            cmbCategory.DisplayMember = "Name";
+            cmbCategory.ValueMember = "ID";
             mealDTO = mealBLL.GetMeals();
             cmbMeals.DataSource = mealDTO.Meals;
             cmbMeals.DisplayMember = "Name";
@@ -49,9 +59,12 @@ namespace XxxFitnessCLub.ClientEnd
             dataGridView1.Columns["Member"].HeaderText = "會員";
             dataGridView1.Columns["AddDate"].HeaderText = "留言時間";
             dataGridView1.Columns["IsApproved"].Visible = false;
-            dataGridView1.Columns["MealID"].Visible = false;
-            dataGridView1.Columns["MealName"].HeaderText = "評論餐點";
+            dataGridView1.Columns["CategoryID"].Visible = false;
+            dataGridView1.Columns["CategoryName"].HeaderText = "評論項目";
             dataGridView1.Columns["Rating"].HeaderText = "評分";
+            dataGridView1.Columns["MealOptionID"].Visible = false;
+            dataGridView1.Columns["MealName"].HeaderText = "餐點";
+            dataGridView1.Columns["Feedback"].HeaderText = "回覆";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -66,10 +79,10 @@ namespace XxxFitnessCLub.ClientEnd
             txtComment.Enabled = true;
             txtMember.Text = UserStatic.UserName;
             txtMember.Enabled = false;
-            cmbMeals.SelectedIndex = -1;
             numericRating.Value = 1;
-            cmbMeals.Enabled = true;
+            cmbCategory.Enabled = true;
             numericRating.Enabled = true;
+            txtFeedback.Clear();
         }
         CommentDetailDTO detail = new CommentDetailDTO();
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -78,34 +91,57 @@ namespace XxxFitnessCLub.ClientEnd
             detail.MemberID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MemberID"].Value);
             detail.Member = dataGridView1.Rows[e.RowIndex].Cells["Member"].Value.ToString();
             detail.Title = dataGridView1.Rows[e.RowIndex].Cells["Title"].Value.ToString();
-            detail.MealName = dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value.ToString();
+            detail.CategoryName = dataGridView1.Rows[e.RowIndex].Cells["CategoryName"].Value.ToString();
             detail.Rating = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Rating"].Value);
             detail.CommentContent = dataGridView1.Rows[e.RowIndex].Cells["CommentContent"].Value.ToString();
-            detail.MealOptionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MealOptionID"].Value);
+            detail.CategoryID= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryID"].Value);
             detail.IsApproved = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells["IsApproved"].Value);
-
+            detail.MealOptionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["MealOptionID"].Value);
+            if (dataGridView1.Rows[e.RowIndex].Cells["Feedback"].Value != null)
+            {
+                detail.Feedback = dataGridView1.Rows[e.RowIndex].Cells["Feedback"].Value.ToString();
+            }
+            else
+            {
+                detail.Feedback = "";
+            }
+            if (dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value != null)
+            {
+                detail.MealName = dataGridView1.Rows[e.RowIndex].Cells["MealName"].Value.ToString();
+            }
             txtTitle.Text = detail.Title;
             txtComment.Text = detail.CommentContent;
             txtMember.Text = detail.Member;
-            cmbMeals.SelectedValue = detail.MealOptionID;
+            cmbCategory.SelectedValue = detail.CategoryID;
             numericRating.Value = detail.Rating;
             txtMember.Enabled = false;
+            txtFeedback.Text = detail.Feedback;
+            if (detail.CategoryID == General.CommentCategory.meal)
+            {
+                cmbMeals.Visible = true;
+                lblMeals.Visible = true;
+            }
+            else
+            {
+                cmbMeals.Visible = false;
+                lblMeals.Visible = false;
+            }
             if (detail.MemberID == UserStatic.UserID)
             {
-                btnEdit.Visible = true;
+                btnUpdate.Visible = true;
                 btnDelete.Visible = true;
                 txtTitle.Enabled = true;
                 txtComment.Enabled = true;
-                cmbMeals.Enabled = true;
+                cmbCategory.Enabled = true;
                 numericRating.Enabled = true;
             }
             else
             {
-                btnEdit.Visible = false;
+                btnUpdate.Visible = false;
                 btnDelete.Visible = false;
                 txtTitle.Enabled = false;
                 txtComment.Enabled = false;
-                cmbMeals.Enabled = false;
+                cmbCategory.Enabled = false;
                 numericRating.Enabled = false;
             }
         }
@@ -125,11 +161,15 @@ namespace XxxFitnessCLub.ClientEnd
                 detail = new CommentDetailDTO();
                 detail.Title = txtTitle.Text;
                 detail.CommentContent = txtComment.Text;
-                detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
+                detail.CategoryID = Convert.ToInt32(cmbCategory.SelectedValue);
                 detail.Rating = Convert.ToInt32(numericRating.Value);
                 detail.MemberID = UserStatic.UserID;
                 detail.IsApproved = false;
                 detail.AddDate = DateTime.Now;
+                if (detail.CategoryID == General.CommentCategory.meal)
+                {
+                    detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
+                }
                 commentBLL.Add(detail);
                 MessageBox.Show("已新增留言");
                 ClearTextboxes();
@@ -141,8 +181,12 @@ namespace XxxFitnessCLub.ClientEnd
         {
             detail.Title = txtTitle.Text;
             detail.CommentContent = txtComment.Text;
-            detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
+            detail.CategoryID = Convert.ToInt32(cmbCategory.SelectedValue);
             detail.Rating = Convert.ToInt32(numericRating.Value);
+            if (detail.CategoryID == General.CommentCategory.meal)
+            {
+                detail.MealOptionID = Convert.ToInt32(cmbMeals.SelectedValue);
+            }
             commentBLL.Update(detail);
             MessageBox.Show("已修改留言");
             ClearTextboxes();
@@ -158,6 +202,39 @@ namespace XxxFitnessCLub.ClientEnd
                 MessageBox.Show("已刪除評論");
                 ClearTextboxes();
                 ShowComments();
+            }
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedCategory;
+            if (int.TryParse(cmbCategory.SelectedValue.ToString(), out selectedCategory) &&
+                 selectedCategory == General.CommentCategory.meal)
+            {
+               
+                lblMeals.Visible = true;
+                cmbMeals.Visible = true;
+            }
+            else
+            {
+                lblMeals.Visible = false;
+                cmbMeals.Visible = false;
+            }
+        }
+        bool isAscending = false;
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            List<CommentDetailDTO> list = (List<CommentDetailDTO>)dataGridView1.DataSource;
+            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (isAscending)
+            {
+                dataGridView1.DataSource = list.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+                isAscending = false;
+            }
+            else
+            {
+                isAscending = true;
+                dataGridView1.DataSource = list.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
             }
         }
     }

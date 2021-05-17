@@ -13,12 +13,12 @@ namespace XxxFitnessCLub
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HealthManagementEntities : DbContext
+
+    public partial class HealthManagementOld0512Entities : DbContext
     {
-        public HealthManagementEntities()
-            : base("name=HealthManagementEntities")
-        {
-        }
+        public HealthManagementOld0512Entities()
+            : base("name=HealthManagementOld0512Entities")
+
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
