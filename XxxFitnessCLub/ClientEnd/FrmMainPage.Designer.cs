@@ -110,7 +110,7 @@
             this.label3.ForeColor = System.Drawing.Color.Red;
             this.label3.Location = new System.Drawing.Point(34, 469);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 23);
+            this.label3.Size = new System.Drawing.Size(209, 37);
             this.label3.TabIndex = 28;
             this.label3.Text = "網頁收到左邊";
             // 
@@ -121,7 +121,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(131, 32);
             this.button15.TabIndex = 27;
-            this.button15.Text = "吃過動過(歷史紀錄)";
+            this.button15.Text = "飲食story";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
@@ -228,7 +228,7 @@
             this.lblUser.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.Location = new System.Drawing.Point(3, 7);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(76, 23);
+            this.lblUser.Size = new System.Drawing.Size(109, 37);
             this.lblUser.TabIndex = 32;
             this.lblUser.Text = "用戶: ";
             // 
@@ -247,7 +247,7 @@
             // 
             // FrmMainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 656);
             this.Controls.Add(this.splitContainer1);

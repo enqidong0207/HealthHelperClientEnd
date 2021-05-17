@@ -37,11 +37,6 @@ namespace XxxFitnessCLub.ClientEnd.BLL
             return dao.GetDailyGainedCalories(date);
         }
 
-
-
-
-        
-
         internal List<dynamic> GetDietLogHistory()
         {
             return dao.GetDietLogs();    
@@ -78,5 +73,10 @@ namespace XxxFitnessCLub.ClientEnd.BLL
         {
             return dao.UpdateDietLogPortion(dietLogID, newPortion );
         }
+        internal DietLog GetDietLog(int dietLogID)
+        {
+            return dao.GetDietLog(dietLogID);
+        }
+
     }
 }

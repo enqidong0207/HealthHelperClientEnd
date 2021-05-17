@@ -5,11 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using XxxFitnessCLub;
+using XxxFitnessCLub.ClientEnd;
 using XxxFitnessCLub.ClientEnd.BLL;
 using XxxFitnessCLub.ClientEnd.DAL.DTO;
+using XxxFitnessCLub.ClientEnd.ViewModel;
 
 namespace HHFirstDraft
 {
@@ -17,20 +21,83 @@ namespace HHFirstDraft
     {
         DietLogBLL dlBll = new DietLogBLL();
         TimesOfDayBLL tBll = new TimesOfDayBLL();
+        LikedMealBLL lmBLL = new LikedMealBLL();
+        MyCircleProgress[] cBars;
+
         public FrmMealHistory()
         {
             InitializeComponent();
-            //DGVMealHistory.CellFormatting += DGVMealHistory_CellFormatting;   //
-            DGVMealHistory.DataSource = bS_MealHistory;
+            DGVMealHistory.CellFormatting += DGVMealHistory_CellFormatting;  
             DGVMealHistory.CellClick += DGVMealHistory_CellClick;
-            bS_MealHistory.DataSource = dlBll.GetDietLogHistory().ToList();
-            DGVMealHistory.Columns["DietLogID"].Visible = false;
+
+            DGVMealHistory.DataSource = bS_MealHistory;
+            bS_MealHistory.DataSource = dlBll.GetDietLogHistory().ToList(); //
+            bS_MealHistory.DataSourceChanged += BS_MealHistory_DataSourceChanged;
+            DGVMealHistory.Columns["DietLogID"].Visible = false;  //
+            
+            this.mCalendar.MaxDate = DateTime.Today;
             this.cBoxTimesOfDay.Text = "請選擇時段";
             LoadTimeOfDay();
-            //AddDGVButtons();
+            myCProParBf.timeOfDayName = "早餐";
+            myCProParLn.timeOfDayName = "午餐";
+            myCProParDn.timeOfDayName = "晚餐";
+            myCProParSn.timeOfDayName = "點心";
+            myCProParBedSn.timeOfDayName = "宵夜";
+            cBars = new MyCircleProgress[] { myCProParBf, myCProParLn, myCProParDn, myCProParSn, myCProParBedSn };
+
+            this.pBarDailyGain.Minimum = 0;
+            this.pBarDailyGain.Maximum = StaticUser.TBLL;
+
+            this.mCalendar.DateSelected += MCalendar_DateSelected;
+            
+            //=======
 
 
+        }
 
+        private void BS_MealHistory_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (this.DGVMealHistory.Columns.Contains("DietLogID"))
+            {
+                this.DGVMealHistory.Columns["DietLogID"].Visible = false;
+            }
+        }
+
+        private void MCalendar_DateSelected(object sender, DateRangeEventArgs e)
+        {   
+            UpdateCircularProgressBars(cBars, e.Start);
+            groupBox1.Text = e.Start.ToString("M/d/yyyy");
+            RefreshDailyProgressBar(e.Start);
+        }
+
+        private void RefreshDailyProgressBar(DateTime date)  //
+        {
+            int dailyTotal = (int)dlBll.DailyGainedCalories(date);
+            if (dailyTotal >= this.pBarDailyGain.Maximum)
+            {
+                this.pBarDailyGain.Value = this.pBarDailyGain.Maximum;
+            }
+            else
+            {
+                this.pBarDailyGain.Value = (int)dlBll.DailyGainedCalories(date);
+            }
+            lblTotalGainedCalPer.Text = $"{(double)dailyTotal / (double)StaticUser.TBLL * 100}%";
+
+        }
+        private void UpdateCircularProgressBars(MyCircleProgress[] cBars, DateTime date)
+        {
+            foreach (MyCircleProgress cB in cBars)
+            {
+
+                double timeOfDayGained = dlBll.GetTimeOfDayGainedCal(cB.timeOfDayName, date);
+                int timeOfDayGainedPercentage = (int)((timeOfDayGained / StaticUser.TBLL) * 100);
+                for (int i = 0; i <= timeOfDayGainedPercentage; i++)
+                {
+                    cB.Value = i;
+                    cB.Text = $"{cB.timeOfDayName}: {cB.Value}%";
+                }
+
+            }
         }
 
         private void DGVMealHistory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -39,8 +106,19 @@ namespace HHFirstDraft
             int dietLogID = (int)DGVMealHistory.Rows[e.RowIndex].Cells["DietLogID"].Value;
             if (DGVMealHistory.Columns[e.ColumnIndex].Name == "btnLike")
             {
-                MessageBox.Show("btnLike");
-            }
+
+                int mealID = dlBll.GetDietLog(dietLogID).MealOption.ID;
+
+                LikedMealDTO lmDto = new LikedMealDTO(new LikedMeal
+                {
+                    MemberID = StaticUser.UserID,
+                    MealOptionID = mealID
+                });
+                if (lmBLL.Add(lmDto))
+                {
+                    MessageBox.Show($"已加入我的最愛");
+                }
+            }        
             else if (DGVMealHistory.Columns[e.ColumnIndex].Name == "btnDelete")
             {
                 DateTime date = (DateTime)DGVMealHistory.Rows[e.RowIndex].Cells["日期"].Value;
@@ -57,7 +135,20 @@ namespace HHFirstDraft
                     if (dlBll.DeleteDietLog(dietLogID))
                     {
                         MessageBox.Show("紀錄已刪除");
-                        bS_MealHistory.DataSource = dlBll.GetDietLogHistory().ToList();
+                        TimeOfDayDTO t = cBoxTimesOfDay.SelectedItem as TimeOfDayDTO;
+                        if (DGVMealHistory.Rows.Count-1 == dlBll.GetDietLogHistory().Count)
+                        {
+                            bS_MealHistory.DataSource = dlBll.GetDietLogHistory().ToList();
+                        }
+                        else if (t == null)
+                        {
+                            bS_MealHistory.DataSource = dlBll.GetDietLogHistory(mCalendar.SelectionStart, mCalendar.SelectionEnd).ToList();
+                        }
+                        else 
+                        {
+                            bS_MealHistory.DataSource = dlBll.GetDietLogHistory(mCalendar.SelectionStart, mCalendar.SelectionEnd, t.ID).ToList();
+
+                        }
                     }
                 }
             }
@@ -65,7 +156,6 @@ namespace HHFirstDraft
             {
                 if (double.TryParse(Interaction.InputBox("請輸入更改後的份量(可含小數):", "修改份量?"), out double newPortion))
                 {
-                    MessageBox.Show(newPortion + "");
                     if (dlBll.UpdateDietLogPortion(dietLogID, newPortion))
                     {
                         MessageBox.Show("紀錄已修改");
@@ -91,11 +181,7 @@ namespace HHFirstDraft
             }
 
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+     
         private void mCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             this.bS_MealHistory.DataSource = null;
@@ -108,39 +194,45 @@ namespace HHFirstDraft
             else 
             {
                 bS_MealHistory.DataSource = dlBll.GetDietLogHistory(mc.SelectionStart, mc.SelectionEnd, toD.ID);
-
             }
-           
         }
 
         private void DGVMealHistory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
             if (dgv.Rows.Count <= 0) return;
-            switch (dgv.Rows[e.RowIndex].Cells["TimeOfDay"].Value.ToString()) 
+            if (e.ColumnIndex ==4)
             {
-                case "早餐":
-                e.CellStyle.BackColor = Color.Pink;
-                    break;
-                case "午餐":
-                    e.CellStyle.BackColor = Color.PapayaWhip;
-                    break;
-                case "晚餐":
-                    e.CellStyle.BackColor = Color.Honeydew;
-                    break;
-                case "點心":
-                    e.CellStyle.BackColor = Color.LightCyan;
-                    break;
-                case "宵夜":
-                    e.CellStyle.BackColor = Color.LightGray;
-                    break;
-                default:
-                    e.CellStyle.BackColor = Color.White;
-                    break;
+                switch (e.Value.ToString())
+                {
+                    case "早餐":
+                        
+                        e.CellStyle.BackColor = Color.Pink;
 
 
 
+                        break;
+                    case "午餐":
+                        e.CellStyle.BackColor = Color.PapayaWhip;
+                        break;
+                    case "晚餐":
+                        e.CellStyle.BackColor = Color.Honeydew;
+                        break;
+                    case "點心":
+                        e.CellStyle.BackColor = Color.LightCyan;
+                        break;
+                    case "宵夜":
+                        e.CellStyle.BackColor = Color.Lavender;
+                        break;
+                    default:
+                        e.CellStyle.BackColor = Color.White;
+                        break;
+
+
+
+                }
             }
+
         }
 
      
@@ -151,11 +243,11 @@ namespace HHFirstDraft
             TimeOfDayDTO toD = cBoxTimesOfDay.SelectedItem as TimeOfDayDTO;
             if (toD == null)
             {
-                bS_MealHistory.DataSource = dlBll.GetDietLogHistory(this.mCalendar.SelectionStart, this.mCalendar.SelectionStart);
+                bS_MealHistory.DataSource = dlBll.GetDietLogHistory(this.mCalendar.SelectionStart, this.mCalendar.SelectionEnd);
             }
             else
             {
-                bS_MealHistory.DataSource = dlBll.GetDietLogHistory(this.mCalendar.SelectionStart, this.mCalendar.SelectionStart, toD.ID);
+                bS_MealHistory.DataSource = dlBll.GetDietLogHistory(this.mCalendar.SelectionStart, this.mCalendar.SelectionEnd, toD.ID);
 
             }
         }

@@ -99,9 +99,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLevel.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClientEnd\BLL\ActivityLevelBLL.cs" />
     <Compile Include="ClientEnd\BLL\CommentBLL.cs" />
     <Compile Include="ClientEnd\BLL\DietLogBLL.cs" />
+    <Compile Include="ClientEnd\BLL\LikedMealBLL.cs" />
     <Compile Include="ClientEnd\BLL\MealBLL.cs" />
     <Compile Include="ClientEnd\BLL\MemberBLL.cs" />
     <Compile Include="ClientEnd\BLL\TagCategoryBLL.cs" />
@@ -111,19 +115,11 @@
     <Compile Include="ClientEnd\BLL\WorkoutCategoryBLL.cs" />
     <Compile Include="ClientEnd\BLL\WorkoutLogBLL.cs" />
     <Compile Include="ClientEnd\BLL\WorkoutPreferencesBLL.cs" />
-    <Compile Include="ClientEnd\DAL\ActivityLevel.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\Comment.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\CommentCategory.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientEnd\DAL\DAO\ActivityLevelDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\CommentDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\DietLogDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\HHContext.cs" />
+    <Compile Include="ClientEnd\DAL\DAO\LikedMealDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\MealDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\MemberDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\StatusDAO.cs" />
@@ -133,9 +129,6 @@
     <Compile Include="ClientEnd\DAL\DAO\WorkoutDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\WorkoutLogDAO.cs" />
     <Compile Include="ClientEnd\DAL\DAO\WorkoutPreferencesDAO.cs" />
-    <Compile Include="ClientEnd\DAL\DietLog.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientEnd\DAL\DTO\ActivityLevelDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\ActivityLevelDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\ClientSelectedMealDTO.cs" />
@@ -143,6 +136,7 @@
     <Compile Include="ClientEnd\DAL\DTO\CommentDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\DietDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\DietLogDTO.cs" />
+    <Compile Include="ClientEnd\DAL\DTO\LikedMealDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MealDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MealDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\MemberDetailDTO.cs" />
@@ -157,63 +151,6 @@
     <Compile Include="ClientEnd\DAL\DTO\WorkoutDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WorkoutDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WorkoutLogDTO.cs" />
-    <Compile Include="ClientEnd\DAL\HHModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HHModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\HHModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\HHModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HHModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\LikedMeal.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\MealOption.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\MealTag.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\MealTagCategory.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\Member.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\Nutrient.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\Status.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\sysdiagram.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\TimesOfDay.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\WeightLog.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\Workout.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\WorkoutCategory.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\WorkoutLog.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\DAL\WorkoutPreference.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientEnd\FrmAddComment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +253,21 @@
     <Compile Include="ClientEnd\FrmWorkoutLogChart.Designer.cs">
       <DependentUpon>FrmWorkoutLogChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DietLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPortionRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPortionRef.Designer.cs">
+      <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="General.cs" />
     <Compile Include="ClientEnd\FrmAddWorkoutLog.cs">
       <SubType>Form</SubType>
@@ -378,11 +330,68 @@
     <Compile Include="ClientEnd\FrmWorkoutSuggestions.Designer.cs">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </Compile>
+    <Compile Include="HHModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HHModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HHModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HHModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LikedMeal.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MealOption.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MealTag.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MealTagCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Nutrient.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimesOfDay.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserStatic.cs" />
     <Compile Include="ClientEnd\ViewModel\MyCircleProgress.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WeightLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workout.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkoutCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkoutLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkoutPreference.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ClientEnd\FrmAddComment.resx">
       <DependentUpon>FrmAddComment.cs</DependentUpon>
@@ -465,6 +474,9 @@
     <EmbeddedResource Include="ClientEnd\FrmWorkoutSuggestions.resx">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPortionRef.resx">
+      <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -475,11 +487,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="ClientEnd\DAL\HHModel.edmx">
+    <EntityDeploy Include="HHModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HHModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClientEnd\DAL\HHModel.edmx.diagram">
+    <None Include="HHModel.edmx.diagram">
       <DependentUpon>HHModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -527,12 +539,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientEnd\DAL\HHModel.Context.tt">
+    <None Include="Resources\portionRef.jpg" />
+    <None Include="Resources\DefaultMeal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HHModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
       <DependentUpon>HHModel.edmx</DependentUpon>
+      <LastGenOutput>HHModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ClientEnd\DAL\HHModel.tt">
+    <Content Include="HHModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HHModel.edmx</DependentUpon>
       <LastGenOutput>HHModel.cs</LastGenOutput>
