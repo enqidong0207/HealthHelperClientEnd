@@ -24,6 +24,17 @@ namespace XxxFitnessCLub.ClientEnd
         private void btnLogin_Click(object sender, EventArgs e)
         {
             int userID = memberBLL.IsMemberExist(txtName.Text, txtPassword.Text);
+            memberDetailDTO = memberBLL.GetMember(userID);
+            if (memberDetailDTO == null)
+            {
+                MessageBox.Show("帳戶不存在");
+                return;
+            }
+            if (memberDetailDTO.StatusID == General.Status.locked)
+            {
+                MessageBox.Show("帳戶已凍結，請聯絡管理員");
+                return;
+            }
             if (userID == 0)
             {
                 MessageBox.Show("帳戶不存在");

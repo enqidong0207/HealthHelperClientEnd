@@ -55,6 +55,8 @@ namespace XxxFitnessCLub.ClientEnd
         //會員資料
         private void btnMember_Click(object sender, EventArgs e)
         {
+            memberBLL = new MemberBLL(); // refresh
+
             //恩旗
             memberDetail = memberBLL.GetMember(UserStatic.UserID);
 

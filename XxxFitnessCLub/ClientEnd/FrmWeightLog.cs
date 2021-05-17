@@ -69,7 +69,7 @@ namespace XxxFitnessCLub.ClientEnd
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("你確定欲刪除 " + detail.UpdatedDate+ "  的體重記錄?", "警告", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("你確定欲刪除 " + detail.UpdatedDate + "  的體重記錄?", "警告", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 bll.Delete(detail.ID);
@@ -86,6 +86,22 @@ namespace XxxFitnessCLub.ClientEnd
             this.Controls.Add(frm);
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
+        }
+        bool isAscending = false;
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            List<WeightLogDetailDTO> list = (List<WeightLogDetailDTO>)dataGridView1.DataSource;
+            string columnName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (isAscending)
+            {
+                dataGridView1.DataSource = list.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+                isAscending = false;
+            }
+            else
+            {
+                isAscending = true;
+                dataGridView1.DataSource = list.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x)).ToList();
+            }
         }
     }
 }

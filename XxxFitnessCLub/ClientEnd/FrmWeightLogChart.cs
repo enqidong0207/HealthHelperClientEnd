@@ -36,9 +36,12 @@ namespace XxxFitnessCLub.ClientEnd
             {
                 chart1.Series.Clear();
                 chart1.Series.Add("體重");
-                chart1.DataSource = weightLogDTO.WeightLogs;
+                chart1.DataSource = weightLogDTO.WeightLogs.OrderBy(x => x.UpdatedDate);
                 chart1.Series["體重"].XValueMember = "UpdatedDate";
                 chart1.Series["體重"].YValueMembers = "Weight";
+                chart1.Series["體重"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                chart1.Series["體重"].BorderWidth = 5;
+                
             }
             else
             {

@@ -258,15 +258,6 @@
     <Compile Include="ClientEnd\DAL\DTO\CommentCategoryDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WeightLogDetailDTO.cs" />
     <Compile Include="ClientEnd\DAL\DTO\WeightLogDTO.cs" />
-    <Compile Include="Comment.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommentCategory.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DietLog.cs">
-      <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientEnd\FrmAddWeightLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +281,15 @@
     </Compile>
     <Compile Include="ClientEnd\FrmWeightLogChart.Designer.cs">
       <DependentUpon>FrmWeightLogChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comment.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommentCategory.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DietLog.cs">
+      <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
     <Compile Include="General.cs" />
     <Compile Include="ClientEnd\FrmAddWorkoutLog.cs">
