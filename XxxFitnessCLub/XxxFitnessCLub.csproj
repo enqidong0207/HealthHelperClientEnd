@@ -294,10 +294,10 @@
     <Compile Include="DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FrmPortionRef.cs">
+    <Compile Include="ClientEnd\FrmPortionRef.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPortionRef.Designer.cs">
+    <Compile Include="ClientEnd\FrmPortionRef.Designer.cs">
       <DependentUpon>FrmPortionRef.cs</DependentUpon>
     </Compile>
     <Compile Include="General.cs" />
@@ -506,7 +506,7 @@
     <EmbeddedResource Include="ClientEnd\FrmWorkoutSuggestions.resx">
       <DependentUpon>FrmWorkoutSuggestions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPortionRef.resx">
+    <EmbeddedResource Include="ClientEnd\FrmPortionRef.resx">
       <DependentUpon>FrmPortionRef.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientEnd\FrmAddWeightLog.resx">

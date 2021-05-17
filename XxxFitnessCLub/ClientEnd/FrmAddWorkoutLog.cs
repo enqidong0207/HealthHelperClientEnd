@@ -22,7 +22,7 @@ namespace XxxFitnessCLub.ClientEnd
         private WorkoutBLL wBll = new WorkoutBLL();
         private ActivityLevelBLL alBll = new ActivityLevelBLL();
 
-        private DateTime oneMonthAgo = new DateTime(2021, 4, 1);
+        private DateTime threeDaysAgo = DateTime.Now.AddDays(-3);
 
         public FrmAddWorkoutLog(FrmWorkoutLog _workoutLogForm)
         {
@@ -95,7 +95,10 @@ namespace XxxFitnessCLub.ClientEnd
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            oneMonthAgo = oneMonthAgo.AddDays(1);
+            if (threeDaysAgo.Date < DateTime.Now.Date)
+            {
+                threeDaysAgo = threeDaysAgo.AddDays(1);
+            }
 
             if (!double.TryParse(this.txtWorkoutHours.Text, out double workoutHours) || workoutHours == 0)
             {
@@ -116,7 +119,7 @@ namespace XxxFitnessCLub.ClientEnd
                     ID = workoutLogForm.dto.ID,
                     MemberID = UserStatic.UserID,
                     WorkoutID = (int)this.cmbWorkout.SelectedValue,
-                    EditTime = DateTime.Now.Date,
+                    EditTime = DateTime.Now,
                     WorkoutHours = workoutHours
                 }); ;
 
@@ -135,7 +138,7 @@ namespace XxxFitnessCLub.ClientEnd
                 {
                     MemberID = UserStatic.UserID,
                     WorkoutID = (int)this.cmbWorkout.SelectedValue,
-                    EditTime = oneMonthAgo.Date,
+                    EditTime = threeDaysAgo,
                     WorkoutHours = workoutHours
                 });
 

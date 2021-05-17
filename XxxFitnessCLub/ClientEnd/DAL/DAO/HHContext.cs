@@ -9,6 +9,6 @@ namespace XxxFitnessCLub.ClientEnd.DAL.DAO
 {
     public class HHContext
     {
-        public HealthManagementOld0512Entities1 db = new HealthManagementOld0512Entities1(); 
+        public HealthManagementEMEntities db = new HealthManagementEMEntities(); 
     }
 }

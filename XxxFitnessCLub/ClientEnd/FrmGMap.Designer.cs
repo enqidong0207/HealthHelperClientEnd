@@ -58,6 +58,7 @@ namespace XxxFitnessCLub.ClientEnd
             this.gMapControl1.Size = new System.Drawing.Size(800, 450);
             this.gMapControl1.TabIndex = 4;
             this.gMapControl1.Zoom = 14D;
+            this.gMapControl1.OnMapZoomChanged += new GMap.NET.MapZoomChanged(this.gMapControl1_OnMapZoomChanged);
             this.gMapControl1.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // FrmGMap

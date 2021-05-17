@@ -1,5 +1,5 @@
 ﻿
-namespace XxxFitnessCLub
+namespace XxxFitnessCLub.ClientEnd
 {
     partial class FrmPortionRef
     {
