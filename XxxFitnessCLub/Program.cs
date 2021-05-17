@@ -19,7 +19,7 @@ namespace XxxFitnessCLub
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainPage());
+            Application.Run(new FrmEntry());
            
 
         }

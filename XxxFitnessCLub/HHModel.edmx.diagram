@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b5b4c836e4c4bd5b880d23d96059e11" Name="Diagram1">
+      <Diagram DiagramId="1eadebf14a6149628314895e7be3e9e9" Name="Diagram1">
         <EntityTypeShape EntityType="HealthManagementOld0512Model.ActivityLevel" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagementOld0512Model.CommentCategory" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HealthManagementOld0512Model.Comment" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
@@ -43,7 +43,6 @@
         <AssociationConnector Association="HealthManagementOld0512Model.FK_Preference_WorkoutCategories" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagementOld0512Model.FK_Workouts_WorkoutCategories" ManuallyRouted="false" />
         <AssociationConnector Association="HealthManagementOld0512Model.FK_WorkoutLog_Workouts" ManuallyRouted="false" />
-
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

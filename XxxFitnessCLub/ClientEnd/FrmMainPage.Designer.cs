@@ -44,6 +44,7 @@
             this.btnMember = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button4 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -311,6 +312,8 @@
         private System.Windows.Forms.Button btnGift;
         private System.Windows.Forms.Button btnMember;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button15;
+
         private System.Windows.Forms.Button btnWSuggestion;
         private System.Windows.Forms.Button btnHomePage;
         private System.Windows.Forms.Button btnComment;
