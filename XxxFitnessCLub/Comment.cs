@@ -23,7 +23,9 @@ namespace XxxFitnessCLub
         public Nullable<int> MealOptionID { get; set; }
         public int Rating { get; set; }
         public int CategoryID { get; set; }
+
         public string Feedback { get; set; }
+
     
         public virtual CommentCategory CommentCategory { get; set; }
         public virtual MealOption MealOption { get; set; }
