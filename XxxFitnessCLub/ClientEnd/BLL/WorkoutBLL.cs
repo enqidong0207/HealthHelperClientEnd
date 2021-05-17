@@ -87,7 +87,7 @@ namespace XxxFitnessCLub.ClientEnd.BLL
             }
             else if (workout.Contains("樓梯"))
             {
-                return null;
+                return "登山步道";
             }
             else if (workout.Contains("騎"))
             {

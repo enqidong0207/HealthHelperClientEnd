@@ -102,11 +102,11 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(206, 217);
+            this.label2.Location = new System.Drawing.Point(152, 217);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 25);
+            this.label2.Size = new System.Drawing.Size(146, 25);
             this.label2.TabIndex = 58;
-            this.label2.Text = "運動時間";
+            this.label2.Text = "運動時間(小時)";
             // 
             // txtWorkoutHours
             // 
