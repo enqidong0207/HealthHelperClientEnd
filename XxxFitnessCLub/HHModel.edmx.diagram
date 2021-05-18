@@ -4,45 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c63e42def1be4090a63e9de5826624d1" Name="Diagram1">
-        <EntityTypeShape EntityType="HealthManagementEMModel.ActivityLevel" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.CommentCategory" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.Comment" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.DietLog" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.LikedMeal" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.MealOption" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.MealTagCategory" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.MealTag" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.Member" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.Nutrient" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.Status" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.TimesOfDay" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.WeightLog" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.WorkoutCategory" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.WorkoutLog" Width="1.5" PointX="11.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.WorkoutPreference" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthManagementEMModel.Workout" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Members_ActivityLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Workouts_ActivityLevels" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Comments_CommentCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Comments_MealOptions" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Comments_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_DietLog_MealOptions" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_DietLog_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_DietLog_TimesOfDay" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_LikedMeals_MealOptions" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_LikedMeals_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_MealOptions_Nutrient" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_MealTags_MealOptions" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_MealTags_MealTagCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Members_Status" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Preference_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_WeightLog_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_WorkoutLog_Members" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Preference_WorkoutCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_Workouts_WorkoutCategories" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthManagementEMModel.FK_WorkoutLog_Workouts" ManuallyRouted="false" />
+      <Diagram DiagramId="294b890ec5de4323a8270dcdc5529263" Name="Diagram1">
+        <EntityTypeShape EntityType="HealthManagementModel.ActivityLevel" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.CommentCategory" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.Comment" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.DietLog" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.LikedMeal" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.MealOption" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.MealTagCategory" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.MealTag" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.Member" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.Nutrient" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.Status" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.TimesOfDay" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.WeightLog" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.WorkoutCategory" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.WorkoutLog" Width="1.5" PointX="11.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.WorkoutPreference" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthManagementModel.Workout" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="HealthManagementModel.FK_Members_ActivityLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Workouts_ActivityLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Comments_CommentCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Comments_MealOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Comments_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_DietLog_MealOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_DietLog_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_DietLog_TimesOfDay" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_LikedMeals_MealOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_LikedMeals_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_MealOptions_Nutrient" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_MealTags_MealOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_MealTags_MealTagCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Members_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Preference_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_WeightLog_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_WorkoutLog_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Preference_WorkoutCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_Workouts_WorkoutCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthManagementModel.FK_WorkoutLog_Workouts" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

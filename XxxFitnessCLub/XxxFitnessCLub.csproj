@@ -452,6 +452,12 @@
     <Compile Include="ClientEnd\FrmWeightLogChart.Designer.cs">
       <DependentUpon>FrmWeightLogChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientEnd\FrmPortionRef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientEnd\FrmPortionRef.Designer.cs">
+      <DependentUpon>FrmPortionRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
     </Compile>
@@ -460,12 +466,6 @@
     </Compile>
     <Compile Include="DietLog.cs">
       <DependentUpon>HHModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ClientEnd\FrmPortionRef.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ClientEnd\FrmPortionRef.Designer.cs">
-      <DependentUpon>FrmPortionRef.cs</DependentUpon>
     </Compile>
     <Compile Include="General.cs" />
     <Compile Include="ClientEnd\FrmAddWorkoutLog.cs">

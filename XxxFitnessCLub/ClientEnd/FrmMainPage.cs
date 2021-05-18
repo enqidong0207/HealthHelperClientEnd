@@ -176,5 +176,15 @@ namespace XxxFitnessCLub.ClientEnd
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmMealHistory frm = new FrmMealHistory();
+            frm.TopLevel = false;
+            frm.AutoScroll = true;
+            this.splitContainer2.Panel2.Controls.Add(frm);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Show();
+        }
     }
 }
